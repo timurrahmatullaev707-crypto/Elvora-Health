@@ -16,6 +16,7 @@ import {
   Activity,
   Layers,
   Zap,
+  FlaskConical,
 } from 'lucide-react';
 
 export const ElvoraHeroSection: React.FC = () => {
@@ -37,7 +38,7 @@ export const ElvoraHeroSection: React.FC = () => {
     <div
       ref={heroRef}
       onMouseMove={handleMouseMove}
-      className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-b from-[#EBF7FC] via-[#F4FBFD] to-[#F0FAFD]"
+      className="relative pt-6 pb-20 lg:pt-10 lg:pb-28 overflow-hidden bg-gradient-to-b from-[#EBF7FC] via-[#F4FBFD] to-[#F0FAFD]"
     >
       {/* Background radial cyan medical glow */}
       <div
@@ -62,66 +63,6 @@ export const ElvoraHeroSection: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Floating Capsule Header (ELVORA HEALTH Brand) */}
-        <div className="max-w-4xl mx-auto mb-12 sm:mb-16">
-          <div className="bg-white/90 backdrop-blur-xl rounded-2xl border border-slate-200/80 shadow-md py-3 px-6 flex items-center justify-between">
-            {/* ELVORA HEALTH Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#008BFF] via-[#00B4D8] to-[#0D34B4] flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8">
-                  <path d="M12 2v20M2 12h20M7 7l10 10M17 7 7 17" />
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xl font-black tracking-tight text-[#008BFF] leading-none">
-                    ELVORA
-                  </span>
-                  <span className="text-xs font-black uppercase tracking-wider text-slate-800">
-                    HEALTH
-                  </span>
-                </div>
-                <span className="text-[9px] text-slate-400 font-bold tracking-wider uppercase mt-0.5">
-                  Digital Healthcare Platform
-                </span>
-              </div>
-            </Link>
-
-            {/* Middle Nav Links */}
-            <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
-              <a href="#mahsulotlar" className="hover:text-[#008BFF] transition-colors">
-                Mahsulotlar
-              </a>
-              <a href="#nima-bu" className="hover:text-[#008BFF] transition-colors">
-                Ekotizim
-              </a>
-              <a href="#portal" className="hover:text-[#008BFF] transition-colors">
-                E-Navbat
-              </a>
-              <Link to="/app/dashboard" className="hover:text-[#008BFF] transition-colors">
-                Klinika Boshqaruvi
-              </Link>
-            </div>
-
-            {/* Right Call Center Pill */}
-            <div className="flex items-center gap-2">
-              <a
-                href="tel:+998712025000"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 transition-colors shadow-2xs"
-              >
-                <Phone size={14} className="text-[#008BFF]" />
-                <span>Call-markaz</span>
-              </a>
-
-              <Link
-                to="/app/dashboard"
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#008BFF] to-[#0D34B4] text-white text-xs font-bold hover:shadow-md transition-all shadow-xs active:scale-98"
-              >
-                <span>MIS Kirish</span>
-              </Link>
-            </div>
-          </div>
-        </div>
 
         {/* Hero Main Titles */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
@@ -300,6 +241,41 @@ export const ElvoraHeroSection: React.FC = () => {
               <div className="p-1.5 rounded-lg bg-emerald-50 text-[10px] font-bold text-emerald-800 flex items-center gap-1">
                 <Check size={12} className="text-emerald-600" />
                 <span>Reimbursatsiya dasturida ✓</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 5: Smart Laboratoriya (LIS) - Bottom Left (fills large empty space) */}
+          <div
+            className="absolute left-2 sm:left-10 bottom-0 z-10 animate-float-delayed transition-transform duration-300"
+            style={{
+              transform: `translate(${mousePos.x * -18}px, ${mousePos.y * 18}px) rotate(1.5deg)`,
+            }}
+          >
+            <div className="w-56 sm:w-64 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-xl p-3.5 space-y-2.5 sheen-card">
+              <div className="flex items-center justify-between pb-1.5 border-b border-slate-100">
+                <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                  <FlaskConical size={13} className="text-[#008BFF]" /> Smart Laboratoriya
+                </span>
+                <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  LIS Tayyor
+                </span>
+              </div>
+
+              <div className="text-[11px] text-slate-700 space-y-1">
+                <div className="font-semibold text-slate-900 flex items-center justify-between">
+                  <span>Umumiy qon tahlili</span>
+                  <span className="text-[9px] text-slate-400 font-mono">#LB-8842</span>
+                </div>
+                <div className="text-slate-500 text-[10px]">Biomaterial: Qon zardobi (Normada)</div>
+              </div>
+
+              <div className="p-1.5 rounded-lg bg-cyan-50/80 text-[10px] font-bold text-[#008BFF] flex items-center justify-between">
+                <span className="flex items-center gap-1">
+                  <Check size={12} className="text-[#008BFF]" />
+                  <span>QR Natija tasdiqlandi</span>
+                </span>
+                <span className="text-[9px] text-slate-400 font-mono">10:45</span>
               </div>
             </div>
           </div>

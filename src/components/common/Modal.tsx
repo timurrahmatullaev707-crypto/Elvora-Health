@@ -64,7 +64,7 @@ export const Modal: React.FC<ModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#687586] hover:text-[#101C2C] hover:bg-[#DDF5EB]/50 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-[#687586] hover:text-[#101C2C] hover:bg-[#EBF7FC]/50 transition-colors cursor-pointer"
           >
             <X size={18} />
           </button>

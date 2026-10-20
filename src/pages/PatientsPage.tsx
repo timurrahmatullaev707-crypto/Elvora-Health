@@ -178,7 +178,7 @@ export const PatientsPage: React.FC = () => {
                 setSearchQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full pl-9 pr-4 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] placeholder-[#5F737B] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+              className="w-full pl-9 pr-4 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] placeholder-[#5F737B] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
             />
           </div>
 
@@ -189,7 +189,7 @@ export const PatientsPage: React.FC = () => {
                 setGenderFilter(e.target.value as 'all' | 'erkak' | 'ayol');
                 setCurrentPage(1);
               }}
-              className="px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+              className="px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
             >
               <option value="all">Barcha jinslar</option>
               <option value="erkak">Erkaklar</option>
@@ -233,7 +233,7 @@ export const PatientsPage: React.FC = () => {
                   >
                     <td className="px-5 py-3.5 font-semibold text-[#132229]">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-full bg-[#E6F5F0] text-[#085F59] flex items-center justify-center font-bold text-xs shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-[#EBF7FC] text-[#0D34B4] flex items-center justify-center font-bold text-xs shrink-0">
                           {patient.fullName.charAt(0)}
                         </div>
                         <div>
@@ -261,8 +261,8 @@ export const PatientsPage: React.FC = () => {
                         {patient.bloodGroup || '—'}
                       </span>
                     </td>
-                    <td className="px-4 py-3.5 text-center font-semibold text-[#0D7C74]">
-                      <span className="px-2.5 py-1 rounded-full bg-[#E6F5F0] text-[#085F59] text-xs">
+                    <td className="px-4 py-3.5 text-center font-semibold text-[#008BFF]">
+                      <span className="px-2.5 py-1 rounded-full bg-[#EBF7FC] text-[#0D34B4] text-xs">
                         {patient.totalVisits || 0} marta
                       </span>
                     </td>
@@ -270,7 +270,7 @@ export const PatientsPage: React.FC = () => {
                       <div className="flex items-center justify-end gap-1.5">
                         <button
                           onClick={() => setSelectedPatient(patient)}
-                          className="p-1.5 rounded-lg text-[#0D7C74] hover:bg-[#E6F5F0] transition-colors"
+                          className="p-1.5 rounded-lg text-[#008BFF] hover:bg-[#EBF7FC] transition-colors"
                           title="Tarix va ma'lumotlarni ko'rish"
                         >
                           <Eye size={16} />
@@ -366,7 +366,7 @@ export const PatientsPage: React.FC = () => {
                 <span className="text-[10px] text-[#5F737B] uppercase font-semibold">
                   Jami tashriflar
                 </span>
-                <p className="text-xs font-bold text-[#0D7C74] mt-0.5">
+                <p className="text-xs font-bold text-[#008BFF] mt-0.5">
                   {selectedPatient.totalVisits || 0} marta
                 </p>
               </div>
@@ -375,13 +375,13 @@ export const PatientsPage: React.FC = () => {
             {/* Address & Medical Notes */}
             <div className="space-y-2 text-xs">
               <div className="flex items-start gap-2 text-[#5F737B]">
-                <MapPin size={15} className="text-[#0D7C74] shrink-0 mt-0.5" />
+                <MapPin size={15} className="text-[#008BFF] shrink-0 mt-0.5" />
                 <span>
                   <strong>Manzil:</strong> {selectedPatient.address || 'Manzil ko\'rsatilmagan'}
                 </span>
               </div>
               <div className="flex items-start gap-2 text-[#5F737B]">
-                <FileText size={15} className="text-[#0D7C74] shrink-0 mt-0.5" />
+                <FileText size={15} className="text-[#008BFF] shrink-0 mt-0.5" />
                 <span>
                   <strong>Tibbiy izoh:</strong> {selectedPatient.notes || 'Izohlar kiritilmagan'}
                 </span>
@@ -462,7 +462,7 @@ export const PatientsPage: React.FC = () => {
                 onChange={(e) =>
                   setEditingPatient({ ...editingPatient, fullName: e.target.value })
                 }
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
               />
             </div>
 
@@ -478,7 +478,7 @@ export const PatientsPage: React.FC = () => {
                   onChange={(e) =>
                     setEditingPatient({ ...editingPatient, phone: e.target.value })
                   }
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 />
               </div>
 
@@ -492,7 +492,7 @@ export const PatientsPage: React.FC = () => {
                   onChange={(e) =>
                     setEditingPatient({ ...editingPatient, birthDate: e.target.value })
                   }
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 />
               </div>
             </div>
@@ -510,7 +510,7 @@ export const PatientsPage: React.FC = () => {
                       gender: e.target.value as Gender,
                     })
                   }
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 >
                   <option value="erkak">Erkak</option>
                   <option value="ayol">Ayol</option>
@@ -526,7 +526,7 @@ export const PatientsPage: React.FC = () => {
                   onChange={(e) =>
                     setEditingPatient({ ...editingPatient, bloodGroup: e.target.value })
                   }
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 >
                   <option value="I (0) Rh+">I (0) Rh+</option>
                   <option value="I (0) Rh-">I (0) Rh-</option>
@@ -550,7 +550,7 @@ export const PatientsPage: React.FC = () => {
                 onChange={(e) =>
                   setEditingPatient({ ...editingPatient, address: e.target.value })
                 }
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
               />
             </div>
 
@@ -564,7 +564,7 @@ export const PatientsPage: React.FC = () => {
                 onChange={(e) =>
                   setEditingPatient({ ...editingPatient, notes: e.target.value })
                 }
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
               />
             </div>
 
@@ -637,7 +637,7 @@ export const PatientsPage: React.FC = () => {
                 placeholder="Jasur Bekmurodov"
                 value={newFullName}
                 onChange={(e) => setNewFullName(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
               />
             </div>
 
@@ -651,7 +651,7 @@ export const PatientsPage: React.FC = () => {
                   required
                   value={newPhone}
                   onChange={(e) => setNewPhone(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 />
               </div>
 
@@ -664,7 +664,7 @@ export const PatientsPage: React.FC = () => {
                   required
                   value={newBirthDate}
                   onChange={(e) => setNewBirthDate(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 />
               </div>
             </div>
@@ -677,7 +677,7 @@ export const PatientsPage: React.FC = () => {
                 <select
                   value={newGender}
                   onChange={(e) => setNewGender(e.target.value as Gender)}
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 >
                   <option value="erkak">Erkak</option>
                   <option value="ayol">Ayol</option>
@@ -691,7 +691,7 @@ export const PatientsPage: React.FC = () => {
                 <select
                   value={newBloodGroup}
                   onChange={(e) => setNewBloodGroup(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 >
                   <option value="I (0) Rh+">I (0) Rh+</option>
                   <option value="I (0) Rh-">I (0) Rh-</option>
@@ -714,7 +714,7 @@ export const PatientsPage: React.FC = () => {
                 placeholder="Toshkent sh., Mirobod tumani..."
                 value={newAddress}
                 onChange={(e) => setNewAddress(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
               />
             </div>
 
@@ -727,7 +727,7 @@ export const PatientsPage: React.FC = () => {
                 placeholder="Surunkali kasalliklar yoki shikoyatlar..."
                 value={newNotes}
                 onChange={(e) => setNewNotes(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
               />
             </div>
 

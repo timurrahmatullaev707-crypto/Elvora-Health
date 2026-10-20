@@ -27,7 +27,7 @@ export const ElvoraAiAssistant: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       sender: 'ai',
-      text: 'Assalomu alaykum! Men Elvora Health Ekotizimining sun\'iy intellekt tibbiy yordamchisi "Muxlisa"man. Qanday shikoyat yoki tibbiy xizmat bo‘yicha yordam bera olaman?',
+      text: 'Assalomu alaykum! Men Elvora Health Ekotizimining sun\'iy intellekt tibbiy yordamchisi "Doniyor AI"man. Qanday shikoyat yoki tibbiy xizmat bo‘yicha yordam bera olaman?',
     },
   ]);
 
@@ -104,7 +104,7 @@ export const ElvoraAiAssistant: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-base sm:text-lg font-black text-slate-900">
-                Elvora AI & Muxlisa
+                Elvora AI & Doniyor
               </h3>
               <span className="text-[10px] font-bold uppercase tracking-wider bg-cyan-100/80 text-[#008BFF] px-2.5 py-0.5 rounded-full border border-cyan-300">
                 Sun'iy Intellekt Skriningi
@@ -190,7 +190,7 @@ export const ElvoraAiAssistant: React.FC = () => {
             <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-bounce" />
             <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-bounce [animation-delay:0.2s]" />
             <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-bounce [animation-delay:0.4s]" />
-            <span>Muxlisa tahlil qilmoqda...</span>
+            <span>Doniyor AI tahlil qilmoqda...</span>
           </div>
         )}
       </div>

@@ -98,7 +98,7 @@ export const DmedAiAssistant: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between pb-4 border-b border-[#DFE8E4]">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0D7C74] to-[#14B8A6] text-white flex items-center justify-center font-bold shadow-md">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#008BFF] to-[#14B8A6] text-white flex items-center justify-center font-bold shadow-md">
             <Bot size={24} />
           </div>
           <div>
@@ -106,7 +106,7 @@ export const DmedAiAssistant: React.FC = () => {
               <h3 className="text-base sm:text-lg font-black text-[#132229]">
                 Elvora AI & Muxlisa
               </h3>
-              <span className="text-[10px] font-bold uppercase tracking-wider bg-[#E6F5F0] text-[#0D7C74] px-2 py-0.5 rounded-full border border-[#B7E2D8]">
+              <span className="text-[10px] font-bold uppercase tracking-wider bg-[#EBF7FC] text-[#008BFF] px-2 py-0.5 rounded-full border border-[#BAE6FD]">
                 Sun'iy Intellekt Skriningi
               </span>
             </div>
@@ -116,8 +116,8 @@ export const DmedAiAssistant: React.FC = () => {
           </div>
         </div>
 
-        <span className="hidden sm:flex items-center gap-1.5 text-xs text-[#0D7C74] font-bold bg-[#E6F5F0] px-3 py-1 rounded-full border border-[#B7E2D8]">
-          <span className="w-2 h-2 rounded-full bg-[#0D7C74] animate-ping" />
+        <span className="hidden sm:flex items-center gap-1.5 text-xs text-[#008BFF] font-bold bg-[#EBF7FC] px-3 py-1 rounded-full border border-[#BAE6FD]">
+          <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-ping" />
           Onlayn Aloqada
         </span>
       </div>
@@ -132,7 +132,7 @@ export const DmedAiAssistant: React.FC = () => {
             }`}
           >
             {msg.sender === 'ai' && (
-              <div className="w-8 h-8 rounded-xl bg-[#0D7C74] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <div className="w-8 h-8 rounded-xl bg-[#008BFF] text-white flex items-center justify-center shrink-0 shadow-xs">
                 <Bot size={16} />
               </div>
             )}
@@ -140,7 +140,7 @@ export const DmedAiAssistant: React.FC = () => {
             <div
               className={`p-3.5 rounded-2xl max-w-lg leading-relaxed ${
                 msg.sender === 'user'
-                  ? 'bg-[#0D7C74] text-white rounded-br-xs font-medium'
+                  ? 'bg-[#008BFF] text-white rounded-br-xs font-medium'
                   : 'bg-[#F4F7F5] text-[#132229] border border-[#DFE8E4] rounded-bl-xs'
               }`}
             >
@@ -152,7 +152,7 @@ export const DmedAiAssistant: React.FC = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <h5 className="font-extrabold text-[#132229]">{msg.action.doctorName}</h5>
-                      <span className="text-[11px] text-[#0D7C74] font-bold">{msg.action.specialty}</span>
+                      <span className="text-[11px] text-[#008BFF] font-bold">{msg.action.specialty}</span>
                     </div>
                     <span className="text-xs font-black text-emerald-700">{msg.action.fee}</span>
                   </div>
@@ -163,7 +163,7 @@ export const DmedAiAssistant: React.FC = () => {
                     </span>
                     <a
                       href="#portal"
-                      className="px-2.5 py-1 rounded-lg bg-[#0D7C74] text-white font-bold text-[10px] hover:bg-[#085F59] transition-colors"
+                      className="px-2.5 py-1 rounded-lg bg-[#008BFF] text-white font-bold text-[10px] hover:bg-[#0D34B4] transition-colors"
                     >
                       Navbat olish →
                     </a>
@@ -182,9 +182,9 @@ export const DmedAiAssistant: React.FC = () => {
 
         {isTyping && (
           <div className="flex items-center gap-2 text-xs text-[#5F737B] p-2">
-            <span className="w-2 h-2 rounded-full bg-[#0D7C74] animate-bounce" />
-            <span className="w-2 h-2 rounded-full bg-[#0D7C74] animate-bounce [animation-delay:0.2s]" />
-            <span className="w-2 h-2 rounded-full bg-[#0D7C74] animate-bounce [animation-delay:0.4s]" />
+            <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-bounce" />
+            <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-bounce [animation-delay:0.2s]" />
+            <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-bounce [animation-delay:0.4s]" />
             <span className="text-[11px]">Muxlisa javob tayyorlamoqda...</span>
           </div>
         )}
@@ -200,7 +200,7 @@ export const DmedAiAssistant: React.FC = () => {
             <button
               key={idx}
               onClick={() => handleSendPrompt(p)}
-              className="px-3 py-1.5 rounded-xl bg-[#F4F7F5] hover:bg-[#E6F5F0] hover:text-[#0D7C74] border border-[#DFE8E4] text-xs font-semibold text-[#132229] transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-xl bg-[#F4F7F5] hover:bg-[#EBF7FC] hover:text-[#008BFF] border border-[#DFE8E4] text-xs font-semibold text-[#132229] transition-all cursor-pointer"
             >
               💬 {p}
             </button>

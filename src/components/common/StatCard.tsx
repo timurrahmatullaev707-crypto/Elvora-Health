@@ -21,7 +21,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   icon,
   trend,
   badge,
-  iconBgColor = 'bg-[#DDF5EB] text-[#0D7C74]',
+  iconBgColor = 'bg-cyan-50 text-[#008BFF] border border-cyan-200',
 }) => {
   return (
     <Card className="flex flex-col justify-between" hoverable>

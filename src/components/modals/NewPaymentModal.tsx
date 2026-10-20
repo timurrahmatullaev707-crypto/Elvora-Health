@@ -143,7 +143,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
             step={1000}
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="w-full px-3 py-2 text-sm font-semibold bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+            className="w-full px-3 py-2 text-sm font-semibold bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
           />
         </div>
 
@@ -160,7 +160,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
                 ? setIncomeCategory(e.target.value as IncomeCategory)
                 : setExpenseCategory(e.target.value as ExpenseCategory)
             }
-            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
           >
             {type === 'kirim'
               ? incomeCategories.map((c) => (
@@ -184,7 +184,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
           <select
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value as PaymentMethod)}
-            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
           >
             {paymentMethods.map((m) => (
               <option key={m} value={m}>
@@ -204,7 +204,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
               <select
                 value={patientId}
                 onChange={(e) => setPatientId(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
               >
                 <option value="">-- Tanlanmagan --</option>
                 {patients.map((p) => (
@@ -222,7 +222,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
               <select
                 value={doctorId}
                 onChange={(e) => setDoctorId(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
               >
                 <option value="">-- Tanlanmagan --</option>
                 {doctors.map((d) => (
@@ -245,7 +245,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
             placeholder={type === 'kirim' ? 'Masalan: Umumiy tahlil to\'lovi' : 'Masalan: Dori-darmonlar xaridi'}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
           />
         </div>
 

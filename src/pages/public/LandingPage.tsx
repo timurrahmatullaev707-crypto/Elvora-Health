@@ -30,7 +30,9 @@ import {
   AlertTriangle,
   Building,
 } from 'lucide-react';
+import { ElvoraFloatingNavbar } from '../../components/public/ElvoraFloatingNavbar';
 import { ElvoraHeroSection } from '../../components/public/ElvoraHeroSection';
+import { HeroProductPreview } from '../../components/public/HeroProductPreview';
 import { ElvoraMindMap } from '../../components/public/ElvoraMindMap';
 import { ElvoraBentoStats } from '../../components/public/ElvoraBentoStats';
 import { ElvoraSolutionsSection } from '../../components/public/ElvoraSolutionsSection';
@@ -123,29 +125,58 @@ export const LandingPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#132229] flex flex-col font-sans selection:bg-[#008BFF] selection:text-white">
+    <div className="min-h-screen bg-white text-[#132229] flex flex-col font-sans selection:bg-[#008BFF] selection:text-white relative">
+      {/* ============================================================== */}
+      {/* 0. STICKY FLOATING NAVBAR (Stays pinned when scrolled)         */}
+      {/* ============================================================== */}
+      <ElvoraFloatingNavbar />
+
       {/* ============================================================== */}
       {/* 1. HERO SECTION (Branded Elvora Health with 3D Parallax Tilt) */}
       {/* ============================================================== */}
       <ElvoraHeroSection />
 
       {/* ============================================================== */}
-      {/* 2. "ELVORA HEALTH NIMA?" MIND-MAP NETWORK with Traveling Photons*/}
+      {/* 2. MAHSULOTLAR (3-in-1 Platform Suite: App, Tablet, TV Tablo)  */}
       {/* ============================================================== */}
-      <ElvoraMindMap />
+      <section id="mahsulotlar" className="py-20 lg:py-24 bg-[#F8FBFE] border-b border-slate-200/80 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+            <span className="text-xs font-black uppercase tracking-widest text-[#008BFF] bg-cyan-50 px-4 py-1.5 rounded-full border border-cyan-200">
+              ELVORA HEALTH MAHSULOTLAR TO‘PLAMI
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+              Barcha Qurilmalar Uchun <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008BFF] via-[#00B4D8] to-[#0D34B4]">
+                Yagona Tibbiy Platforma
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600">
+              Bemorlar mobil ilovasi, shifokorlar plansheti va kutish zali raqamli tablosi — bir-biri bilan real vaqtda sinxronlashgan holda ishlaydi.
+            </p>
+          </div>
+
+          <HeroProductPreview />
+        </div>
+      </section>
 
       {/* ============================================================== */}
-      {/* 3. BENTO GRID STATISTICS with Animated Count-Up Numbers         */}
-      {/* ============================================================== */}
-      <ElvoraBentoStats />
-
-      {/* ============================================================== */}
-      {/* 4. "QANDAY MUAMMOLARNI YECHAMIZ?" (Doctors & Solutions)        */}
+      {/* 3. "QANDAY MASALALARNI YECHAMIZ?" (Infinite Auto-Scrolling)    */}
       {/* ============================================================== */}
       <ElvoraSolutionsSection />
 
       {/* ============================================================== */}
-      {/* 5. INTERACTIVE LIVE E-TICKET BOOKING SIMULATOR                 */}
+      {/* 4. "ELVORA HEALTH NIMA?" MIND-MAP NETWORK with Traveling Photons*/}
+      {/* ============================================================== */}
+      <ElvoraMindMap />
+
+      {/* ============================================================== */}
+      {/* 5. BENTO GRID STATISTICS with Animated Count-Up Numbers         */}
+      {/* ============================================================== */}
+      <ElvoraBentoStats />
+
+      {/* ============================================================== */}
+      {/* 6. INTERACTIVE LIVE E-TICKET BOOKING SIMULATOR                 */}
       {/* ============================================================== */}
       <section id="portal" className="py-20 bg-[#F4F9FC] border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,16 +197,16 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* ============================================================== */}
-      {/* 6. DMED AI "MUXLISA" MEDICAL CHATBOT SIMULATOR                 */}
+      {/* 7. DONIYOR AI MEDICAL CHATBOT SIMULATOR                        */}
       {/* ============================================================== */}
-      <section className="py-20 bg-white border-b border-slate-200/80">
+      <section id="doniyor-ai" className="py-20 bg-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
             <span className="text-xs font-black uppercase tracking-widest text-[#008BFF] bg-cyan-50 px-4 py-1.5 rounded-full border border-cyan-200">
               SUN'IY INTELLEKT TIBBIY YORDAMCHISI
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-              Elvora AI & Muxlisa bilan Skrining
+              Elvora AI & Doniyor bilan Skrining
             </h2>
             <p className="text-sm sm:text-base text-slate-600">
               Bemor shikoyatlarini real vaqtda saralash, to‘g‘ri shifokor qabuliga yo‘naltirish va klinika yuklamasini optimallashtirish.

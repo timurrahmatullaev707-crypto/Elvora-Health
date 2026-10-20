@@ -39,7 +39,7 @@ export const PublicNavbar: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top Utility Bar (Just like DMED.uz) */}
-      <div className="bg-[#085F59] text-white text-[11px] py-1.5 px-4 sm:px-8 border-b border-white/10 hidden md:block">
+      <div className="bg-[#0D34B4] text-white text-[11px] py-1.5 px-4 sm:px-8 border-b border-white/10 hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-emerald-200">
@@ -143,19 +143,19 @@ export const PublicNavbar: React.FC = () => {
               </a>
               <a
                 href="#comparison"
-                className="hover:text-[#0D7C74] transition-colors cursor-pointer"
+                className="hover:text-[#008BFF] transition-colors cursor-pointer"
               >
                 Klinika Afzalliklari
               </a>
               <a
                 href="#calculator"
-                className="hover:text-[#0D7C74] transition-colors cursor-pointer"
+                className="hover:text-[#008BFF] transition-colors cursor-pointer"
               >
                 Daromad Kalkulyatori
               </a>
               <a
                 href="#pricing"
-                className="hover:text-[#0D7C74] transition-colors cursor-pointer"
+                className="hover:text-[#008BFF] transition-colors cursor-pointer"
               >
                 Tariflar
               </a>
@@ -167,20 +167,20 @@ export const PublicNavbar: React.FC = () => {
                 href="tel:+998712025000"
                 className="hidden xl:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-[#132229] bg-[#F4F7F5] border border-[#DFE8E4] hover:bg-white transition-colors"
               >
-                <Phone size={13} className="text-[#0D7C74]" />
+                <Phone size={13} className="text-[#008BFF]" />
                 <span>(71) 202-50-00</span>
               </a>
 
               <Link
                 to="/login"
-                className="px-4 py-2 rounded-xl text-xs font-bold text-[#132229] hover:text-[#0D7C74] transition-colors"
+                className="px-4 py-2 rounded-xl text-xs font-bold text-[#132229] hover:text-[#008BFF] transition-colors"
               >
                 Kirish
               </Link>
 
               <Link
                 to="/app/dashboard"
-                className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#0D7C74] to-[#085F59] text-white text-xs font-bold shadow-md hover:shadow-lg active:scale-98 transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#008BFF] to-[#0D34B4] text-white text-xs font-bold shadow-md hover:shadow-lg active:scale-98 transition-all cursor-pointer"
               >
                 <span>Boshqaruv Paneli</span>
                 <ArrowRight size={13} />
@@ -205,14 +205,14 @@ export const PublicNavbar: React.FC = () => {
             <a
               href="#ecosystem"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-[#0D7C74]"
+              className="py-1 hover:text-[#008BFF]"
             >
               Ekotizim Mahsulotlari
             </a>
             <a
               href="#portal"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-[#0D7C74]"
+              className="py-1 hover:text-[#008BFF]"
             >
               Onlayn E-Navbat
             </a>
@@ -226,14 +226,14 @@ export const PublicNavbar: React.FC = () => {
             <a
               href="#comparison"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-[#0D7C74]"
+              className="py-1 hover:text-[#008BFF]"
             >
               Klinika Afzalliklari
             </a>
             <a
               href="#pricing"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-[#0D7C74]"
+              className="py-1 hover:text-[#008BFF]"
             >
               Tariflar
             </a>
@@ -243,7 +243,7 @@ export const PublicNavbar: React.FC = () => {
             <Link
               to="/app/dashboard"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl bg-[#0D7C74] text-white text-xs font-bold text-center shadow-md"
+              className="w-full py-3 rounded-xl bg-[#008BFF] text-white text-xs font-bold text-center shadow-md"
             >
               Klinika Boshqaruv Paneliga Kirish →
             </Link>

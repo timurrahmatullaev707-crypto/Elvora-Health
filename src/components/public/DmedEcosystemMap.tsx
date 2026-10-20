@@ -40,7 +40,7 @@ export const DmedEcosystemMap: React.FC = () => {
       title: 'Klinikalar va Shifokorlar Ish Kunini To‘liq Raqamlashtirish',
       description: 'Shifokor kabineti, 30 daqiqalik shaffof qabul slotlari, tushlik tanaffuslari himoyasi va bemorning to‘liq kasallik tarixi.',
       stats: '2 800+ Shifokorlar',
-      color: '#0D7C74',
+      color: '#008BFF',
       features: [
         'Bemorlarni 1 tugma bilan xonaga chaqirish',
         'Double-booking va no-show oldini olish',
@@ -74,7 +74,7 @@ export const DmedEcosystemMap: React.FC = () => {
       title: 'Yagona Elektron Retseptlar Tizimi',
       description: 'Shifokor tomonidan raqamli imzolangan retseptlar dorixonalar tarmog‘iga avtomatik uzatiladi va noqonuniy dori vositalarini cheklaydi.',
       stats: '1 200+ Dorixonalar',
-      color: '#085F59',
+      color: '#0D34B4',
       features: [
         'QR-kodli xavfsiz elektron retsept',
         'Dozalar va dori mosligini avtomatik tekshirish',
@@ -142,7 +142,7 @@ export const DmedEcosystemMap: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <span className="text-xs font-black uppercase tracking-widest text-[#0D7C74] bg-[#E6F5F0] px-4 py-1.5 rounded-full border border-[#B7E2D8]">
+          <span className="text-xs font-black uppercase tracking-widest text-[#008BFF] bg-[#EBF7FC] px-4 py-1.5 rounded-full border border-[#BAE6FD]">
             DMED 1-GA-1 RAQAMLI EKOTIZIMI
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#132229] tracking-tight">
@@ -165,16 +165,16 @@ export const DmedEcosystemMap: React.FC = () => {
                   onClick={() => setSelectedNodeId(node.id)}
                   className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between group ${
                     isSelected
-                      ? 'bg-white border-[#0D7C74] shadow-xl scale-[1.02]'
-                      : 'bg-white/60 border-[#DFE8E4] hover:bg-white hover:border-[#B7E2D8]'
+                      ? 'bg-white border-[#008BFF] shadow-xl scale-[1.02]'
+                      : 'bg-white/60 border-[#DFE8E4] hover:bg-white hover:border-[#BAE6FD]'
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
                     <div
                       className={`w-11 h-11 rounded-xl flex items-center justify-center font-bold transition-transform group-hover:scale-105 ${
                         isSelected
-                          ? 'bg-[#0D7C74] text-white shadow-md'
-                          : 'bg-[#E6F5F0] text-[#0D7C74]'
+                          ? 'bg-[#008BFF] text-white shadow-md'
+                          : 'bg-[#EBF7FC] text-[#008BFF]'
                       }`}
                     >
                       {node.icon}
@@ -184,7 +184,7 @@ export const DmedEcosystemMap: React.FC = () => {
                         <h4 className="text-sm font-extrabold text-[#132229]">
                           {node.name}
                         </h4>
-                        <span className="text-[10px] font-bold text-[#0D7C74] bg-[#E6F5F0] px-2 py-0.5 rounded-md">
+                        <span className="text-[10px] font-bold text-[#008BFF] bg-[#EBF7FC] px-2 py-0.5 rounded-md">
                           {node.tag}
                         </span>
                       </div>
@@ -194,7 +194,7 @@ export const DmedEcosystemMap: React.FC = () => {
 
                   <span
                     className={`w-2.5 h-2.5 rounded-full transition-all ${
-                      isSelected ? 'bg-[#0D7C74] scale-125 animate-pulse' : 'bg-[#DFE8E4]'
+                      isSelected ? 'bg-[#008BFF] scale-125 animate-pulse' : 'bg-[#DFE8E4]'
                     }`}
                   />
                 </div>
@@ -206,13 +206,13 @@ export const DmedEcosystemMap: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="bg-white rounded-3xl border-2 border-[#DFE8E4] p-6 sm:p-9 shadow-2xl space-y-6 relative overflow-hidden">
               {/* Top Accent Gradient Line */}
-              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#0D7C74] via-[#0A9188] to-[#085F59]" />
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#008BFF] via-[#0A9188] to-[#0D34B4]" />
 
               {/* Product Header */}
               <div className="flex flex-wrap items-start justify-between gap-3 pt-2">
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6F5F0] text-[#085F59] font-bold text-xs mb-2 border border-[#B7E2D8]">
-                    <Sparkles size={13} className="text-[#0D7C74]" />
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF7FC] text-[#0D34B4] font-bold text-xs mb-2 border border-[#BAE6FD]">
+                    <Sparkles size={13} className="text-[#008BFF]" />
                     <span>{activeNode.category}</span>
                   </div>
                   <h3 className="text-2xl font-black text-[#132229] tracking-tight">
@@ -222,7 +222,7 @@ export const DmedEcosystemMap: React.FC = () => {
 
                 <div className="text-right">
                   <span className="text-xs text-[#5F737B] font-semibold block">Ko‘rsatkich:</span>
-                  <span className="text-lg font-black text-[#0D7C74]">
+                  <span className="text-lg font-black text-[#008BFF]">
                     {activeNode.stats}
                   </span>
                 </div>
@@ -244,7 +244,7 @@ export const DmedEcosystemMap: React.FC = () => {
                       key={idx}
                       className="p-3 rounded-xl bg-[#F4F7F5] border border-[#DFE8E4] flex items-start gap-2.5 text-xs text-[#132229] font-medium"
                     >
-                      <CheckCircle2 size={16} className="text-[#0D7C74] shrink-0 mt-0.5" />
+                      <CheckCircle2 size={16} className="text-[#008BFF] shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -254,13 +254,13 @@ export const DmedEcosystemMap: React.FC = () => {
               {/* Action Link to App */}
               <div className="pt-4 border-t border-[#DFE8E4] flex flex-wrap items-center justify-between gap-3">
                 <span className="text-xs text-[#5F737B] flex items-center gap-1.5">
-                  <ShieldCheck size={16} className="text-[#0D7C74]" />
+                  <ShieldCheck size={16} className="text-[#008BFF]" />
                   <span>Sog‘liqni Saqlash Vazirligi (SSV) standartlariga muvofiq</span>
                 </span>
 
                 <Link
                   to="/app/dashboard"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0D7C74] text-white text-xs font-bold hover:bg-[#085F59] transition-all shadow-md active:scale-98"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#008BFF] text-white text-xs font-bold hover:bg-[#0D34B4] transition-all shadow-md active:scale-98"
                 >
                   <span>Namoyishni ochish</span>
                   <ArrowRight size={14} />

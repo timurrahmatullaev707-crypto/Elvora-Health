@@ -145,7 +145,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
             value={patientId}
             onChange={(e) => setPatientId(e.target.value)}
             required
-            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
           >
             {patients.map((p) => (
               <option key={p.id} value={p.id}>
@@ -164,7 +164,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
             value={doctorId}
             onChange={(e) => setDoctorId(e.target.value)}
             required
-            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
           >
             {doctors.map((d) => (
               <option key={d.id} value={d.id}>
@@ -185,7 +185,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
-              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
             />
           </div>
 
@@ -198,7 +198,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
               value={startTime}
               onChange={(e) => handleStartTimeChange(e.target.value)}
               required
-              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
             />
           </div>
 
@@ -211,7 +211,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
               required
-              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
             />
           </div>
         </div>
@@ -230,8 +230,8 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
                   onClick={() => handleStartTimeChange(s)}
                   className={`text-[11px] px-2.5 py-1 rounded-lg border transition-colors cursor-pointer ${
                     startTime === s
-                      ? 'bg-[#0D7C74] text-white border-[#0D7C74]'
-                      : 'bg-white text-[#132229] border-[#DFE8E4] hover:bg-[#E6F5F0]'
+                      ? 'bg-[#008BFF] text-white border-[#008BFF]'
+                      : 'bg-white text-[#132229] border-[#DFE8E4] hover:bg-[#EBF7FC]'
                   }`}
                 >
                   {s}
@@ -264,7 +264,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
               type="text"
               value={serviceName}
               onChange={(e) => setServiceName(e.target.value)}
-              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
             />
           </div>
 
@@ -276,7 +276,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
               type="number"
               value={fee}
               onChange={(e) => setFee(Number(e.target.value))}
-              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
             />
           </div>
         </div>
@@ -291,7 +291,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
             onChange={(e) => setNotes(e.target.value)}
             rows={2}
             placeholder="Bemorning dastlabki shikoyati yoki ko'rsatmalar..."
-            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
           />
         </div>
 

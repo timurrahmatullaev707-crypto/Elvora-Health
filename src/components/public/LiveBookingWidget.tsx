@@ -55,11 +55,11 @@ export const LiveBookingWidget: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white/95 backdrop-blur-xl rounded-3xl border-2 border-[#DFE8E4] shadow-2xl p-4 sm:p-7 relative overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto bg-white/95 backdrop-blur-xl rounded-3xl border-2 border-cyan-100 shadow-2xl p-4 sm:p-7 relative overflow-hidden">
       {/* Decorative top pill */}
-      <div className="flex items-center justify-between pb-4 border-b border-[#DFE8E4] mb-5">
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-xl bg-[#E6F5F0] text-[#0D7C74]">
+      <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+        <div className="flex items-center gap-2.5">
+          <div className="p-2.5 rounded-xl bg-cyan-50 text-[#008BFF] border border-cyan-200">
             <Sparkles size={18} />
           </div>
           <div>
@@ -72,8 +72,8 @@ export const LiveBookingWidget: React.FC = () => {
           </div>
         </div>
 
-        <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#E6F5F0] text-[#0D7C74] border border-[#B7E2D8]">
-          <span className="w-2 h-2 rounded-full bg-[#0D7C74] animate-pulse" />
+        <span className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-cyan-50 text-[#008BFF] border border-cyan-200 shadow-2xs">
+          <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-pulse" />
           Avtomatlashtirilgan E-Navbat
         </span>
       </div>
@@ -84,8 +84,8 @@ export const LiveBookingWidget: React.FC = () => {
           onClick={() => setActiveTab('doctor')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'doctor'
-              ? 'bg-[#0D7C74] text-white shadow-md'
-              : 'bg-[#F4F7F5] text-[#5F737B] hover:text-[#132229]'
+              ? 'bg-[#008BFF] text-white shadow-md shadow-blue-500/25'
+              : 'bg-[#F8FBFE] text-[#5F737B] hover:text-[#132229] border border-slate-200/70'
           }`}
         >
           <Stethoscope size={14} />
@@ -96,8 +96,8 @@ export const LiveBookingWidget: React.FC = () => {
           onClick={() => setActiveTab('clinic')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'clinic'
-              ? 'bg-[#0D7C74] text-white shadow-md'
-              : 'bg-[#F4F7F5] text-[#5F737B] hover:text-[#132229]'
+              ? 'bg-[#008BFF] text-white shadow-md shadow-blue-500/25'
+              : 'bg-[#F8FBFE] text-[#5F737B] hover:text-[#132229] border border-slate-200/70'
           }`}
         >
           <Building2 size={14} />
@@ -108,8 +108,8 @@ export const LiveBookingWidget: React.FC = () => {
           onClick={() => setActiveTab('queue')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'queue'
-              ? 'bg-[#0D7C74] text-white shadow-md'
-              : 'bg-[#F4F7F5] text-[#5F737B] hover:text-[#132229]'
+              ? 'bg-[#008BFF] text-white shadow-md shadow-blue-500/25'
+              : 'bg-[#F8FBFE] text-[#5F737B] hover:text-[#132229] border border-slate-200/70'
           }`}
         >
           <Clock size={14} />
@@ -120,8 +120,8 @@ export const LiveBookingWidget: React.FC = () => {
           onClick={() => setActiveTab('analysis')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'analysis'
-              ? 'bg-[#0D7C74] text-white shadow-md'
-              : 'bg-[#F4F7F5] text-[#5F737B] hover:text-[#132229]'
+              ? 'bg-[#008BFF] text-white shadow-md shadow-blue-500/25'
+              : 'bg-[#F8FBFE] text-[#5F737B] hover:text-[#132229] border border-slate-200/70'
           }`}
         >
           <Search size={14} />
@@ -141,7 +141,7 @@ export const LiveBookingWidget: React.FC = () => {
               <select
                 value={selectedSpecialty}
                 onChange={(e) => setSelectedSpecialty(e.target.value)}
-                className="w-full px-3 py-2.5 bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-xs font-semibold text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                className="w-full px-3 py-2.5 bg-[#F8FBFE] border border-slate-200 rounded-xl text-xs font-semibold text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
               >
                 {specialties.map((s) => (
                   <option key={s} value={s}>
@@ -159,7 +159,7 @@ export const LiveBookingWidget: React.FC = () => {
               <select
                 value={selectedDoctor}
                 onChange={(e) => setSelectedDoctor(e.target.value)}
-                className="w-full px-3 py-2.5 bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-xs font-semibold text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                className="w-full px-3 py-2.5 bg-[#F8FBFE] border border-slate-200 rounded-xl text-xs font-semibold text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
               >
                 {doctorsList.map((d) => (
                   <option key={d.name} value={d.name}>
@@ -182,8 +182,8 @@ export const LiveBookingWidget: React.FC = () => {
                     onClick={() => setSelectedTime(time)}
                     className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                       selectedTime === time
-                        ? 'bg-[#0D7C74] text-white border-[#0D7C74] shadow-xs'
-                        : 'bg-[#F4F7F5] text-[#132229] border-[#DFE8E4] hover:bg-white'
+                        ? 'bg-[#008BFF] text-white border-[#008BFF] shadow-xs'
+                        : 'bg-[#F8FBFE] text-[#132229] border-slate-200 hover:bg-white'
                     }`}
                   >
                     {time}
@@ -194,7 +194,7 @@ export const LiveBookingWidget: React.FC = () => {
           </div>
 
           {/* Patient Details & Submit */}
-          <div className="pt-3 border-t border-[#DFE8E4] grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
+          <div className="pt-3 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
             <div className="sm:col-span-4">
               <label className="block text-[11px] font-bold uppercase text-[#5F737B] mb-1">
                 Bemor Ism-Familiyasi
@@ -207,7 +207,7 @@ export const LiveBookingWidget: React.FC = () => {
                   value={patientName}
                   onChange={(e) => setPatientName(e.target.value)}
                   placeholder="Ism Familiya"
-                  className="w-full pl-9 pr-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] font-medium focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                  className="w-full pl-9 pr-3 py-2 text-xs bg-[#F8FBFE] border border-slate-200 rounded-xl text-[#132229] font-medium focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
                 />
               </div>
             </div>
@@ -224,7 +224,7 @@ export const LiveBookingWidget: React.FC = () => {
                   value={patientPhone}
                   onChange={(e) => setPatientPhone(e.target.value)}
                   placeholder="+998 90 ..."
-                  className="w-full pl-9 pr-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] font-mono focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                  className="w-full pl-9 pr-3 py-2 text-xs bg-[#F8FBFE] border border-slate-200 rounded-xl text-[#132229] font-mono focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
                 />
               </div>
             </div>
@@ -232,7 +232,7 @@ export const LiveBookingWidget: React.FC = () => {
             <div className="sm:col-span-4">
               <button
                 type="submit"
-                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#0D7C74] to-[#085F59] text-white text-xs font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#008BFF] to-[#0D34B4] text-white text-xs font-bold hover:shadow-lg hover:shadow-blue-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-98"
               >
                 <span>⚡ E-Navbat chiptasini olish</span>
                 <ArrowRight size={14} />
@@ -245,10 +245,10 @@ export const LiveBookingWidget: React.FC = () => {
       {/* Tab 2: Clinic Catalog preview */}
       {activeTab === 'clinic' && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          <div className="p-3.5 rounded-2xl bg-[#F4F7F5] border border-[#DFE8E4] space-y-1.5">
+          <div className="p-3.5 rounded-2xl bg-[#F8FBFE] border border-cyan-100 space-y-1.5">
             <div className="flex justify-between items-center">
-              <h4 className="font-bold text-[#132229]">ShifoMed Markaziy Ko'p Tarmoqli Klinikasi</h4>
-              <span className="text-[10px] font-bold bg-[#E6F5F0] text-[#0D7C74] px-2 py-0.5 rounded">
+              <h4 className="font-bold text-[#132229]">Elvora Shifo Markaziy Ko'p Tarmoqli Klinikasi</h4>
+              <span className="text-[10px] font-bold bg-cyan-50 text-[#008BFF] px-2 py-0.5 rounded border border-cyan-200">
                 12 ta shifokor
               </span>
             </div>
@@ -257,17 +257,17 @@ export const LiveBookingWidget: React.FC = () => {
               <span className="text-emerald-700 font-bold">Kutish vaqti: ~10 daqiqa</span>
               <button
                 onClick={() => setActiveTab('doctor')}
-                className="text-[#0D7C74] font-bold hover:underline cursor-pointer"
+                className="text-[#008BFF] font-bold hover:underline cursor-pointer"
               >
                 Qabulga yozilish →
               </button>
             </div>
           </div>
 
-          <div className="p-3.5 rounded-2xl bg-[#F4F7F5] border border-[#DFE8E4] space-y-1.5">
+          <div className="p-3.5 rounded-2xl bg-[#F8FBFE] border border-cyan-100 space-y-1.5">
             <div className="flex justify-between items-center">
               <h4 className="font-bold text-[#132229]">Elvora Diagnostics & Kardiologiya</h4>
-              <span className="text-[10px] font-bold bg-[#E6F5F0] text-[#0D7C74] px-2 py-0.5 rounded">
+              <span className="text-[10px] font-bold bg-cyan-50 text-[#008BFF] px-2 py-0.5 rounded border border-cyan-200">
                 8 ta shifokor
               </span>
             </div>
@@ -276,7 +276,7 @@ export const LiveBookingWidget: React.FC = () => {
               <span className="text-emerald-700 font-bold">Kutish vaqti: ~5 daqiqa</span>
               <button
                 onClick={() => setActiveTab('doctor')}
-                className="text-[#0D7C74] font-bold hover:underline cursor-pointer"
+                className="text-[#008BFF] font-bold hover:underline cursor-pointer"
               >
                 Qabulga yozilish →
               </button>
@@ -287,13 +287,13 @@ export const LiveBookingWidget: React.FC = () => {
 
       {/* Tab 3: Queue live track */}
       {activeTab === 'queue' && (
-        <div className="p-4 rounded-2xl bg-[#F4F7F5] border border-[#DFE8E4] text-xs space-y-3">
+        <div className="p-4 rounded-2xl bg-[#F8FBFE] border border-cyan-100 text-xs space-y-3">
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-bold text-[#132229]">Navbat holatini tekshirish</h4>
               <p className="text-[11px] text-[#5F737B]">Telefon raqamingiz yoki chipta raqamingizni kiriting</p>
             </div>
-            <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">
+            <span className="px-2.5 py-1 rounded-full bg-cyan-50 text-[#008BFF] border border-cyan-200 font-bold text-[10px]">
               Jonli aloqa
             </span>
           </div>
@@ -302,11 +302,11 @@ export const LiveBookingWidget: React.FC = () => {
             <input
               type="text"
               defaultValue="#07 — Dr. Usmonov"
-              className="flex-1 px-3 py-2 bg-white border border-[#DFE8E4] rounded-xl text-xs font-semibold"
+              className="flex-1 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold"
             />
             <button
               onClick={() => setTicketGenerated(true)}
-              className="px-4 py-2 bg-[#0D7C74] text-white rounded-xl font-bold cursor-pointer hover:bg-[#085F59]"
+              className="px-4 py-2 bg-[#008BFF] text-white rounded-xl font-bold cursor-pointer hover:bg-[#0D34B4] shadow-xs"
             >
               Holatni ko'rish
             </button>
@@ -316,24 +316,24 @@ export const LiveBookingWidget: React.FC = () => {
 
       {/* Tab 4: Analysis check */}
       {activeTab === 'analysis' && (
-        <div className="p-4 rounded-2xl bg-[#F4F7F5] border border-[#DFE8E4] text-xs space-y-3">
+        <div className="p-4 rounded-2xl bg-[#F8FBFE] border border-cyan-100 text-xs space-y-3">
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-bold text-[#132229]">Laboratoriya tahlillarini olish (QR Tekshiruv)</h4>
               <p className="text-[11px] text-[#5F737B]">Tahlil blankasidagi 8 xonali kodni kiriting</p>
             </div>
-            <QrCode size={20} className="text-[#0D7C74]" />
+            <QrCode size={20} className="text-[#008BFF]" />
           </div>
 
           <div className="flex gap-2">
             <input
               type="text"
               defaultValue="LAB-99214-UZ"
-              className="flex-1 px-3 py-2 bg-white border border-[#DFE8E4] rounded-xl text-xs font-mono font-bold"
+              className="flex-1 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-mono font-bold"
             />
             <button
               onClick={() => alert("Laboratoriya tahlili: Barcha ko'rsatkichlar me'yorida. PDF yuklab olindi.")}
-              className="px-4 py-2 bg-[#0D7C74] text-white rounded-xl font-bold cursor-pointer hover:bg-[#085F59]"
+              className="px-4 py-2 bg-[#008BFF] text-white rounded-xl font-bold cursor-pointer hover:bg-[#0D34B4] shadow-xs"
             >
               Natijani ochish
             </button>
@@ -344,45 +344,45 @@ export const LiveBookingWidget: React.FC = () => {
       {/* POPUP MODAL: GENERATED LIVE TICKET */}
       {ticketGenerated && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-sm w-full p-5 shadow-2xl border-2 border-[#0D7C74] space-y-4 relative">
+          <div className="bg-white rounded-3xl max-w-sm w-full p-5 shadow-2xl border-2 border-[#008BFF] space-y-4 relative">
             <button
               onClick={() => setTicketGenerated(false)}
-              className="absolute top-4 right-4 p-1.5 rounded-full bg-[#F4F7F5] text-[#5F737B] hover:text-[#132229] cursor-pointer"
+              className="absolute top-4 right-4 p-1.5 rounded-full bg-slate-100 text-[#5F737B] hover:text-[#132229] cursor-pointer"
             >
               <X size={16} />
             </button>
 
             {/* Ticket Header */}
             <div className="text-center space-y-1">
-              <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-[#E6F5F0] text-[#0D7C74] border border-[#B7E2D8]">
+              <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-cyan-50 text-[#008BFF] border border-cyan-200">
                 ✓ Muvaffaqiyatli band qilindi
               </span>
               <h4 className="text-base font-extrabold text-[#132229]">Elektron Qabul Chiptasi</h4>
-              <p className="text-[11px] text-[#5F737B]">ShifoMed Ko'p Tarmoqli Tibbiyot Markazi</p>
+              <p className="text-[11px] text-[#5F737B]">Elvora Shifo Tibbiyot Markazi</p>
             </div>
 
             {/* Ticket Body */}
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-[#0D7C74] to-[#085F59] text-white text-center space-y-3 shadow-lg">
-              <div className="text-[11px] uppercase tracking-wider text-emerald-100 font-bold">
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-[#008BFF] via-[#0070F3] to-[#0D34B4] text-white text-center space-y-3 shadow-lg">
+              <div className="text-[11px] uppercase tracking-wider text-cyan-100 font-bold">
                 Sizning Navbat Raqamingiz:
               </div>
               <div className="text-5xl font-black tracking-tight text-white"># 09</div>
 
               <div className="pt-3 border-t border-white/20 text-xs text-left space-y-1.5">
                 <div className="flex justify-between">
-                  <span className="text-emerald-100">Bemor:</span>
+                  <span className="text-cyan-100">Bemor:</span>
                   <span className="font-bold">{patientName}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-emerald-100">Mutaxassis:</span>
+                  <span className="text-cyan-100">Mutaxassis:</span>
                   <span className="font-bold">{selectedDoctor}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-emerald-100">Belgilangan vaqt:</span>
-                  <span className="font-bold text-amber-200">{selectedTime} (Bugun)</span>
+                  <span className="text-cyan-100">Belgilangan vaqt:</span>
+                  <span className="font-bold text-cyan-200">{selectedTime} (Bugun)</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-emerald-100">Xona:</span>
+                  <span className="text-cyan-100">Xona:</span>
                   <span className="font-bold text-white">102-xona (2-qavat)</span>
                 </div>
               </div>
@@ -393,13 +393,13 @@ export const LiveBookingWidget: React.FC = () => {
                   <span className="text-[9px] font-mono text-slate-400 block">CHIPTA KODI</span>
                   <span className="text-xs font-mono font-bold">ELV-2026-09</span>
                 </div>
-                <QrCode size={28} className="text-[#0D7C74]" />
+                <QrCode size={28} className="text-[#008BFF]" />
               </div>
             </div>
 
             {/* Notification alert */}
-            <div className="p-2.5 rounded-xl bg-[#E6F5F0] text-[11px] text-[#085F59] flex items-center gap-2">
-              <CheckCircle2 size={16} className="text-[#0D7C74] shrink-0" />
+            <div className="p-2.5 rounded-xl bg-cyan-50 text-[11px] text-[#0D34B4] flex items-center gap-2 border border-cyan-200">
+              <CheckCircle2 size={16} className="text-[#008BFF] shrink-0" />
               <span>SMS eslatma <strong>{patientPhone}</strong> raqamiga yuborildi.</span>
             </div>
 
@@ -407,13 +407,13 @@ export const LiveBookingWidget: React.FC = () => {
             <div className="flex gap-2 pt-1">
               <button
                 onClick={() => setTicketGenerated(false)}
-                className="flex-1 py-2 rounded-xl bg-[#F4F7F5] text-xs font-bold text-[#132229] hover:bg-[#DFE8E4] transition-colors cursor-pointer"
+                className="flex-1 py-2 rounded-xl bg-slate-100 text-xs font-bold text-[#132229] hover:bg-slate-200 transition-colors cursor-pointer"
               >
                 Yopish
               </button>
               <Link
                 to="/app/appointments"
-                className="flex-1 py-2 rounded-xl bg-[#0D7C74] text-xs font-bold text-white hover:bg-[#085F59] transition-colors text-center cursor-pointer shadow-xs"
+                className="flex-1 py-2 rounded-xl bg-[#008BFF] text-xs font-bold text-white hover:bg-[#0D34B4] transition-colors text-center cursor-pointer shadow-xs"
               >
                 Navbatda ko'rish →
               </Link>

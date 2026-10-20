@@ -75,7 +75,7 @@ export const FinancePage: React.FC = () => {
     return financeService.getExpenseBreakdown(periodTxs);
   }, [periodTxs]);
 
-  const COLORS = ['#0D7C74', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
+  const COLORS = ['#008BFF', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
 
   // Handle Void
   const handleVoidSubmit = (e: React.FormEvent) => {
@@ -215,7 +215,7 @@ export const FinancePage: React.FC = () => {
           value={`${summary.totalIncome.toLocaleString('uz-UZ')} UZS`}
           subtitle={`${summary.incomeCount} ta muvaffaqiyatli to'lov`}
           icon={<TrendingUp size={20} />}
-          iconBgColor="bg-[#E6F5F0] text-[#0D7C74]"
+          iconBgColor="bg-[#EBF7FC] text-[#008BFF]"
         />
 
         <StatCard
@@ -267,7 +267,7 @@ export const FinancePage: React.FC = () => {
               onClick={() => setPeriod(t.key)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 period === t.key
-                  ? 'bg-[#0D7C74] text-white shadow-xs'
+                  ? 'bg-[#008BFF] text-white shadow-xs'
                   : 'text-[#5F737B] hover:text-[#132229]'
               }`}
             >
@@ -312,7 +312,7 @@ export const FinancePage: React.FC = () => {
             onClick={() => setActiveTab('breakdown')}
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               activeTab === 'breakdown'
-                ? 'bg-white text-[#0D7C74] shadow-xs'
+                ? 'bg-white text-[#008BFF] shadow-xs'
                 : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
@@ -446,7 +446,7 @@ export const FinancePage: React.FC = () => {
                         tx.isVoided ? 'opacity-50 line-through bg-gray-50' : ''
                       }`}
                     >
-                      <td className="px-5 py-3.5 font-mono text-[11px] font-semibold text-[#0D7C74]">
+                      <td className="px-5 py-3.5 font-mono text-[11px] font-semibold text-[#008BFF]">
                         {tx.receiptNumber}
                       </td>
                       <td className="px-4 py-3.5">

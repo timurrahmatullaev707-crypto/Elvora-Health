@@ -69,7 +69,7 @@ export const SettingsPage: React.FC = () => {
         {/* Clinic General Profile */}
         <Card className="p-5">
           <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#DFE8E4]">
-            <Building2 size={18} className="text-[#0D7C74]" />
+            <Building2 size={18} className="text-[#008BFF]" />
             <h3 className="text-sm font-bold text-[#132229]">
               Klinika umumiy ma'lumotlari
             </h3>
@@ -85,7 +85,7 @@ export const SettingsPage: React.FC = () => {
                 required
                 value={clinicName}
                 onChange={(e) => setClinicName(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
               />
             </div>
 
@@ -97,7 +97,7 @@ export const SettingsPage: React.FC = () => {
                 type="text"
                 value={tagline}
                 onChange={(e) => setTagline(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
               />
             </div>
 
@@ -109,7 +109,7 @@ export const SettingsPage: React.FC = () => {
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
               />
             </div>
 
@@ -133,7 +133,7 @@ export const SettingsPage: React.FC = () => {
                 type="text"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
               />
             </div>
           </div>
@@ -142,7 +142,7 @@ export const SettingsPage: React.FC = () => {
         {/* Operating Schedule & Service Durations */}
         <Card className="p-5">
           <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#DFE8E4]">
-            <Clock size={18} className="text-[#0D7C74]" />
+            <Clock size={18} className="text-[#008BFF]" />
             <h3 className="text-sm font-bold text-[#132229]">
               Ish vaqti va qabul davomiyligi
             </h3>
@@ -195,7 +195,7 @@ export const SettingsPage: React.FC = () => {
         {/* Notifications & Automation Integrations */}
         <Card className="p-5">
           <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#DFE8E4]">
-            <Bell size={18} className="text-[#0D7C74]" />
+            <Bell size={18} className="text-[#008BFF]" />
             <h3 className="text-sm font-bold text-[#132229]">
               Eslatmalar va integratsiyalar (Simulyatsiya)
             </h3>
@@ -215,7 +215,7 @@ export const SettingsPage: React.FC = () => {
                 type="checkbox"
                 checked={smsEnabled}
                 onChange={(e) => setSmsEnabled(e.target.checked)}
-                className="w-4 h-4 text-[#0D7C74] rounded focus:ring-[#0D7C74]"
+                className="w-4 h-4 text-[#008BFF] rounded focus:ring-[#008BFF]"
               />
             </div>
 
@@ -232,7 +232,7 @@ export const SettingsPage: React.FC = () => {
                 type="checkbox"
                 checked={telegramEnabled}
                 onChange={(e) => setTelegramEnabled(e.target.checked)}
-                className="w-4 h-4 text-[#0D7C74] rounded focus:ring-[#0D7C74]"
+                className="w-4 h-4 text-[#008BFF] rounded focus:ring-[#008BFF]"
               />
             </div>
           </div>

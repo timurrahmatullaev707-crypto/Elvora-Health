@@ -39,7 +39,7 @@ export const initialDoctors: Doctor[] = [
     breakStart: '13:00',
     breakEnd: '14:00',
     appointmentDurationMinutes: 30,
-    avatarColor: '#0D7C74',
+    avatarColor: '#008BFF',
     isActive: true,
   },
   {

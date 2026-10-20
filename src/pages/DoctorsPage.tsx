@@ -135,7 +135,7 @@ export const DoctorsPage: React.FC = () => {
         breakStart,
         breakEnd,
         appointmentDurationMinutes: Number(duration),
-        avatarColor: '#0D7C74',
+        avatarColor: '#008BFF',
         isActive: true,
       });
       showToast('Yangi shifokor muvaffaqiyatli qo\'shildi', 'success');
@@ -168,7 +168,7 @@ export const DoctorsPage: React.FC = () => {
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            className="px-3 py-1.5 text-xs bg-white border border-[#DFE8E4] rounded-xl text-[#132229] shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+            className="px-3 py-1.5 text-xs bg-white border border-[#DFE8E4] rounded-xl text-[#132229] shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
           />
           <Button
             variant="primary"
@@ -196,7 +196,7 @@ export const DoctorsPage: React.FC = () => {
                   <div className="flex items-center gap-3">
                     <div
                       className="w-11 h-11 rounded-xl text-white font-bold flex items-center justify-center text-sm shadow-xs"
-                      style={{ backgroundColor: doctor.avatarColor || '#0D7C74' }}
+                      style={{ backgroundColor: doctor.avatarColor || '#008BFF' }}
                     >
                       {doctor.fullName
                         .split(' ')
@@ -208,7 +208,7 @@ export const DoctorsPage: React.FC = () => {
                       <h3 className="text-sm font-bold text-[#132229]">
                         {doctor.fullName}
                       </h3>
-                      <span className="inline-block text-[11px] font-semibold text-[#0D7C74] bg-[#E6F5F0] px-2 py-0.5 rounded-md mt-0.5">
+                      <span className="inline-block text-[11px] font-semibold text-[#008BFF] bg-[#EBF7FC] px-2 py-0.5 rounded-md mt-0.5">
                         {doctor.specialty}
                       </span>
                     </div>
@@ -260,7 +260,7 @@ export const DoctorsPage: React.FC = () => {
                         key={d.num}
                         className={`text-[9px] font-semibold px-1.5 py-0.5 rounded ${
                           isWorking
-                            ? 'bg-[#E6F5F0] text-[#085F59] border border-[#B7E2D8]'
+                            ? 'bg-[#EBF7FC] text-[#0D34B4] border border-[#BAE6FD]'
                             : 'bg-gray-100 text-gray-400'
                         }`}
                       >
@@ -277,13 +277,13 @@ export const DoctorsPage: React.FC = () => {
                   <span className="text-[#5F737B]">
                     {selectedDate === todayStr ? 'Bugungi bandlik' : `${selectedDate} bandligi`}:
                   </span>
-                  <span className="font-bold text-[#0D7C74]">
+                  <span className="font-bold text-[#008BFF]">
                     {occ.occupancyPercent}% ({occ.bookedSlotsCount}/{occ.slotsCount} slot)
                   </span>
                 </div>
                 <div className="w-full bg-[#F4F7F5] h-2 rounded-full overflow-hidden border border-[#DFE8E4]">
                   <div
-                    className="h-full bg-[#0D7C74] rounded-full transition-all duration-300"
+                    className="h-full bg-[#008BFF] rounded-full transition-all duration-300"
                     style={{ width: `${occ.occupancyPercent}%` }}
                   />
                 </div>
@@ -319,7 +319,7 @@ export const DoctorsPage: React.FC = () => {
                 placeholder="Dr. Alisher Usmonov"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
               />
             </div>
 
@@ -331,7 +331,7 @@ export const DoctorsPage: React.FC = () => {
                 <select
                   value={specialty}
                   onChange={(e) => setSpecialty(e.target.value as DoctorSpecialty)}
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
                 >
                   {specialties.map((s) => (
                     <option key={s} value={s}>
@@ -351,7 +351,7 @@ export const DoctorsPage: React.FC = () => {
                   step={5000}
                   value={consultationFee}
                   onChange={(e) => setConsultationFee(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
                 />
               </div>
             </div>
@@ -365,7 +365,7 @@ export const DoctorsPage: React.FC = () => {
                   type="text"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
                 />
               </div>
 
@@ -377,7 +377,7 @@ export const DoctorsPage: React.FC = () => {
                   type="text"
                   value={roomNumber}
                   onChange={(e) => setRoomNumber(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20"
                 />
               </div>
             </div>
@@ -397,8 +397,8 @@ export const DoctorsPage: React.FC = () => {
                       onClick={() => handleToggleDay(d.num)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                         isSelected
-                          ? 'bg-[#0D7C74] text-white shadow-xs'
-                          : 'bg-[#F4F7F5] text-[#5F737B] border border-[#DFE8E4] hover:bg-[#E6F5F0]'
+                          ? 'bg-[#008BFF] text-white shadow-xs'
+                          : 'bg-[#F4F7F5] text-[#5F737B] border border-[#DFE8E4] hover:bg-[#EBF7FC]'
                       }`}
                     >
                       {d.label}

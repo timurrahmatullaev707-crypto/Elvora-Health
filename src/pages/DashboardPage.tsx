@@ -145,7 +145,7 @@ export const DashboardPage: React.FC = () => {
             <h1 className="text-xl font-bold text-[#132229] tracking-tight">
               Boshqaruv paneli
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#E6F5F0] text-[#0D7C74] border border-[#B7E2D8]">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#EBF7FC] text-[#008BFF] border border-[#BAE6FD]">
               Real vaqt
             </span>
           </div>
@@ -169,7 +169,7 @@ export const DashboardPage: React.FC = () => {
               onClick={() => setDateFilter(tab.key)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 dateFilter === tab.key
-                  ? 'bg-[#0D7C74] text-white shadow-xs'
+                  ? 'bg-[#008BFF] text-white shadow-xs'
                   : 'text-[#5F737B] hover:text-[#132229]'
               }`}
             >
@@ -181,7 +181,7 @@ export const DashboardPage: React.FC = () => {
 
       {/* Top Smart Insight Alert Preview */}
       {topInsight && (
-        <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#0D7C74] to-[#085F59] p-5 text-white shadow-md">
+        <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#008BFF] to-[#0D34B4] p-5 text-white shadow-md">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="flex items-start gap-3.5">
               <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-xs text-emerald-200 shrink-0">
@@ -208,7 +208,7 @@ export const DashboardPage: React.FC = () => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="bg-white text-[#085F59] hover:bg-emerald-50 border-white text-xs font-semibold"
+                  className="bg-white text-[#0D34B4] hover:bg-emerald-50 border-white text-xs font-semibold"
                 >
                   Tahlilni to'liq ochish
                   <ArrowRight size={14} />
@@ -226,7 +226,7 @@ export const DashboardPage: React.FC = () => {
           value={`${financeSummary.totalIncome.toLocaleString('uz-UZ')} UZS`}
           subtitle={`${financeSummary.incomeCount} ta tasdiqlangan to'lov`}
           icon={<TrendingUp size={20} />}
-          iconBgColor="bg-[#E6F5F0] text-[#0D7C74]"
+          iconBgColor="bg-[#EBF7FC] text-[#008BFF]"
           trend={{ value: '12%', isPositive: true }}
         />
 
@@ -329,8 +329,8 @@ export const DashboardPage: React.FC = () => {
               </p>
             </div>
             <div className="flex items-center gap-4 text-xs font-medium">
-              <span className="flex items-center gap-1.5 text-[#0D7C74]">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0D7C74]"></span> Kirim
+              <span className="flex items-center gap-1.5 text-[#008BFF]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#008BFF]"></span> Kirim
               </span>
               <span className="flex items-center gap-1.5 text-rose-600">
                 <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Chiqim
@@ -343,8 +343,8 @@ export const DashboardPage: React.FC = () => {
               <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorKirim" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#0D7C74" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#0D7C74" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#008BFF" stopOpacity={0.25} />
+                    <stop offset="95%" stopColor="#008BFF" stopOpacity={0.0} />
                   </linearGradient>
                   <linearGradient id="colorChiqim" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#EF4444" stopOpacity={0.2} />
@@ -373,7 +373,7 @@ export const DashboardPage: React.FC = () => {
                   type="monotone"
                   dataKey="kirim"
                   name="Kirim"
-                  stroke="#0D7C74"
+                  stroke="#008BFF"
                   strokeWidth={2.5}
                   fillOpacity={1}
                   fill="url(#colorKirim)"
@@ -402,7 +402,7 @@ export const DashboardPage: React.FC = () => {
               <p className="text-xs text-[#5F737B]">Bugungi qabul soatlari nisbati</p>
             </div>
             <Link to="/app/doctors">
-              <span className="text-xs text-[#0D7C74] font-semibold hover:underline">
+              <span className="text-xs text-[#008BFF] font-semibold hover:underline">
                 Barchasi
               </span>
             </Link>
@@ -415,7 +415,7 @@ export const DashboardPage: React.FC = () => {
                   <span className="font-semibold text-[#132229] truncate">
                     {docStat.doctor.fullName}
                   </span>
-                  <span className="text-[11px] font-bold text-[#0D7C74]">
+                  <span className="text-[11px] font-bold text-[#008BFF]">
                     {docStat.occupancyPercent}%
                   </span>
                 </div>
@@ -431,7 +431,7 @@ export const DashboardPage: React.FC = () => {
                       docStat.occupancyPercent >= 75
                         ? 'bg-emerald-600'
                         : docStat.occupancyPercent >= 40
-                        ? 'bg-[#0D7C74]'
+                        ? 'bg-[#008BFF]'
                         : 'bg-amber-500'
                     }`}
                     style={{ width: `${docStat.occupancyPercent}%` }}
@@ -476,7 +476,7 @@ export const DashboardPage: React.FC = () => {
                   className="py-3 flex items-center justify-between gap-3 text-xs"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-lg bg-[#E6F5F0] text-[#085F59] font-bold flex items-center justify-center shrink-0 border border-[#B7E2D8]">
+                    <span className="w-7 h-7 rounded-lg bg-[#EBF7FC] text-[#0D34B4] font-bold flex items-center justify-center shrink-0 border border-[#BAE6FD]">
                       #{apt.queueNumber}
                     </span>
                     <div>
@@ -492,7 +492,7 @@ export const DashboardPage: React.FC = () => {
                     {apt.status === 'kutilmoqda' && (
                       <button
                         onClick={() => handleCallPatient(apt.id)}
-                        className="px-2.5 py-1 rounded-lg bg-[#0D7C74] text-white hover:bg-[#085F59] text-[11px] font-medium transition-colors cursor-pointer shadow-xs"
+                        className="px-2.5 py-1 rounded-lg bg-[#008BFF] text-white hover:bg-[#0D34B4] text-[11px] font-medium transition-colors cursor-pointer shadow-xs"
                       >
                         Chaqirish
                       </button>
@@ -506,7 +506,7 @@ export const DashboardPage: React.FC = () => {
           <div className="mt-3 pt-3 border-t border-[#DFE8E4] flex justify-end">
             <Link
               to="/app/appointments"
-              className="text-xs text-[#0D7C74] font-semibold hover:underline flex items-center gap-1"
+              className="text-xs text-[#008BFF] font-semibold hover:underline flex items-center gap-1"
             >
               To'liq qabullar va navbat jadvaliga o'tish <ArrowRight size={13} />
             </Link>
@@ -554,7 +554,7 @@ export const DashboardPage: React.FC = () => {
                 <div className="text-right">
                   <span
                     className={`font-bold ${
-                      tx.type === 'kirim' ? 'text-[#0D7C74]' : 'text-rose-600'
+                      tx.type === 'kirim' ? 'text-[#008BFF]' : 'text-rose-600'
                     }`}
                   >
                     {tx.type === 'kirim' ? '+' : '-'}
@@ -569,7 +569,7 @@ export const DashboardPage: React.FC = () => {
           <div className="mt-3 pt-3 border-t border-[#DFE8E4] flex justify-end">
             <Link
               to="/app/finance"
-              className="text-xs text-[#0D7C74] font-semibold hover:underline flex items-center gap-1"
+              className="text-xs text-[#008BFF] font-semibold hover:underline flex items-center gap-1"
             >
               Moliya jurnalini to'liq ko'rish <ArrowRight size={13} />
             </Link>
@@ -578,11 +578,11 @@ export const DashboardPage: React.FC = () => {
       </div>
 
       {/* Demo disclaimer banner as required */}
-      <div className="p-3 bg-[#E6F5F0] rounded-xl border border-[#B7E2D8] flex items-center justify-between text-xs text-[#085F59]">
+      <div className="p-3 bg-[#EBF7FC] rounded-xl border border-[#BAE6FD] flex items-center justify-between text-xs text-[#0D34B4]">
         <span className="font-medium">
           💡 <strong>Namoyish rejimi:</strong> Barcha raqamlar, grafiklar va hisob-kitoblar O'zbekiston tibbiyot amaliyotiga moslashtirilgan real ichki ma'lumotlar bazasidan hisoblanmoqda.
         </span>
-        <span className="text-[11px] text-[#0D7C74] font-semibold">
+        <span className="text-[11px] text-[#008BFF] font-semibold">
           IT Live Investor Selection 2026
         </span>
       </div>

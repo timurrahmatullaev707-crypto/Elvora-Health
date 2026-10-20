@@ -51,13 +51,13 @@ export const LoginPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F8FAF8] flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background ambient accents */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#DDF5EB]/60 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EAE7FF]/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#EBF7FC]/60 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EFF6FF]/40 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header Back to Home */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center relative z-10 space-y-4">
         <Link to="/" className="inline-flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#0D7C74] to-[#065F55] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
+          <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#008BFF] to-[#0D34B4] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
             <svg
               className="w-5 h-5"
               viewBox="0 0 24 24"
@@ -71,7 +71,7 @@ export const LoginPage: React.FC = () => {
             </svg>
           </div>
           <span className="font-bold text-xl tracking-tight text-[#101C2C]">
-            ELVORA <span className="text-[#0D7C74]">HEALTH</span>
+            ELVORA <span className="text-[#008BFF]">HEALTH</span>
           </span>
         </Link>
 
@@ -89,8 +89,8 @@ export const LoginPage: React.FC = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4 sm:px-0">
         <div className="bg-white py-8 px-6 sm:px-8 rounded-2xl border border-[#E6EBEF] shadow-lg space-y-6">
           {/* Demo Notice Banner */}
-          <div className="p-3 rounded-xl bg-[#DDF5EB] border border-[#BCE8D7] text-xs text-[#065F55] flex items-start gap-2">
-            <Sparkles size={16} className="text-[#0D7C74] shrink-0 mt-0.5" />
+          <div className="p-3 rounded-xl bg-[#EBF7FC] border border-[#BAE6FD] text-xs text-[#0D34B4] flex items-start gap-2">
+            <Sparkles size={16} className="text-[#008BFF] shrink-0 mt-0.5" />
             <p className="leading-snug">
               <strong>Demo namoyish rejimi:</strong> Istalgan profilni tanlab, to'g'ridan-to'g'ri tizimga kirishingiz mumkin.
             </p>
@@ -112,7 +112,7 @@ export const LoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => handleDemoPreset('admin', 'admin@elvora.uz')}
-                  className="p-2 text-center rounded-xl bg-[#F8FAF8] border border-[#E6EBEF] hover:border-[#0D7C74] hover:bg-[#DDF5EB]/30 transition-all text-xs font-semibold text-[#101C2C]"
+                  className="p-2 text-center rounded-xl bg-[#F8FAF8] border border-[#E6EBEF] hover:border-[#008BFF] hover:bg-[#EBF7FC]/30 transition-all text-xs font-semibold text-[#101C2C]"
                 >
                   Bosh Vrach (Admin)
                 </button>
@@ -126,14 +126,14 @@ export const LoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => handleDemoPreset('receptionist', 'reception@elvora.uz')}
-                  className="p-2 text-center rounded-xl bg-[#F8FAF8] border border-[#E6EBEF] hover:border-[#0D7C74] hover:bg-[#DDF5EB]/30 transition-all text-xs font-semibold text-[#101C2C]"
+                  className="p-2 text-center rounded-xl bg-[#F8FAF8] border border-[#E6EBEF] hover:border-[#008BFF] hover:bg-[#EBF7FC]/30 transition-all text-xs font-semibold text-[#101C2C]"
                 >
                   Registrator
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDemoPreset('doctor', 'doctor@elvora.uz')}
-                  className="p-2 text-center rounded-xl bg-[#F8FAF8] border border-[#E6EBEF] hover:border-[#0D7C74] hover:bg-[#DDF5EB]/30 transition-all text-xs font-semibold text-[#101C2C]"
+                  className="p-2 text-center rounded-xl bg-[#F8FAF8] border border-[#E6EBEF] hover:border-[#008BFF] hover:bg-[#EBF7FC]/30 transition-all text-xs font-semibold text-[#101C2C]"
                 >
                   Shifokor (Doctor)
                 </button>
@@ -157,7 +157,7 @@ export const LoginPage: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@shifomed.uz"
-                  className="w-full pl-9 pr-4 py-2.5 text-xs bg-[#F8FAF8] border border-[#E6EBEF] rounded-xl text-[#101C2C] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full pl-9 pr-4 py-2.5 text-xs bg-[#F8FAF8] border border-[#E6EBEF] rounded-xl text-[#101C2C] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 />
               </div>
             </div>
@@ -168,7 +168,7 @@ export const LoginPage: React.FC = () => {
                 <label className="text-xs font-semibold text-[#101C2C]">
                   Parol
                 </label>
-                <span className="text-[11px] text-[#0D7C74] hover:underline cursor-pointer">
+                <span className="text-[11px] text-[#008BFF] hover:underline cursor-pointer">
                   Parolni unutdingizmi?
                 </span>
               </div>
@@ -182,7 +182,7 @@ export const LoginPage: React.FC = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-9 pr-10 py-2.5 text-xs bg-[#F8FAF8] border border-[#E6EBEF] rounded-xl text-[#101C2C] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
+                  className="w-full pl-9 pr-10 py-2.5 text-xs bg-[#F8FAF8] border border-[#E6EBEF] rounded-xl text-[#101C2C] focus:outline-none focus:ring-2 focus:ring-[#008BFF]/20 focus:border-[#008BFF]"
                 />
                 <button
                   type="button"
@@ -202,7 +202,7 @@ export const LoginPage: React.FC = () => {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded text-[#0D7C74] focus:ring-[#0D7C74]"
+                  className="w-4 h-4 rounded text-[#008BFF] focus:ring-[#008BFF]"
                 />
                 <span>Meni eslab qol</span>
               </label>
@@ -219,7 +219,7 @@ export const LoginPage: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 rounded-xl bg-[#0D7C74] text-white text-xs font-bold hover:bg-[#065F55] shadow-xs active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3 rounded-xl bg-[#008BFF] text-white text-xs font-bold hover:bg-[#0D34B4] shadow-xs active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {isLoading ? (
                 <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

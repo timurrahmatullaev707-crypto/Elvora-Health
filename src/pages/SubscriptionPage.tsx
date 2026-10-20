@@ -117,12 +117,12 @@ export const SubscriptionPage: React.FC = () => {
               key={plan.id}
               className={`relative flex flex-col justify-between p-6 transition-all ${
                 plan.isPopular
-                  ? 'border-2 border-[#0D7C74] shadow-lg ring-4 ring-[#0D7C74]/5'
+                  ? 'border-2 border-[#008BFF] shadow-lg ring-4 ring-[#008BFF]/5'
                   : 'border-[#DFE8E4]'
               }`}
             >
               {plan.isPopular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0D7C74] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-xs">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#008BFF] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-xs">
                   Eng ommabop
                 </div>
               )}
@@ -131,7 +131,7 @@ export const SubscriptionPage: React.FC = () => {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-lg font-bold text-[#132229]">{plan.name}</h3>
                   {isCurrent && (
-                    <span className="text-[10px] font-bold bg-[#E6F5F0] text-[#085F59] px-2 py-0.5 rounded border border-[#B7E2D8]">
+                    <span className="text-[10px] font-bold bg-[#EBF7FC] text-[#0D34B4] px-2 py-0.5 rounded border border-[#BAE6FD]">
                       Joriy reja
                     </span>
                   )}
@@ -156,7 +156,7 @@ export const SubscriptionPage: React.FC = () => {
                   </span>
                   {plan.features.map((feat, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-[#5F737B]">
-                      <Check size={14} className="text-[#0D7C74] shrink-0 mt-0.5" />
+                      <Check size={14} className="text-[#008BFF] shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -193,7 +193,7 @@ export const SubscriptionPage: React.FC = () => {
 
       {/* Disclaimer */}
       <div className="p-4 rounded-xl bg-[#F8FAF9] border border-[#DFE8E4] text-xs text-[#5F737B] flex items-start gap-3">
-        <AlertCircle size={18} className="text-[#0D7C74] shrink-0 mt-0.5" />
+        <AlertCircle size={18} className="text-[#008BFF] shrink-0 mt-0.5" />
         <p className="leading-relaxed">
           <strong>Investorlar uchun eslatma:</strong> Tarif rejalarini almashtirish to'liq simulyatsiya qilingan va ilovaning boshqa sahifalaridagi (Elvora Insights, Hisobotlar) imkoniyatlar bloklanishi yoki ochilishini darhol ko'rsatib beradi. To'lov tizimlari (Payme/Click) integratsiyasi shartnomalar tuzilgach faollashtiriladi.
         </p>

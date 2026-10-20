@@ -38,8 +38,8 @@ export const ElvoraMindMap: React.FC = () => {
 
   const nodes: NodeItem[] = [
     {
-      id: 'muxlisa',
-      label: 'Muxlisa',
+      id: 'doniyor',
+      label: 'Doniyor AI',
       icon: <Bot size={16} className="text-[#008BFF]" />,
       subtitle: 'AI Tibbiy Assistent',
       metric: '99.4% diagnostik aniqlik',
@@ -301,16 +301,16 @@ export const ElvoraMindMap: React.FC = () => {
 
           {/* 9 Outer Floating Satellite Pills positioned matching Screenshot 2 */}
 
-          {/* 1. Muxlisa (Top Left) */}
+          {/* 1. Doniyor AI (Top Left) */}
           <div
-            onClick={() => setActiveNodeId('muxlisa')}
+            onClick={() => setActiveNodeId('doniyor')}
             className={`absolute left-[4%] sm:left-[8%] top-[12%] sm:top-[14%] z-10 cursor-pointer transition-all duration-300 ${
-              activeNodeId === 'muxlisa' ? 'scale-110 z-30' : 'hover:scale-105 opacity-90'
+              activeNodeId === 'doniyor' ? 'scale-110 z-30' : 'hover:scale-105 opacity-90'
             }`}
           >
             <PillNode
               node={nodes[0]}
-              isActive={activeNodeId === 'muxlisa'}
+              isActive={activeNodeId === 'doniyor'}
             />
           </div>
 

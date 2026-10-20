@@ -80,7 +80,7 @@ export const ReportsPage: React.FC = () => {
     return financeService.getExpenseBreakdown(periodTxs);
   }, [periodTxs]);
 
-  const COLORS = ['#0D7C74', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
+  const COLORS = ['#008BFF', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
 
   // Export CSV
   const handleExportCsv = () => {
@@ -144,7 +144,7 @@ export const ReportsPage: React.FC = () => {
             onClick={() => setReportPeriod(t.key)}
             className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               reportPeriod === t.key
-                ? 'bg-[#0D7C74] text-white shadow-xs'
+                ? 'bg-[#008BFF] text-white shadow-xs'
                 : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
@@ -245,7 +245,7 @@ export const ReportsPage: React.FC = () => {
                     'Tushum',
                   ]}
                 />
-                <Bar dataKey="totalGenerated" fill="#0D7C74" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="totalGenerated" fill="#008BFF" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -325,7 +325,7 @@ export const ReportsPage: React.FC = () => {
                   <td className="px-4 py-3 font-mono text-[#5F737B]">
                     {item.doctor.consultationFee.toLocaleString()} UZS
                   </td>
-                  <td className="px-4 py-3 text-center font-bold text-[#0D7C74]">
+                  <td className="px-4 py-3 text-center font-bold text-[#008BFF]">
                     {item.completedCount} ta
                   </td>
                   <td className="px-5 py-3 text-right font-bold text-emerald-700">

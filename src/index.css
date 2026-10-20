@@ -2,17 +2,17 @@
 
 @layer base {
   :root {
-    --medical-teal: #0D7C74;
-    --medical-teal-dark: #085F59;
-    --medical-mint: #E6F5F0;
-    --medical-mint-hover: #D5EDE5;
-    --medical-bg: #F4F7F5;
+    --medical-teal: #008BFF;
+    --medical-teal-dark: #0D34B4;
+    --medical-mint: #EBF7FC;
+    --medical-mint-hover: #E0F2FE;
+    --medical-bg: #F8FBFE;
     --medical-surface: #FFFFFF;
-    --medical-navy: #132229;
+    --medical-navy: #101C2C;
     --medical-slate: #5F737B;
-    --medical-border: #DFE8E4;
-    --medical-blue: #0284C7;
-    --medical-blue-subtle: #EAF4FC;
+    --medical-border: #E2E8F0;
+    --medical-blue: #008BFF;
+    --medical-blue-subtle: #EBF7FC;
     --medical-purple-subtle: #EFF1FD;
   }
 
@@ -38,7 +38,7 @@
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .dmed-card-hover:hover {
-  border-color: #BCD4CC;
+  border-color: #BAE6FD;
   box-shadow: 0 4px 20px rgba(13, 124, 116, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
@@ -234,6 +234,34 @@ html {
   }
   .print-only {
     display: block !important;
+  }
+}
+
+/* Infinite Auto-Scrolling Carousel Marquee */
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  display: flex;
+  width: max-content;
+  animation: infinite-scroll 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-infinite-scroll {
+    animation: none;
+    overflow-x: auto;
   }
 }
 

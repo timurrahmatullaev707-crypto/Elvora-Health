@@ -62,10 +62,10 @@ export const InsightsPage: React.FC = () => {
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl font-bold text-[#132229] tracking-tight flex items-center gap-2">
-              <Sparkles size={22} className="text-[#0D7C74]" />
+              <Sparkles size={22} className="text-[#008BFF]" />
               Elvora Insights™
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#E6F5F0] text-[#085F59] border border-[#B7E2D8]">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#EBF7FC] text-[#0D34B4] border border-[#BAE6FD]">
               Eksklyuziv modul
             </span>
           </div>
@@ -91,13 +91,13 @@ export const InsightsPage: React.FC = () => {
       </div>
 
       {/* Investor Value Banner / Methodology Disclaimer */}
-      <div className="p-4 rounded-2xl bg-linear-to-r from-[#F8FAF9] via-[#E6F5F0] to-[#E3F1EC] border border-[#B7E2D8] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs">
+      <div className="p-4 rounded-2xl bg-linear-to-r from-[#F8FAF9] via-[#EBF7FC] to-[#E3F1EC] border border-[#BAE6FD] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#085F59] flex items-center gap-1.5">
-              <Cpu size={15} className="text-[#0D7C74]" /> Shafoff qoidalarga asoslangan tahlil tizimi
+            <span className="font-bold text-[#0D34B4] flex items-center gap-1.5">
+              <Cpu size={15} className="text-[#008BFF]" /> Shafoff qoidalarga asoslangan tahlil tizimi
             </span>
-            <span className="text-[10px] bg-white text-[#085F59] font-semibold px-2 py-0.5 rounded border border-[#B7E2D8]">
+            <span className="text-[10px] bg-white text-[#0D34B4] font-semibold px-2 py-0.5 rounded border border-[#BAE6FD]">
               Zero-Data Leakage
             </span>
           </div>
@@ -106,7 +106,7 @@ export const InsightsPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0 text-[11px] font-medium text-[#085F59]">
+        <div className="flex items-center gap-3 shrink-0 text-[11px] font-medium text-[#0D34B4]">
           <span className="flex items-center gap-1">
             <Database size={13} /> {totalAnalyzedAppointments} ta qabul
           </span>
@@ -131,7 +131,7 @@ export const InsightsPage: React.FC = () => {
             onClick={() => setActiveFilter(tab.key)}
             className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all whitespace-nowrap cursor-pointer ${
               activeFilter === tab.key
-                ? 'bg-[#0D7C74] text-white shadow-xs'
+                ? 'bg-[#008BFF] text-white shadow-xs'
                 : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
@@ -231,7 +231,7 @@ export const InsightsPage: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-2 border-t border-[#DFE8E4]">
                     {/* Supporting Records & Evidence */}
                     <div className="p-3 bg-[#F8FAF9] rounded-xl border border-[#DFE8E4] text-xs">
-                      <span className="font-bold text-[#0D7C74] flex items-center gap-1.5 mb-1">
+                      <span className="font-bold text-[#008BFF] flex items-center gap-1.5 mb-1">
                         <Database size={13} /> 1. Asoslovchi ma'lumotlar va dalillar:
                       </span>
                       <p className="text-[#5F737B] leading-relaxed">
@@ -251,10 +251,10 @@ export const InsightsPage: React.FC = () => {
                   </div>
 
                   {/* Suggested Next Action & Link */}
-                  <div className="p-3.5 bg-[#E6F5F0]/70 rounded-xl border border-[#B7E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                  <div className="p-3.5 bg-[#EBF7FC]/70 rounded-xl border border-[#BAE6FD] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                     <div>
-                      <span className="font-bold text-[#085F59] flex items-center gap-1.5 mb-0.5">
-                        <Lightbulb size={14} className="text-[#0D7C74]" /> Tavsiya etilgan amaliy harakat:
+                      <span className="font-bold text-[#0D34B4] flex items-center gap-1.5 mb-0.5">
+                        <Lightbulb size={14} className="text-[#008BFF]" /> Tavsiya etilgan amaliy harakat:
                       </span>
                       <p className="text-[#132229]">{insight.suggestedAction}</p>
                     </div>
@@ -278,9 +278,9 @@ export const InsightsPage: React.FC = () => {
       </div>
 
       {/* Pro Tier Distinction Footnote */}
-      <Card className="bg-[#F8FAF9] border-dashed border-[#B7E2D8] p-4 text-xs">
+      <Card className="bg-[#F8FAF9] border-dashed border-[#BAE6FD] p-4 text-xs">
         <div className="flex items-start gap-3">
-          <ShieldCheck size={20} className="text-[#0D7C74] shrink-0 mt-0.5" />
+          <ShieldCheck size={20} className="text-[#008BFF] shrink-0 mt-0.5" />
           <div>
             <h4 className="font-bold text-[#132229]">
               Investitsiya va texnologik xavfsizlik kafolati
