@@ -58,7 +58,7 @@ export const NewPatientModal: React.FC<NewPatientModalProps> = ({ isOpen, onClos
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             F.I.SH. (To'liq ism-sharifi) <span className="text-red-500">*</span>
           </label>
           <input
@@ -67,13 +67,13 @@ export const NewPatientModal: React.FC<NewPatientModalProps> = ({ isOpen, onClos
             placeholder="Masalan: Jasur Bekmurodov"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Telefon raqami <span className="text-red-500">*</span>
             </label>
             <input
@@ -82,12 +82,12 @@ export const NewPatientModal: React.FC<NewPatientModalProps> = ({ isOpen, onClos
               placeholder="+998 90 123 45 67"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Tug'ilgan sanasi <span className="text-red-500">*</span>
             </label>
             <input
@@ -95,20 +95,20 @@ export const NewPatientModal: React.FC<NewPatientModalProps> = ({ isOpen, onClos
               required
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Jinsi
             </label>
             <select
               value={gender}
               onChange={(e) => setGender(e.target.value as Gender)}
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             >
               <option value="erkak">Erkak</option>
               <option value="ayol">Ayol</option>
@@ -116,13 +116,13 @@ export const NewPatientModal: React.FC<NewPatientModalProps> = ({ isOpen, onClos
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Qon guruhi
             </label>
             <select
               value={bloodGroup}
               onChange={(e) => setBloodGroup(e.target.value)}
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             >
               <option value="I (0) Rh+">I (0) Rh+</option>
               <option value="I (0) Rh-">I (0) Rh-</option>
@@ -137,7 +137,7 @@ export const NewPatientModal: React.FC<NewPatientModalProps> = ({ isOpen, onClos
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             Yashash manzili
           </label>
           <input
@@ -145,12 +145,12 @@ export const NewPatientModal: React.FC<NewPatientModalProps> = ({ isOpen, onClos
             placeholder="Toshkent sh., Chilonzor tumani..."
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             Tibbiy ma'lumot yoki allergiya izohlari
           </label>
           <textarea
@@ -158,11 +158,11 @@ export const NewPatientModal: React.FC<NewPatientModalProps> = ({ isOpen, onClos
             placeholder="Allergik reaksiyalar yoki surunkali kasalliklar haqida..."
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           />
         </div>
 
-        <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E4EBE8]">
+        <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#DFE8E4]">
           <Button type="button" variant="outline" onClick={onClose}>
             Bekor qilish
           </Button>

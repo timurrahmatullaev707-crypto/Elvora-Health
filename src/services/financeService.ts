@@ -15,6 +15,7 @@ export interface FinanceSummary {
   incomeCount: number;
   expenseCount: number;
   voidedCount: number;
+  voidedAmount: number;
 }
 
 export const financeService = {
@@ -37,8 +38,9 @@ export const financeService = {
 
   // Calculate totals for a given array of transactions (defaulting to all valid)
   calculateSummary(transactions?: Transaction[]): FinanceSummary {
-    const list = (transactions || this.getAll()).filter((t) => !t.isVoided);
-    const voidedList = (transactions || this.getAll()).filter((t) => t.isVoided);
+    const rawList = transactions || this.getAll();
+    const list = rawList.filter((t) => !t.isVoided);
+    const voidedList = rawList.filter((t) => t.isVoided);
 
     let totalIncome = 0;
     let totalExpenses = 0;
@@ -56,6 +58,7 @@ export const financeService = {
     });
 
     const netOperatingResult = totalIncome - totalExpenses;
+    const voidedAmount = voidedList.reduce((sum, t) => sum + t.amount, 0);
 
     return {
       totalIncome,
@@ -64,6 +67,7 @@ export const financeService = {
       incomeCount,
       expenseCount,
       voidedCount: voidedList.length,
+      voidedAmount,
     };
   },
 
@@ -286,6 +290,6 @@ export const financeService = {
       `"${(t.voidReason || '').replace(/"/g, '""')}"`,
     ]);
 
-    return [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');
+    return '\uFEFF' + [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');
   },
 };

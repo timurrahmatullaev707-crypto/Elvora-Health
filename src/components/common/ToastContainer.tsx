@@ -32,12 +32,12 @@ export const ToastContainer: React.FC = () => {
             }`}
           >
             {icons[toast.type]}
-            <p className="text-xs font-medium text-[#20312F] flex-1 leading-snug">
+            <p className="text-xs font-medium text-[#132229] flex-1 leading-snug">
               {toast.message}
             </p>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-[#71817D] hover:text-[#20312F] transition-colors p-0.5"
+              className="text-[#5F737B] hover:text-[#132229] transition-colors p-0.5"
             >
               <X size={14} />
             </button>

@@ -133,7 +133,35 @@ export interface InsightItem {
   isCalculatedFact: boolean;
 }
 
-export type UserRole = 'admin' | 'receptionist' | 'doctor';
+export type UserRole = 'owner' | 'admin' | 'doctor' | 'receptionist' | 'accountant';
+
+export type AppResource =
+  | 'patients'
+  | 'appointments'
+  | 'doctors'
+  | 'finance'
+  | 'insights'
+  | 'reports'
+  | 'staff'
+  | 'settings'
+  | 'subscription';
+
+export type AppAction = 'view' | 'create' | 'edit' | 'delete' | 'export';
+
+export type RolePermissions = {
+  [resource in AppResource]: {
+    [action in AppAction]?: boolean;
+  };
+};
+
+export type PlanFeature =
+  | 'insights'
+  | 'advanced_reports'
+  | 'exports_extended'
+  | 'automation_rules'
+  | 'multi_branch'
+  | 'custom_roles'
+  | 'audit_log';
 
 export interface UserProfile {
   id: string;
@@ -143,9 +171,19 @@ export interface UserProfile {
   email: string;
   phone: string;
   branchName: string;
+  branchId?: string;
+  avatarUrl?: string;
 }
 
 export type SubscriptionPlan = 'basic' | 'pro' | 'business';
+
+export interface Branch {
+  id: string;
+  name: string;
+  address: string;
+  phone: string;
+  isMain: boolean;
+}
 
 export interface ClinicSettings {
   clinicName: string;
@@ -159,4 +197,5 @@ export interface ClinicSettings {
   currentPlan: SubscriptionPlan;
   smsRemindersEnabled: boolean;
   telegramBotConnected: boolean;
+  branches?: Branch[];
 }

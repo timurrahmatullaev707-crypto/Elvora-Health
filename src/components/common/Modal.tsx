@@ -48,23 +48,23 @@ export const Modal: React.FC<ModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#20312F]/40 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+        className="fixed inset-0 bg-[#101C2C]/50 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
         onClick={onClose}
       />
 
       {/* Modal Dialog */}
       <div
-        className={`relative w-full ${maxWidthStyles[maxWidth]} bg-white rounded-2xl shadow-xl border border-[#E4EBE8] overflow-hidden z-10 transition-all transform animate-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col`}
+        className={`relative w-full ${maxWidthStyles[maxWidth]} bg-white rounded-2xl shadow-2xl border border-[#E6EBEF] overflow-hidden z-10 transition-all transform animate-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E4EBE8] bg-[#FAFDFB]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E6EBEF] bg-[#F8FAF8]">
           <div>
-            <h3 className="text-lg font-semibold text-[#20312F]">{title}</h3>
-            {subtitle && <p className="text-xs text-[#71817D] mt-0.5">{subtitle}</p>}
+            <h3 className="text-base font-bold text-[#101C2C]">{title}</h3>
+            {subtitle && <p className="text-xs text-[#687586] mt-0.5">{subtitle}</p>}
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#71817D] hover:text-[#20312F] hover:bg-[#EAF6F2] transition-colors"
+            className="p-1.5 rounded-lg text-[#687586] hover:text-[#101C2C] hover:bg-[#DDF5EB]/50 transition-colors cursor-pointer"
           >
             <X size={18} />
           </button>

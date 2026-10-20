@@ -15,22 +15,22 @@ export const Badge: React.FC<BadgeProps> = ({
   className = '',
 }) => {
   const variantStyles = {
-    primary: 'bg-[#EAF6F2] text-[#125B54] border-[#BCE3D7]',
+    primary: 'bg-[#DDF5EB] text-[#065F55] border-[#BCE8D7]',
     success: 'bg-[#ECFDF5] text-[#065F46] border-[#A7F3D0]',
     warning: 'bg-[#FFFBEB] text-[#92400E] border-[#FDE68A]',
     danger: 'bg-[#FEF2F2] text-[#991B1B] border-[#FECACA]',
-    neutral: 'bg-[#F3F4F6] text-[#374151] border-[#E5E7EB]',
+    neutral: 'bg-[#F8FAF8] text-[#101C2C] border-[#E6EBEF]',
     info: 'bg-[#EFF6FF] text-[#1E40AF] border-[#BFDBFE]',
   };
 
   const sizeStyles = {
-    sm: 'text-xs px-2 py-0.5',
+    sm: 'text-[10px] px-2 py-0.5',
     md: 'text-xs px-2.5 py-1',
   };
 
   return (
     <span
-      className={`inline-flex items-center gap-1 font-medium rounded-full border ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`inline-flex items-center gap-1 font-semibold rounded-full border ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
     >
       {children}
     </span>

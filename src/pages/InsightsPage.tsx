@@ -19,6 +19,7 @@ import { useApp } from '../context/AppContext';
 import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
 import { Badge } from '../components/common/Badge';
+import { FeatureGate } from '../components/common/FeatureGate';
 import { insightsService } from '../services/insightsService';
 import { InsightType } from '../types';
 
@@ -54,20 +55,21 @@ export const InsightsPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <FeatureGate feature="insights" requiredPlanName="Pro yoki Business">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-[#20312F] tracking-tight flex items-center gap-2">
-              <Sparkles size={22} className="text-[#167D72]" />
+            <h1 className="text-xl font-bold text-[#132229] tracking-tight flex items-center gap-2">
+              <Sparkles size={22} className="text-[#0D7C74]" />
               Elvora Insights™
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#EAF6F2] text-[#125B54] border border-[#BCE3D7]">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#E6F5F0] text-[#085F59] border border-[#B7E2D8]">
               Eksklyuziv modul
             </span>
           </div>
-          <p className="text-xs text-[#71817D] mt-0.5">
+          <p className="text-xs text-[#5F737B] mt-0.5">
             Ichki kassa, qabullar va shifokorlar ish grafigi asosida hisoblangan amaliy xulosa va tavsiyalar
           </p>
         </div>
@@ -82,20 +84,20 @@ export const InsightsPage: React.FC = () => {
             Qayta hisoblash
           </Button>
 
-          <div className="text-[11px] text-[#71817D] bg-white px-3 py-1.5 rounded-xl border border-[#E4EBE8] shadow-2xs">
+          <div className="text-[11px] text-[#5F737B] bg-white px-3 py-1.5 rounded-xl border border-[#DFE8E4] shadow-2xs">
             Oxirgi tahlil: <strong>{lastAnalyzedAt}</strong>
           </div>
         </div>
       </div>
 
       {/* Investor Value Banner / Methodology Disclaimer */}
-      <div className="p-4 rounded-2xl bg-linear-to-r from-[#FAFDFB] via-[#EAF6F2] to-[#E3F1EC] border border-[#BCE3D7] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs">
+      <div className="p-4 rounded-2xl bg-linear-to-r from-[#F8FAF9] via-[#E6F5F0] to-[#E3F1EC] border border-[#B7E2D8] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#125B54] flex items-center gap-1.5">
-              <Cpu size={15} className="text-[#167D72]" /> Shafoff qoidalarga asoslangan tahlil tizimi
+            <span className="font-bold text-[#085F59] flex items-center gap-1.5">
+              <Cpu size={15} className="text-[#0D7C74]" /> Shafoff qoidalarga asoslangan tahlil tizimi
             </span>
-            <span className="text-[10px] bg-white text-[#125B54] font-semibold px-2 py-0.5 rounded border border-[#BCE3D7]">
+            <span className="text-[10px] bg-white text-[#085F59] font-semibold px-2 py-0.5 rounded border border-[#B7E2D8]">
               Zero-Data Leakage
             </span>
           </div>
@@ -104,7 +106,7 @@ export const InsightsPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0 text-[11px] font-medium text-[#125B54]">
+        <div className="flex items-center gap-3 shrink-0 text-[11px] font-medium text-[#085F59]">
           <span className="flex items-center gap-1">
             <Database size={13} /> {totalAnalyzedAppointments} ta qabul
           </span>
@@ -115,7 +117,7 @@ export const InsightsPage: React.FC = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center bg-white p-1 rounded-xl border border-[#E4EBE8] shadow-2xs overflow-x-auto">
+      <div className="flex items-center bg-white p-1 rounded-xl border border-[#DFE8E4] shadow-2xs overflow-x-auto">
         {(
           [
             { key: 'all', label: `Barchasi (${insights.length})` },
@@ -129,8 +131,8 @@ export const InsightsPage: React.FC = () => {
             onClick={() => setActiveFilter(tab.key)}
             className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all whitespace-nowrap cursor-pointer ${
               activeFilter === tab.key
-                ? 'bg-[#167D72] text-white shadow-xs'
-                : 'text-[#71817D] hover:text-[#20312F]'
+                ? 'bg-[#0D7C74] text-white shadow-xs'
+                : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
             {tab.label}
@@ -141,7 +143,7 @@ export const InsightsPage: React.FC = () => {
       {/* Insights Cards List */}
       <div className="space-y-4">
         {filteredInsights.length === 0 ? (
-          <Card className="text-center py-12 text-[#71817D] text-xs">
+          <Card className="text-center py-12 text-[#5F737B] text-xs">
             Tanlangan toifa bo'yicha ogohlantirishlar topilmadi.
           </Card>
         ) : (
@@ -188,11 +190,11 @@ export const InsightsPage: React.FC = () => {
                         {conf.icon}
                         {conf.badgeText}
                       </span>
-                      <span className="text-[11px] font-medium text-[#71817D]">
+                      <span className="text-[11px] font-medium text-[#5F737B]">
                         Davr: {insight.dateRange}
                       </span>
                       {insight.isCalculatedFact && (
-                        <span className="text-[10px] bg-[#F5F8F7] text-[#506360] px-2 py-0.5 rounded border border-[#E4EBE8]">
+                        <span className="text-[10px] bg-[#F4F7F5] text-[#5F737B] px-2 py-0.5 rounded border border-[#DFE8E4]">
                           Haqiqiy tahlil
                         </span>
                       )}
@@ -217,44 +219,44 @@ export const InsightsPage: React.FC = () => {
 
                   {/* Title and What Happened */}
                   <div>
-                    <h3 className="text-base font-bold text-[#20312F]">
+                    <h3 className="text-base font-bold text-[#132229]">
                       {insight.title}
                     </h3>
-                    <p className="text-xs text-[#506360] mt-1 leading-relaxed">
+                    <p className="text-xs text-[#5F737B] mt-1 leading-relaxed">
                       {insight.description}
                     </p>
                   </div>
 
                   {/* 5 Structural Elements required by Section 13 */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-2 border-t border-[#E4EBE8]">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-2 border-t border-[#DFE8E4]">
                     {/* Supporting Records & Evidence */}
-                    <div className="p-3 bg-[#FAFDFB] rounded-xl border border-[#E4EBE8] text-xs">
-                      <span className="font-bold text-[#167D72] flex items-center gap-1.5 mb-1">
+                    <div className="p-3 bg-[#F8FAF9] rounded-xl border border-[#DFE8E4] text-xs">
+                      <span className="font-bold text-[#0D7C74] flex items-center gap-1.5 mb-1">
                         <Database size={13} /> 1. Asoslovchi ma'lumotlar va dalillar:
                       </span>
-                      <p className="text-[#506360] leading-relaxed">
+                      <p className="text-[#5F737B] leading-relaxed">
                         {insight.supportingData}
                       </p>
                     </div>
 
                     {/* Why It Matters & Business Impact */}
-                    <div className="p-3 bg-[#FAFDFB] rounded-xl border border-[#E4EBE8] text-xs">
+                    <div className="p-3 bg-[#F8FAF9] rounded-xl border border-[#DFE8E4] text-xs">
                       <span className="font-bold text-amber-800 flex items-center gap-1.5 mb-1">
                         <HelpCircle size={13} /> 2. Biznes uchun ahamiyati va ta'siri:
                       </span>
-                      <p className="text-[#506360] leading-relaxed">
+                      <p className="text-[#5F737B] leading-relaxed">
                         {insight.impactExplanation}
                       </p>
                     </div>
                   </div>
 
                   {/* Suggested Next Action & Link */}
-                  <div className="p-3.5 bg-[#EAF6F2]/70 rounded-xl border border-[#BCE3D7] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                  <div className="p-3.5 bg-[#E6F5F0]/70 rounded-xl border border-[#B7E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                     <div>
-                      <span className="font-bold text-[#125B54] flex items-center gap-1.5 mb-0.5">
-                        <Lightbulb size={14} className="text-[#167D72]" /> Tavsiya etilgan amaliy harakat:
+                      <span className="font-bold text-[#085F59] flex items-center gap-1.5 mb-0.5">
+                        <Lightbulb size={14} className="text-[#0D7C74]" /> Tavsiya etilgan amaliy harakat:
                       </span>
-                      <p className="text-[#20312F]">{insight.suggestedAction}</p>
+                      <p className="text-[#132229]">{insight.suggestedAction}</p>
                     </div>
 
                     <Link to={insight.actionLink} className="shrink-0">
@@ -276,19 +278,20 @@ export const InsightsPage: React.FC = () => {
       </div>
 
       {/* Pro Tier Distinction Footnote */}
-      <Card className="bg-[#FAFDFB] border-dashed border-[#BCE3D7] p-4 text-xs">
+      <Card className="bg-[#F8FAF9] border-dashed border-[#B7E2D8] p-4 text-xs">
         <div className="flex items-start gap-3">
-          <ShieldCheck size={20} className="text-[#167D72] shrink-0 mt-0.5" />
+          <ShieldCheck size={20} className="text-[#0D7C74] shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-bold text-[#20312F]">
+            <h4 className="font-bold text-[#132229]">
               Investitsiya va texnologik xavfsizlik kafolati
             </h4>
-            <p className="text-[#71817D] mt-0.5 leading-relaxed">
+            <p className="text-[#5F737B] mt-0.5 leading-relaxed">
               Elvora Insights hech qanday tashqi pullik OpenAI yoki yopiq API larsiz to'liq lokal ishlaydi. Algoritmlar O'zbekiston shifoxonalari talablariga mos ravishda milliy valyuta (UZS) va ish jadvali parametrlari bilan to'liq integratsiya qilingan.
             </p>
           </div>
         </div>
       </Card>
     </div>
+    </FeatureGate>
   );
 };

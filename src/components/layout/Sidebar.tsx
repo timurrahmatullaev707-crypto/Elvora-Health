@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import {
   LayoutDashboard,
   Users,
@@ -15,6 +15,7 @@ import {
   ChevronRight,
   Building2,
   Sparkle,
+  Globe,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
@@ -24,62 +25,62 @@ export const Sidebar: React.FC = () => {
 
   const navigationItems = [
     {
-      to: '/',
+      to: '/app/dashboard',
       label: 'Boshqaruv paneli',
       icon: <LayoutDashboard size={19} />,
       badge: null,
     },
     {
-      to: '/patients',
+      to: '/app/patients',
       label: 'Bemorlar',
       icon: <Users size={19} />,
       badge: null,
     },
     {
-      to: '/appointments',
+      to: '/app/appointments',
       label: 'Qabullar va navbat',
       icon: <CalendarCheck2 size={19} />,
       badge: 'Jonli',
     },
     {
-      to: '/doctors',
+      to: '/app/doctors',
       label: 'Shifokorlar',
       icon: <Stethoscope size={19} />,
       badge: null,
     },
     {
-      to: '/finance',
+      to: '/app/finance',
       label: 'Moliya',
       icon: <CircleDollarSign size={19} />,
       badge: null,
     },
     {
-      to: '/insights',
+      to: '/app/insights',
       label: 'Elvora Insights',
-      icon: <Sparkles size={19} className="text-teal-600 animate-pulse" />,
+      icon: <Sparkles size={19} className="text-[#0D7C74] animate-pulse" />,
       badge: 'Aqlli',
       highlight: true,
     },
     {
-      to: '/reports',
+      to: '/app/reports',
       label: 'Hisobotlar',
       icon: <BarChart3 size={19} />,
       badge: currentPlan === 'basic' ? 'Pro' : null,
     },
     {
-      to: '/staff',
+      to: '/app/staff',
       label: 'Xodimlar va rollar',
       icon: <ShieldAlert size={19} />,
       badge: null,
     },
     {
-      to: '/subscription',
+      to: '/app/subscription',
       label: 'Obuna va tariflar',
       icon: <CreditCard size={19} />,
       badge: currentPlan.toUpperCase(),
     },
     {
-      to: '/settings',
+      to: '/app/settings',
       label: 'Sozlamalar',
       icon: <Settings size={19} />,
       badge: null,
@@ -88,21 +89,21 @@ export const Sidebar: React.FC = () => {
 
   return (
     <aside
-      className={`relative flex flex-col bg-white border-r border-[#E4EBE8] transition-all duration-300 ease-in-out shrink-0 select-none z-20 ${
+      className={`relative flex flex-col bg-white border-r border-[#E6EBEF] transition-all duration-300 ease-in-out shrink-0 select-none z-20 ${
         collapsed ? 'w-18' : 'w-64'
       }`}
     >
       {/* Brand Header */}
-      <div className="flex items-center justify-between h-17 px-4 border-b border-[#E4EBE8]">
-        <div className="flex items-center gap-3 overflow-hidden">
+      <div className="flex items-center justify-between h-17 px-4 border-b border-[#E6EBEF]">
+        <Link to="/" className="flex items-center gap-3 overflow-hidden group">
           {/* Logo Mark */}
-          <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#167D72] to-[#125B54] flex items-center justify-center shrink-0 shadow-sm text-white relative">
+          <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#0D7C74] to-[#065F55] flex items-center justify-center shrink-0 shadow-xs text-white relative">
             <svg
-              className="w-6 h-6"
+              className="w-5 h-5"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2.4"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
@@ -113,20 +114,20 @@ export const Sidebar: React.FC = () => {
 
           {!collapsed && (
             <div className="flex flex-col min-w-0">
-              <span className="font-bold text-base tracking-tight text-[#167D72] leading-none">
-                ELVORA <span className="text-[#20312F] font-semibold">HEALTH</span>
+              <span className="font-bold text-base tracking-tight text-[#101C2C] leading-none">
+                ELVORA <span className="text-[#0D7C74]">HEALTH</span>
               </span>
-              <span className="text-[10px] text-[#71817D] mt-1 truncate">
-                Tibbiyot boshqaruvi
+              <span className="text-[10px] text-[#687586] mt-1 truncate">
+                Tibbiyot SaaS
               </span>
             </div>
           )}
-        </div>
+        </Link>
 
         {/* Collapse toggle */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="p-1.5 rounded-lg text-[#71817D] hover:text-[#20312F] hover:bg-[#F5F8F7] transition-colors shrink-0"
+          className="p-1.5 rounded-lg text-[#687586] hover:text-[#101C2C] hover:bg-[#F8FAF8] transition-colors shrink-0 cursor-pointer"
           title={collapsed ? 'Kengaytirish' : 'Yig\'ish'}
         >
           {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
@@ -134,21 +135,21 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Clinic Selector / Current Clinic Info */}
-      <div className="px-3.5 py-3 border-b border-[#E4EBE8]/60 bg-[#FAFDFB]">
+      <div className="px-3.5 py-3 border-b border-[#E6EBEF] bg-[#F8FAF9]">
         <div
-          className={`flex items-center gap-2.5 px-2.5 py-2 rounded-lg bg-white border border-[#E4EBE8] ${
+          className={`flex items-center gap-2.5 px-2.5 py-2 rounded-lg bg-white border border-[#E6EBEF] ${
             collapsed ? 'justify-center' : ''
           }`}
         >
-          <Building2 size={16} className="text-[#167D72] shrink-0" />
+          <Building2 size={16} className="text-[#0D7C74] shrink-0" />
           {!collapsed && (
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold text-[#20312F] truncate">
+              <p className="text-xs font-semibold text-[#101C2C] truncate">
                 {settings.clinicName}
               </p>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                <span className="text-[10px] text-[#71817D]">Faol filial</span>
+                <span className="text-[10px] text-[#687586]">Bosh filial</span>
               </div>
             </div>
           )}
@@ -162,10 +163,10 @@ export const Sidebar: React.FC = () => {
             key={item.to}
             to={item.to}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group ${
+              `flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all group ${
                 isActive
-                  ? 'bg-[#EAF6F2] text-[#125B54] font-semibold shadow-2xs'
-                  : 'text-[#506360] hover:text-[#20312F] hover:bg-[#F5F8F7]'
+                  ? 'bg-[#DDF5EB] text-[#065F55] font-semibold shadow-2xs'
+                  : 'text-[#687586] hover:text-[#101C2C] hover:bg-[#F8FAF8]'
               } ${item.highlight ? 'relative overflow-hidden' : ''}`
             }
             title={collapsed ? item.label : undefined}
@@ -174,7 +175,7 @@ export const Sidebar: React.FC = () => {
               <>
                 <span
                   className={`shrink-0 transition-colors ${
-                    isActive ? 'text-[#167D72]' : 'text-[#71817D] group-hover:text-[#20312F]'
+                    isActive ? 'text-[#0D7C74]' : 'text-[#687586] group-hover:text-[#101C2C]'
                   }`}
                 >
                   {item.icon}
@@ -188,11 +189,11 @@ export const Sidebar: React.FC = () => {
                   <span
                     className={`text-[10px] px-2 py-0.5 rounded-md font-semibold shrink-0 ${
                       item.badge === 'Aqlli'
-                        ? 'bg-[#167D72] text-white'
+                        ? 'bg-[#0D7C74] text-white'
                         : item.badge === 'Jonli'
                         ? 'bg-amber-100 text-amber-800'
                         : item.badge === 'Pro'
-                        ? 'bg-purple-100 text-purple-700'
+                        ? 'bg-[#EAE7FF] text-[#5B46E8]'
                         : 'bg-emerald-100 text-emerald-800'
                     }`}
                   >
@@ -205,19 +206,33 @@ export const Sidebar: React.FC = () => {
         ))}
       </nav>
 
+      {/* Back to Public Site Link */}
+      <div className="px-3 py-2 border-t border-[#E6EBEF]">
+        <Link
+          to="/"
+          className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#687586] hover:text-[#0D7C74] hover:bg-[#DDF5EB]/30 transition-colors ${
+            collapsed ? 'justify-center' : ''
+          }`}
+          title="Bosh sahifaga qaytish"
+        >
+          <Globe size={16} />
+          {!collapsed && <span>Bosh sahifaga (Landing)</span>}
+        </Link>
+      </div>
+
       {/* Footer Info: Plan & Uzbek Tagline */}
       {!collapsed && (
-        <div className="p-3.5 m-3 rounded-xl bg-linear-to-br from-[#EAF6F2] to-[#E2F2EC] border border-[#BCE3D7]/80">
+        <div className="p-3.5 m-3 rounded-xl bg-linear-to-br from-[#DDF5EB] to-[#E6F5F0] border border-[#BCE8D7]">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[11px] font-bold text-[#125B54] uppercase tracking-wider flex items-center gap-1">
-              <Sparkle size={12} className="text-[#167D72]" /> Tarif: {currentPlan.toUpperCase()}
+            <span className="text-[11px] font-bold text-[#065F55] uppercase tracking-wider flex items-center gap-1">
+              <Sparkle size={12} className="text-[#0D7C74]" /> Tarif: {currentPlan.toUpperCase()}
             </span>
-            <span className="text-[10px] bg-white text-[#125B54] px-1.5 py-0.5 rounded-md font-medium border border-[#BCE3D7]">
+            <span className="text-[10px] bg-white text-[#065F55] px-1.5 py-0.5 rounded-md font-medium border border-[#BCE8D7]">
               Demo
             </span>
           </div>
           <p className="text-[11px] text-[#33534C] italic leading-tight">
-            "Bitta platforma. Klinikani samarali boshqarish."
+            "Your clinic. One intelligent system."
           </p>
         </div>
       )}

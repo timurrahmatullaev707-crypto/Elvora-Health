@@ -80,7 +80,7 @@ export const ReportsPage: React.FC = () => {
     return financeService.getExpenseBreakdown(periodTxs);
   }, [periodTxs]);
 
-  const COLORS = ['#167D72', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
+  const COLORS = ['#0D7C74', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
 
   // Export CSV
   const handleExportCsv = () => {
@@ -101,10 +101,10 @@ export const ReportsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-[#20312F] tracking-tight">
+          <h1 className="text-xl font-bold text-[#132229] tracking-tight">
             Hisobotlar va operatsion tahlil
           </h1>
-          <p className="text-xs text-[#71817D] mt-0.5">
+          <p className="text-xs text-[#5F737B] mt-0.5">
             Klinikaning asosiy moliyaviy va klinik samaradorlik ko'rsatkichlari yig'indisi
           </p>
         </div>
@@ -131,7 +131,7 @@ export const ReportsPage: React.FC = () => {
       </div>
 
       {/* Period Filter */}
-      <div className="flex items-center bg-white p-1 rounded-xl border border-[#E4EBE8] shadow-2xs w-fit">
+      <div className="flex items-center bg-white p-1 rounded-xl border border-[#DFE8E4] shadow-2xs w-fit">
         {(
           [
             { key: '7days', label: 'Oxirgi 7 kun' },
@@ -144,8 +144,8 @@ export const ReportsPage: React.FC = () => {
             onClick={() => setReportPeriod(t.key)}
             className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               reportPeriod === t.key
-                ? 'bg-[#167D72] text-white shadow-xs'
-                : 'text-[#71817D] hover:text-[#20312F]'
+                ? 'bg-[#0D7C74] text-white shadow-xs'
+                : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
             {t.label}
@@ -156,10 +156,10 @@ export const ReportsPage: React.FC = () => {
       {/* Overview Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="p-4">
-          <span className="text-[11px] font-semibold text-[#71817D] uppercase">
+          <span className="text-[11px] font-semibold text-[#5F737B] uppercase">
             Jami tushum (Kirim)
           </span>
-          <div className="text-xl font-bold text-[#20312F] mt-1">
+          <div className="text-xl font-bold text-[#132229] mt-1">
             {summary.totalIncome.toLocaleString()} UZS
           </div>
           <span className="text-[11px] text-emerald-700 font-semibold block mt-1">
@@ -168,19 +168,19 @@ export const ReportsPage: React.FC = () => {
         </Card>
 
         <Card className="p-4">
-          <span className="text-[11px] font-semibold text-[#71817D] uppercase">
+          <span className="text-[11px] font-semibold text-[#5F737B] uppercase">
             Jami xarajatlar
           </span>
           <div className="text-xl font-bold text-rose-600 mt-1">
             {summary.totalExpenses.toLocaleString()} UZS
           </div>
-          <span className="text-[11px] text-[#71817D] block mt-1">
+          <span className="text-[11px] text-[#5F737B] block mt-1">
             {summary.expenseCount} ta chiqim orderi
           </span>
         </Card>
 
         <Card className="p-4">
-          <span className="text-[11px] font-semibold text-[#71817D] uppercase">
+          <span className="text-[11px] font-semibold text-[#5F737B] uppercase">
             Sof operatsion natija
           </span>
           <div
@@ -190,19 +190,19 @@ export const ReportsPage: React.FC = () => {
           >
             {summary.netOperatingResult.toLocaleString()} UZS
           </div>
-          <span className="text-[11px] text-[#71817D] block mt-1">
+          <span className="text-[11px] text-[#5F737B] block mt-1">
             Operatsion marja
           </span>
         </Card>
 
         <Card className="p-4">
-          <span className="text-[11px] font-semibold text-[#71817D] uppercase">
+          <span className="text-[11px] font-semibold text-[#5F737B] uppercase">
             No-Show (Kelmaganlar nisbati)
           </span>
           <div className="text-xl font-bold text-amber-600 mt-1">
             {statusStats.noShowRate}%
           </div>
-          <span className="text-[11px] text-[#71817D] block mt-1">
+          <span className="text-[11px] text-[#5F737B] block mt-1">
             {statusStats.missed} nafar kutilmagan bekor
           </span>
         </Card>
@@ -212,11 +212,11 @@ export const ReportsPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Doctor Productivity Chart */}
         <Card>
-          <div className="mb-4 pb-3 border-b border-[#E4EBE8]">
-            <h3 className="text-sm font-bold text-[#20312F]">
+          <div className="mb-4 pb-3 border-b border-[#DFE8E4]">
+            <h3 className="text-sm font-bold text-[#132229]">
               Shifokorlar kesimida tushum generatsiyasi
             </h3>
-            <p className="text-xs text-[#71817D]">
+            <p className="text-xs text-[#5F737B]">
               Yakunlangan qabullar asosida keltirilgan daromad (UZS)
             </p>
           </div>
@@ -230,13 +230,13 @@ export const ReportsPage: React.FC = () => {
                 <CartesianGrid strokeDasharray="3 3" stroke="#F0F4F2" />
                 <XAxis
                   dataKey="doctor.fullName"
-                  tick={{ fontSize: 10, fill: '#71817D' }}
+                  tick={{ fontSize: 10, fill: '#5F737B' }}
                   interval={0}
                   angle={-15}
                   textAnchor="end"
                 />
                 <YAxis
-                  tick={{ fontSize: 11, fill: '#71817D' }}
+                  tick={{ fontSize: 11, fill: '#5F737B' }}
                   tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
                 />
                 <Tooltip
@@ -245,7 +245,7 @@ export const ReportsPage: React.FC = () => {
                     'Tushum',
                   ]}
                 />
-                <Bar dataKey="totalGenerated" fill="#167D72" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="totalGenerated" fill="#0D7C74" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -253,11 +253,11 @@ export const ReportsPage: React.FC = () => {
 
         {/* Expense Category Share */}
         <Card>
-          <div className="mb-4 pb-3 border-b border-[#E4EBE8]">
-            <h3 className="text-sm font-bold text-[#20312F]">
+          <div className="mb-4 pb-3 border-b border-[#DFE8E4]">
+            <h3 className="text-sm font-bold text-[#132229]">
               Xarajat toifalari taqsimoti
             </h3>
-            <p className="text-xs text-[#71817D]">
+            <p className="text-xs text-[#5F737B]">
               Operatsion xarajatlar tarkibi
             </p>
           </div>
@@ -296,15 +296,15 @@ export const ReportsPage: React.FC = () => {
 
       {/* Doctor Productivity Table */}
       <Card className="p-0 overflow-hidden">
-        <div className="p-3.5 border-b border-[#E4EBE8] bg-[#FAFDFB]">
-          <h3 className="text-xs font-bold text-[#20312F] uppercase tracking-wider">
+        <div className="p-3.5 border-b border-[#DFE8E4] bg-[#F8FAF9]">
+          <h3 className="text-xs font-bold text-[#132229] uppercase tracking-wider">
             Shifokorlar samaradorligi tafsilotlari
           </h3>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#FAFDFB] border-b border-[#E4EBE8] text-[#71817D] font-semibold uppercase text-[10px]">
+            <thead className="bg-[#F8FAF9] border-b border-[#DFE8E4] text-[#5F737B] font-semibold uppercase text-[10px]">
               <tr>
                 <th className="px-5 py-3">Shifokor</th>
                 <th className="px-4 py-3">Mutaxassislik</th>
@@ -313,19 +313,19 @@ export const ReportsPage: React.FC = () => {
                 <th className="px-5 py-3 text-right">Klinikaga keltirilgan tushum</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E4EBE8]/60">
+            <tbody className="divide-y divide-[#DFE8E4]/60">
               {doctorStats.map((item) => (
-                <tr key={item.doctor.id} className="hover:bg-[#FAFDFB]">
-                  <td className="px-5 py-3 font-semibold text-[#20312F]">
+                <tr key={item.doctor.id} className="hover:bg-[#F8FAF9]">
+                  <td className="px-5 py-3 font-semibold text-[#132229]">
                     {item.doctor.fullName}
                   </td>
-                  <td className="px-4 py-3 text-[#506360]">
+                  <td className="px-4 py-3 text-[#5F737B]">
                     {item.doctor.specialty}
                   </td>
-                  <td className="px-4 py-3 font-mono text-[#506360]">
+                  <td className="px-4 py-3 font-mono text-[#5F737B]">
                     {item.doctor.consultationFee.toLocaleString()} UZS
                   </td>
-                  <td className="px-4 py-3 text-center font-bold text-[#167D72]">
+                  <td className="px-4 py-3 text-center font-bold text-[#0D7C74]">
                     {item.completedCount} ta
                   </td>
                   <td className="px-5 py-3 text-right font-bold text-emerald-700">

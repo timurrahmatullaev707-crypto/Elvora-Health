@@ -78,7 +78,7 @@ assert(Boolean(noShowInsight), 'No-show surge insight correctly computed from 7-
 if (noShowInsight) {
   assert(noShowInsight.supportingData.length > 0, 'No-show insight includes factual supporting data');
   assert(noShowInsight.impactExplanation.length > 0, 'No-show insight explains business & financial impact');
-  assert(noShowInsight.actionLink === '/appointments', 'No-show insight links directly to appointments module');
+  assert(noShowInsight.actionLink === '/app/appointments', 'No-show insight links directly to appointments module');
 }
 
 const idleSlotInsight = insightsReport.insights.find((i) => i.id === 'ins-idle-slots');

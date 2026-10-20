@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Bell,
   Search,
   Plus,
   Calendar,
   RotateCcw,
-  UserCheck,
   ShieldCheck,
   Sparkles,
   ChevronDown,
+  Globe,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { Button } from '../common/Button';
@@ -51,23 +52,23 @@ export const TopBar: React.FC<TopBarProps> = ({
   const waitingCount = appointments.filter((a) => a.status === 'kutilmoqda').length;
 
   return (
-    <header className="h-17 bg-white border-b border-[#E4EBE8] px-6 flex items-center justify-between shrink-0 sticky top-0 z-10 shadow-2xs">
-      {/* Left: Global Search & Current Date */}
-      <div className="flex items-center gap-5 flex-1 max-w-xl">
+    <header className="h-17 bg-white border-b border-[#E6EBEF] px-6 flex items-center justify-between shrink-0 sticky top-0 z-10 shadow-2xs">
+      {/* Left: Global Search & Current Date & Public Home link */}
+      <div className="flex items-center gap-4 flex-1 max-w-xl">
         <div className="relative flex-1">
           <Search
             size={16}
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#71817D]"
+            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#687586]"
           />
           <input
             type="text"
             placeholder="Bemor ismi, telefon raqami yoki qabul ID..."
-            className="w-full pl-9 pr-4 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] placeholder-[#71817D] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72] focus:bg-white transition-all"
+            className="w-full pl-9 pr-4 py-2 text-xs bg-[#F8FAF8] border border-[#E6EBEF] rounded-xl text-[#101C2C] placeholder-[#687586] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74] focus:bg-white transition-all"
           />
         </div>
 
-        <div className="hidden lg:flex items-center gap-1.5 text-xs text-[#71817D] bg-[#F5F8F7] px-3 py-1.5 rounded-xl border border-[#E4EBE8]">
-          <Calendar size={14} className="text-[#167D72]" />
+        <div className="hidden lg:flex items-center gap-1.5 text-xs text-[#687586] bg-[#F8FAF8] px-3 py-1.5 rounded-xl border border-[#E6EBEF]">
+          <Calendar size={14} className="text-[#0D7C74]" />
           <span className="capitalize">{todayFormatted}</span>
         </div>
       </div>
@@ -91,15 +92,15 @@ export const TopBar: React.FC<TopBarProps> = ({
                 className="fixed inset-0 z-20"
                 onClick={() => setQuickActionOpen(false)}
               />
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-[#E4EBE8] py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-[#E6EBEF] py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
                 <button
                   onClick={() => {
                     setQuickActionOpen(false);
                     onOpenNewAppointment?.();
                   }}
-                  className="w-full text-left px-3.5 py-2 text-xs font-medium text-[#20312F] hover:bg-[#EAF6F2] hover:text-[#125B54] flex items-center gap-2"
+                  className="w-full text-left px-3.5 py-2 text-xs font-medium text-[#101C2C] hover:bg-[#DDF5EB] hover:text-[#065F55] flex items-center gap-2"
                 >
-                  <span className="w-2 h-2 rounded-full bg-[#167D72]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#0D7C74]"></span>
                   Yangi qabul belgilash
                 </button>
                 <button
@@ -107,7 +108,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                     setQuickActionOpen(false);
                     onOpenNewPatient?.();
                   }}
-                  className="w-full text-left px-3.5 py-2 text-xs font-medium text-[#20312F] hover:bg-[#EAF6F2] hover:text-[#125B54] flex items-center gap-2"
+                  className="w-full text-left px-3.5 py-2 text-xs font-medium text-[#101C2C] hover:bg-[#DDF5EB] hover:text-[#065F55] flex items-center gap-2"
                 >
                   <span className="w-2 h-2 rounded-full bg-blue-500"></span>
                   Yangi bemor qo'shish
@@ -117,7 +118,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                     setQuickActionOpen(false);
                     onOpenNewPayment?.();
                   }}
-                  className="w-full text-left px-3.5 py-2 text-xs font-medium text-[#20312F] hover:bg-[#EAF6F2] hover:text-[#125B54] flex items-center gap-2 border-t border-[#E4EBE8] mt-1 pt-2"
+                  className="w-full text-left px-3.5 py-2 text-xs font-medium text-[#101C2C] hover:bg-[#DDF5EB] hover:text-[#065F55] flex items-center gap-2 border-t border-[#E6EBEF] mt-1 pt-2"
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                   To'lov kiritish (Kirim)
@@ -131,19 +132,19 @@ export const TopBar: React.FC<TopBarProps> = ({
         <div className="relative">
           <button
             onClick={() => setRoleMenuOpen(!roleMenuOpen)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#E4EBE8] bg-[#F9FBFA] hover:bg-[#EAF6F2] text-xs font-medium text-[#20312F] transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#E6EBEF] bg-[#F8FAF9] hover:bg-[#DDF5EB] text-xs font-medium text-[#101C2C] transition-all cursor-pointer"
             title="Prezentatsiya uchun foydalanuvchi rolini o'zgartirish"
           >
-            <ShieldCheck size={14} className="text-[#167D72]" />
+            <ShieldCheck size={14} className="text-[#0D7C74]" />
             <span className="hidden md:inline font-semibold">Rol:</span>
-            <span className="text-[#167D72] capitalize">
+            <span className="text-[#0D7C74] capitalize">
               {currentRole === 'admin'
                 ? 'Admin'
                 : currentRole === 'receptionist'
                 ? 'Registrator'
                 : 'Shifokor'}
             </span>
-            <ChevronDown size={13} className="text-[#71817D]" />
+            <ChevronDown size={13} className="text-[#687586]" />
           </button>
 
           {roleMenuOpen && (
@@ -152,8 +153,8 @@ export const TopBar: React.FC<TopBarProps> = ({
                 className="fixed inset-0 z-20"
                 onClick={() => setRoleMenuOpen(false)}
               />
-              <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-[#E4EBE8] p-2 z-30">
-                <div className="text-[10px] uppercase font-bold text-[#71817D] px-2 py-1 tracking-wider">
+              <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-[#E6EBEF] p-2 z-30">
+                <div className="text-[10px] uppercase font-bold text-[#687586] px-2 py-1 tracking-wider">
                   Demo rolini almashtirish
                 </div>
                 {(
@@ -171,12 +172,12 @@ export const TopBar: React.FC<TopBarProps> = ({
                     }}
                     className={`w-full text-left px-2.5 py-2 rounded-lg text-xs transition-colors ${
                       currentRole === r.role
-                        ? 'bg-[#EAF6F2] text-[#125B54] font-semibold'
-                        : 'text-[#20312F] hover:bg-[#F5F8F7]'
+                        ? 'bg-[#DDF5EB] text-[#065F55] font-semibold'
+                        : 'text-[#101C2C] hover:bg-[#F8FAF8]'
                     }`}
                   >
                     <div className="font-medium">{r.label}</div>
-                    <div className="text-[10px] text-[#71817D]">{r.desc}</div>
+                    <div className="text-[10px] text-[#687586]">{r.desc}</div>
                   </button>
                 ))}
               </div>
@@ -188,12 +189,12 @@ export const TopBar: React.FC<TopBarProps> = ({
         <div className="relative">
           <button
             onClick={() => setPlanMenuOpen(!planMenuOpen)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#BCE3D7] bg-[#EAF6F2] text-xs font-semibold text-[#125B54] hover:bg-[#DCF3EB] transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#BCE8D7] bg-[#DDF5EB] text-xs font-semibold text-[#065F55] hover:bg-[#CFEFE2] transition-all cursor-pointer"
             title="Tarif imkoniyatlarini sinab ko'rish"
           >
-            <Sparkles size={14} className="text-[#167D72]" />
+            <Sparkles size={14} className="text-[#0D7C74]" />
             <span>Tarif: {currentPlan.toUpperCase()}</span>
-            <ChevronDown size={13} className="text-[#125B54]" />
+            <ChevronDown size={13} className="text-[#065F55]" />
           </button>
 
           {planMenuOpen && (
@@ -202,8 +203,8 @@ export const TopBar: React.FC<TopBarProps> = ({
                 className="fixed inset-0 z-20"
                 onClick={() => setPlanMenuOpen(false)}
               />
-              <div className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-[#E4EBE8] p-2 z-30">
-                <div className="text-[10px] uppercase font-bold text-[#71817D] px-2 py-1 tracking-wider">
+              <div className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-[#E6EBEF] p-2 z-30">
+                <div className="text-[10px] uppercase font-bold text-[#687586] px-2 py-1 tracking-wider">
                   Tarif rejasini almashtirish
                 </div>
                 {(
@@ -221,8 +222,8 @@ export const TopBar: React.FC<TopBarProps> = ({
                     }}
                     className={`w-full text-left px-2.5 py-2 rounded-lg text-xs transition-colors ${
                       currentPlan === p.plan
-                        ? 'bg-[#EAF6F2] text-[#125B54] font-semibold'
-                        : 'text-[#20312F] hover:bg-[#F5F8F7]'
+                        ? 'bg-[#DDF5EB] text-[#065F55] font-semibold'
+                        : 'text-[#101C2C] hover:bg-[#F8FAF8]'
                     }`}
                   >
                     {p.label}
@@ -236,7 +237,7 @@ export const TopBar: React.FC<TopBarProps> = ({
         {/* Reset Demo Data Button */}
         <button
           onClick={resetDemoData}
-          className="p-2 rounded-xl text-[#71817D] hover:text-[#20312F] hover:bg-[#F5F8F7] transition-colors cursor-pointer"
+          className="p-2 rounded-xl text-[#687586] hover:text-[#101C2C] hover:bg-[#F8FAF8] transition-colors cursor-pointer"
           title="Namunaviy ma'lumotlarni qayta tiklash"
         >
           <RotateCcw size={16} />
@@ -246,7 +247,7 @@ export const TopBar: React.FC<TopBarProps> = ({
         <div className="relative">
           <button
             onClick={() => setNotificationOpen(!notificationOpen)}
-            className="p-2 rounded-xl text-[#71817D] hover:text-[#20312F] hover:bg-[#F5F8F7] transition-colors relative cursor-pointer"
+            className="p-2 rounded-xl text-[#687586] hover:text-[#101C2C] hover:bg-[#F8FAF8] transition-colors relative cursor-pointer"
             title="Bildirishnomalar"
           >
             <Bell size={18} />
@@ -261,21 +262,21 @@ export const TopBar: React.FC<TopBarProps> = ({
                 className="fixed inset-0 z-20"
                 onClick={() => setNotificationOpen(false)}
               />
-              <div className="absolute right-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-[#E4EBE8] p-3 z-30 animate-in fade-in zoom-in-95 duration-150">
-                <div className="flex items-center justify-between pb-2 border-b border-[#E4EBE8]">
-                  <span className="text-xs font-bold text-[#20312F]">
+              <div className="absolute right-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-[#E6EBEF] p-3 z-30 animate-in fade-in zoom-in-95 duration-150">
+                <div className="flex items-center justify-between pb-2 border-b border-[#E6EBEF]">
+                  <span className="text-xs font-bold text-[#101C2C]">
                     Operatsion bildirishnomalar
                   </span>
-                  <span className="text-[10px] bg-[#EAF6F2] text-[#125B54] px-1.5 py-0.5 rounded">
+                  <span className="text-[10px] bg-[#DDF5EB] text-[#065F55] px-1.5 py-0.5 rounded">
                     Jonli
                   </span>
                 </div>
-                <div className="divide-y divide-[#E4EBE8]/60 mt-1 max-h-60 overflow-y-auto">
+                <div className="divide-y divide-[#E6EBEF]/60 mt-1 max-h-60 overflow-y-auto">
                   <div className="py-2 text-xs">
-                    <p className="font-semibold text-[#20312F]">
+                    <p className="font-semibold text-[#101C2C]">
                       Navbatda {waitingCount} ta bemor kutmoqda
                     </p>
-                    <p className="text-[11px] text-[#71817D] mt-0.5">
+                    <p className="text-[11px] text-[#687586] mt-0.5">
                       Kutish zalida qabulga tayyor bemorlar mavjud.
                     </p>
                   </div>
@@ -283,7 +284,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                     <p className="font-semibold text-emerald-800">
                       Bugungi tushum yangilandi
                     </p>
-                    <p className="text-[11px] text-[#71817D] mt-0.5">
+                    <p className="text-[11px] text-[#687586] mt-0.5">
                       Tranzaksiyalar bo'yicha to'lovlar kvitansiyalari kiritilmoqda.
                     </p>
                   </div>
@@ -291,7 +292,7 @@ export const TopBar: React.FC<TopBarProps> = ({
                     <p className="font-semibold text-teal-800">
                       Elvora Insights tahlili tayyor
                     </p>
-                    <p className="text-[11px] text-[#71817D] mt-0.5">
+                    <p className="text-[11px] text-[#687586] mt-0.5">
                       Shifokorlar bandligi va no-show ko'rsatkichlari yangilandi.
                     </p>
                   </div>
@@ -302,15 +303,15 @@ export const TopBar: React.FC<TopBarProps> = ({
         </div>
 
         {/* User Avatar */}
-        <div className="flex items-center gap-2 pl-2 border-l border-[#E4EBE8]">
-          <div className="w-8 h-8 rounded-full bg-[#167D72] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+        <div className="flex items-center gap-2 pl-2 border-l border-[#E6EBEF]">
+          <div className="w-8 h-8 rounded-full bg-[#0D7C74] text-white flex items-center justify-center font-bold text-xs shadow-xs">
             {userProfile.fullName.slice(0, 2).toUpperCase()}
           </div>
           <div className="hidden xl:block text-left">
-            <div className="text-xs font-bold text-[#20312F] leading-tight">
+            <div className="text-xs font-bold text-[#101C2C] leading-tight">
               {userProfile.fullName}
             </div>
-            <div className="text-[10px] text-[#71817D]">
+            <div className="text-[10px] text-[#687586]">
               {userProfile.roleTitleUz}
             </div>
           </div>

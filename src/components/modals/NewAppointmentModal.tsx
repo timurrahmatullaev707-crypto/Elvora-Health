@@ -138,14 +138,14 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Patient Selection */}
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             Bemor <span className="text-red-500">*</span>
           </label>
           <select
             value={patientId}
             onChange={(e) => setPatientId(e.target.value)}
             required
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           >
             {patients.map((p) => (
               <option key={p.id} value={p.id}>
@@ -157,14 +157,14 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
 
         {/* Doctor Selection */}
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             Shifokor va mutaxassislik <span className="text-red-500">*</span>
           </label>
           <select
             value={doctorId}
             onChange={(e) => setDoctorId(e.target.value)}
             required
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           >
             {doctors.map((d) => (
               <option key={d.id} value={d.id}>
@@ -177,7 +177,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
         {/* Date and Time Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Qabul sanasi <span className="text-red-500">*</span>
             </label>
             <input
@@ -185,12 +185,12 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Boshlanish vaqti <span className="text-red-500">*</span>
             </label>
             <input
@@ -198,12 +198,12 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
               value={startTime}
               onChange={(e) => handleStartTimeChange(e.target.value)}
               required
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Tugash vaqti <span className="text-red-500">*</span>
             </label>
             <input
@@ -211,7 +211,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
               required
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             />
           </div>
         </div>
@@ -219,7 +219,7 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
         {/* Suggested Open Slots */}
         {availableSlots.length > 0 && (
           <div>
-            <span className="text-[11px] font-medium text-[#71817D] block mb-1">
+            <span className="text-[11px] font-medium text-[#5F737B] block mb-1">
               Shifokorning bo'sh vaqtlari (slotlar):
             </span>
             <div className="flex flex-wrap gap-1.5 max-h-20 overflow-y-auto">
@@ -230,8 +230,8 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
                   onClick={() => handleStartTimeChange(s)}
                   className={`text-[11px] px-2.5 py-1 rounded-lg border transition-colors cursor-pointer ${
                     startTime === s
-                      ? 'bg-[#167D72] text-white border-[#167D72]'
-                      : 'bg-white text-[#20312F] border-[#E4EBE8] hover:bg-[#EAF6F2]'
+                      ? 'bg-[#0D7C74] text-white border-[#0D7C74]'
+                      : 'bg-white text-[#132229] border-[#DFE8E4] hover:bg-[#E6F5F0]'
                   }`}
                 >
                   {s}
@@ -257,33 +257,33 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
         {/* Service Name & Fee */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Xizmat nomi
             </label>
             <input
               type="text"
               value={serviceName}
               onChange={(e) => setServiceName(e.target.value)}
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#20312F] mb-1">
+            <label className="block text-xs font-semibold text-[#132229] mb-1">
               Xizmat narxi (so'm)
             </label>
             <input
               type="number"
               value={fee}
               onChange={(e) => setFee(Number(e.target.value))}
-              className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+              className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
             />
           </div>
         </div>
 
         {/* Notes */}
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             Qo'shimcha izoh / Shikoyat
           </label>
           <textarea
@@ -291,12 +291,12 @@ export const NewAppointmentModal: React.FC<NewAppointmentModalProps> = ({
             onChange={(e) => setNotes(e.target.value)}
             rows={2}
             placeholder="Bemorning dastlabki shikoyati yoki ko'rsatmalar..."
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           />
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E4EBE8]">
+        <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#DFE8E4]">
           <Button type="button" variant="outline" onClick={onClose}>
             Bekor qilish
           </Button>

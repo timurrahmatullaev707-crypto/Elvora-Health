@@ -153,27 +153,27 @@ export const AppointmentsPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-[#20312F] tracking-tight">
+            <h1 className="text-xl font-bold text-[#132229] tracking-tight">
               Qabullar va jonli navbat
             </h1>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#E6F5F0] text-[#0D7C74] border border-[#B7E2D8]">
               Jonli boshqaruv
             </span>
           </div>
-          <p className="text-xs text-[#71817D] mt-0.5">
+          <p className="text-xs text-[#5F737B] mt-0.5">
             Bemorlarni shifokorlar qabuliga yozish, kutish navbati va eslatmalar monitoringi
           </p>
         </div>
 
         <div className="flex items-center gap-2.5">
           {/* View Switcher */}
-          <div className="flex bg-white p-1 rounded-xl border border-[#E4EBE8] shadow-2xs">
+          <div className="flex bg-white p-1 rounded-xl border border-[#DFE8E4] shadow-2xs">
             <button
               onClick={() => setActiveTab('queue')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 activeTab === 'queue'
-                  ? 'bg-[#167D72] text-white shadow-xs'
-                  : 'text-[#71817D] hover:text-[#20312F]'
+                  ? 'bg-[#0D7C74] text-white shadow-xs'
+                  : 'text-[#5F737B] hover:text-[#132229]'
               }`}
             >
               Jonli doska (Queue)
@@ -182,8 +182,8 @@ export const AppointmentsPage: React.FC = () => {
               onClick={() => setActiveTab('calendar')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 activeTab === 'calendar'
-                  ? 'bg-[#167D72] text-white shadow-xs'
-                  : 'text-[#71817D] hover:text-[#20312F]'
+                  ? 'bg-[#0D7C74] text-white shadow-xs'
+                  : 'text-[#5F737B] hover:text-[#132229]'
               }`}
             >
               Jadval ko'rinishi
@@ -205,26 +205,26 @@ export const AppointmentsPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
           {/* Date Picker */}
           <div>
-            <label className="block text-[11px] font-semibold text-[#71817D] uppercase mb-1">
+            <label className="block text-[11px] font-semibold text-[#5F737B] uppercase mb-1">
               Sana
             </label>
             <input
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full px-3 py-1.5 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+              className="w-full px-3 py-1.5 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
             />
           </div>
 
           {/* Doctor Filter */}
           <div>
-            <label className="block text-[11px] font-semibold text-[#71817D] uppercase mb-1">
+            <label className="block text-[11px] font-semibold text-[#5F737B] uppercase mb-1">
               Shifokor
             </label>
             <select
               value={selectedDoctorId}
               onChange={(e) => setSelectedDoctorId(e.target.value)}
-              className="w-full px-3 py-1.5 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+              className="w-full px-3 py-1.5 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
             >
               <option value="all">Barcha shifokorlar</option>
               {doctors.map((d) => (
@@ -237,13 +237,13 @@ export const AppointmentsPage: React.FC = () => {
 
           {/* Status Filter */}
           <div>
-            <label className="block text-[11px] font-semibold text-[#71817D] uppercase mb-1">
+            <label className="block text-[11px] font-semibold text-[#5F737B] uppercase mb-1">
               Holat
             </label>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-3 py-1.5 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+              className="w-full px-3 py-1.5 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
             >
               <option value="all">Barcha holatlar</option>
               <option value="kutilmoqda">Kutilmoqda</option>
@@ -262,7 +262,7 @@ export const AppointmentsPage: React.FC = () => {
                 setSelectedDoctorId('all');
                 setStatusFilter('all');
               }}
-              className="px-3 py-1.5 text-xs font-medium text-[#71817D] hover:text-[#20312F] hover:bg-[#F5F8F7] rounded-xl border border-[#E4EBE8] transition-colors cursor-pointer"
+              className="px-3 py-1.5 text-xs font-medium text-[#5F737B] hover:text-[#132229] hover:bg-[#F4F7F5] rounded-xl border border-[#DFE8E4] transition-colors cursor-pointer"
             >
               Filtrlarni tozalash
             </button>
@@ -289,43 +289,43 @@ export const AppointmentsPage: React.FC = () => {
 
             <div className="space-y-2.5 min-h-[400px]">
               {waitingList.length === 0 ? (
-                <div className="p-8 text-center text-xs text-[#71817D] bg-white rounded-xl border border-dashed border-[#E4EBE8]">
+                <div className="p-8 text-center text-xs text-[#5F737B] bg-white rounded-xl border border-dashed border-[#DFE8E4]">
                   Kutayotgan bemorlar yo'q
                 </div>
               ) : (
                 waitingList.map((apt, idx) => (
                   <Card key={apt.id} className="p-3.5 space-y-2.5 relative" hoverable>
                     <div className="flex items-start justify-between">
-                      <span className="px-2 py-0.5 text-xs font-bold rounded-lg bg-[#EAF6F2] text-[#125B54] border border-[#BCE3D7]">
+                      <span className="px-2 py-0.5 text-xs font-bold rounded-lg bg-[#E6F5F0] text-[#085F59] border border-[#B7E2D8]">
                         #{apt.queueNumber}
                       </span>
-                      <span className="text-[11px] font-semibold text-[#167D72] flex items-center gap-1">
+                      <span className="text-[11px] font-semibold text-[#0D7C74] flex items-center gap-1">
                         <Clock size={12} /> {apt.startTime}
                       </span>
                     </div>
 
                     <div>
-                      <h4 className="text-xs font-bold text-[#20312F]">
+                      <h4 className="text-xs font-bold text-[#132229]">
                         {apt.patientName}
                       </h4>
-                      <p className="text-[11px] text-[#71817D]">
+                      <p className="text-[11px] text-[#5F737B]">
                         {apt.doctorName} • {apt.doctorSpecialty}
                       </p>
                     </div>
 
                     {/* Wait Time Estimation */}
-                    <div className="p-2 rounded-lg bg-[#F5F8F7] border border-[#E4EBE8] text-[10px] text-[#506360] flex items-center justify-between">
+                    <div className="p-2 rounded-lg bg-[#F4F7F5] border border-[#DFE8E4] text-[10px] text-[#5F737B] flex items-center justify-between">
                       <span>Kutilayotgan vaqt:</span>
-                      <span className="font-bold text-[#167D72]">
+                      <span className="font-bold text-[#0D7C74]">
                         ~{(idx + 1) * 15} daqiqa
                       </span>
                     </div>
 
                     {/* Actions */}
-                    <div className="pt-2 border-t border-[#E4EBE8]/60 flex items-center justify-between gap-1">
+                    <div className="pt-2 border-t border-[#DFE8E4]/60 flex items-center justify-between gap-1">
                       <button
                         onClick={() => handleStatusChange(apt.id, 'qabulda')}
-                        className="flex-1 py-1 px-2 rounded-lg bg-[#167D72] text-white hover:bg-[#125B54] text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                        className="flex-1 py-1 px-2 rounded-lg bg-[#0D7C74] text-white hover:bg-[#085F59] text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-xs"
                         title="Shifokor huzuriga chaqirish"
                       >
                         <Play size={11} /> Qabulga chaqirish
@@ -336,7 +336,7 @@ export const AppointmentsPage: React.FC = () => {
                         className={`p-1.5 rounded-lg border text-[11px] transition-colors cursor-pointer ${
                           apt.reminderSent
                             ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                            : 'bg-white text-[#71817D] border-[#E4EBE8] hover:bg-[#F5F8F7]'
+                            : 'bg-white text-[#5F737B] border-[#DFE8E4] hover:bg-[#F4F7F5]'
                         }`}
                         title="SMS eslatma yuborish (Simulyatsiya)"
                       >
@@ -345,7 +345,7 @@ export const AppointmentsPage: React.FC = () => {
 
                       <button
                         onClick={() => setRescheduleApt(apt)}
-                        className="p-1.5 rounded-lg bg-white border border-[#E4EBE8] text-[#71817D] hover:text-[#20312F] hover:bg-[#F5F8F7] transition-colors cursor-pointer"
+                        className="p-1.5 rounded-lg bg-white border border-[#DFE8E4] text-[#5F737B] hover:text-[#132229] hover:bg-[#F4F7F5] transition-colors cursor-pointer"
                         title="Vaqtini ko'chirish"
                       >
                         <RotateCcw size={13} />
@@ -373,7 +373,7 @@ export const AppointmentsPage: React.FC = () => {
 
             <div className="space-y-2.5 min-h-[400px]">
               {inConsultationList.length === 0 ? (
-                <div className="p-8 text-center text-xs text-[#71817D] bg-white rounded-xl border border-dashed border-[#E4EBE8]">
+                <div className="p-8 text-center text-xs text-[#5F737B] bg-white rounded-xl border border-dashed border-[#DFE8E4]">
                   Hozir xonada bemor yo'q
                 </div>
               ) : (
@@ -389,15 +389,15 @@ export const AppointmentsPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <h4 className="text-xs font-bold text-[#20312F]">
+                      <h4 className="text-xs font-bold text-[#132229]">
                         {apt.patientName}
                       </h4>
-                      <p className="text-[11px] text-[#71817D]">
+                      <p className="text-[11px] text-[#5F737B]">
                         {apt.doctorName} ({apt.doctorSpecialty})
                       </p>
                     </div>
 
-                    <div className="pt-2 border-t border-[#E4EBE8]/60 flex items-center justify-between gap-1.5">
+                    <div className="pt-2 border-t border-[#DFE8E4]/60 flex items-center justify-between gap-1.5">
                       <button
                         onClick={() => handleStatusChange(apt.id, 'yakunlandi')}
                         className="flex-1 py-1 px-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 cursor-pointer"
@@ -434,7 +434,7 @@ export const AppointmentsPage: React.FC = () => {
 
             <div className="space-y-2.5 min-h-[400px]">
               {completedList.length === 0 ? (
-                <div className="p-8 text-center text-xs text-[#71817D] bg-white rounded-xl border border-dashed border-[#E4EBE8]">
+                <div className="p-8 text-center text-xs text-[#5F737B] bg-white rounded-xl border border-dashed border-[#DFE8E4]">
                   Yakunlangan qabullar yo'q
                 </div>
               ) : (
@@ -444,22 +444,22 @@ export const AppointmentsPage: React.FC = () => {
                       <span className="text-xs font-bold text-emerald-800">
                         #{apt.queueNumber}
                       </span>
-                      <span className="text-[11px] text-[#71817D]">
+                      <span className="text-[11px] text-[#5F737B]">
                         {apt.startTime}
                       </span>
                     </div>
 
                     <div>
-                      <h4 className="text-xs font-bold text-[#20312F]">
+                      <h4 className="text-xs font-bold text-[#132229]">
                         {apt.patientName}
                       </h4>
-                      <p className="text-[11px] text-[#71817D]">
+                      <p className="text-[11px] text-[#5F737B]">
                         {apt.doctorName}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between text-[11px] pt-1 border-t border-[#E4EBE8]">
-                      <span className="text-[#71817D]">Xizmat to'lovi:</span>
+                    <div className="flex items-center justify-between text-[11px] pt-1 border-t border-[#DFE8E4]">
+                      <span className="text-[#5F737B]">Xizmat to'lovi:</span>
                       <span className="font-semibold text-emerald-700">
                         {apt.fee.toLocaleString()} UZS
                       </span>
@@ -486,7 +486,7 @@ export const AppointmentsPage: React.FC = () => {
 
             <div className="space-y-2.5 min-h-[400px]">
               {missedOrCancelledList.length === 0 ? (
-                <div className="p-8 text-center text-xs text-[#71817D] bg-white rounded-xl border border-dashed border-[#E4EBE8]">
+                <div className="p-8 text-center text-xs text-[#5F737B] bg-white rounded-xl border border-dashed border-[#DFE8E4]">
                   Bekor qilingan yoki kelmaganlar yo'q
                 </div>
               ) : (
@@ -494,16 +494,16 @@ export const AppointmentsPage: React.FC = () => {
                   <Card key={apt.id} className="p-3.5 space-y-2 bg-[#FAFAFA]" hoverable>
                     <div className="flex items-start justify-between">
                       <AppointmentStatusBadge status={apt.status} />
-                      <span className="text-[11px] text-[#71817D]">
+                      <span className="text-[11px] text-[#5F737B]">
                         {apt.startTime}
                       </span>
                     </div>
 
                     <div>
-                      <h4 className="text-xs font-bold text-[#20312F]">
+                      <h4 className="text-xs font-bold text-[#132229]">
                         {apt.patientName}
                       </h4>
-                      <p className="text-[11px] text-[#71817D]">
+                      <p className="text-[11px] text-[#5F737B]">
                         {apt.doctorName}
                       </p>
                     </div>
@@ -514,10 +514,10 @@ export const AppointmentsPage: React.FC = () => {
                       </p>
                     )}
 
-                    <div className="pt-2 border-t border-[#E4EBE8] flex justify-end">
+                    <div className="pt-2 border-t border-[#DFE8E4] flex justify-end">
                       <button
                         onClick={() => handleStatusChange(apt.id, 'kutilmoqda')}
-                        className="text-[10px] text-[#167D72] hover:underline font-semibold"
+                        className="text-[10px] text-[#0D7C74] hover:underline font-semibold"
                       >
                         Qayta tiklash
                       </button>
@@ -535,7 +535,7 @@ export const AppointmentsPage: React.FC = () => {
         <Card className="p-0 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#FAFDFB] border-b border-[#E4EBE8] text-[#71817D] font-semibold uppercase tracking-wider text-[11px]">
+              <thead className="bg-[#F8FAF9] border-b border-[#DFE8E4] text-[#5F737B] font-semibold uppercase tracking-wider text-[11px]">
                 <tr>
                   <th className="px-5 py-3.5">Navbat #</th>
                   <th className="px-4 py-3.5">Bemor</th>
@@ -547,40 +547,40 @@ export const AppointmentsPage: React.FC = () => {
                   <th className="px-5 py-3.5 text-right">Amallar</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E4EBE8]/60">
+              <tbody className="divide-y divide-[#DFE8E4]/60">
                 {filteredAppointments.length === 0 ? (
                   <tr>
-                    <td colSpan={8} className="text-center py-12 text-[#71817D]">
+                    <td colSpan={8} className="text-center py-12 text-[#5F737B]">
                       Filtr bo'yicha qabullar topilmadi.
                     </td>
                   </tr>
                 ) : (
                   filteredAppointments.map((apt) => (
-                    <tr key={apt.id} className="hover:bg-[#FAFDFB] transition-colors">
-                      <td className="px-5 py-3.5 font-bold text-[#167D72]">
+                    <tr key={apt.id} className="hover:bg-[#F8FAF9] transition-colors">
+                      <td className="px-5 py-3.5 font-bold text-[#0D7C74]">
                         #{apt.queueNumber}
                       </td>
-                      <td className="px-4 py-3.5 font-semibold text-[#20312F]">
+                      <td className="px-4 py-3.5 font-semibold text-[#132229]">
                         <div>{apt.patientName}</div>
-                        <span className="text-[10px] text-[#71817D] font-mono">
+                        <span className="text-[10px] text-[#5F737B] font-mono">
                           {apt.patientPhone}
                         </span>
                       </td>
-                      <td className="px-4 py-3.5 text-[#20312F]">
+                      <td className="px-4 py-3.5 text-[#132229]">
                         <div>{apt.doctorName}</div>
-                        <span className="text-[10px] text-[#71817D]">
+                        <span className="text-[10px] text-[#5F737B]">
                           {apt.doctorSpecialty}
                         </span>
                       </td>
-                      <td className="px-4 py-3.5 text-[#506360]">
+                      <td className="px-4 py-3.5 text-[#5F737B]">
                         <div className="font-semibold">{apt.date}</div>
-                        <div className="text-[11px] text-[#71817D]">
+                        <div className="text-[11px] text-[#5F737B]">
                           {apt.startTime} - {apt.endTime}
                         </div>
                       </td>
-                      <td className="px-4 py-3.5 text-[#506360]">
+                      <td className="px-4 py-3.5 text-[#5F737B]">
                         <div>{apt.serviceName}</div>
-                        <span className="font-bold text-emerald-700 text-[11px]">
+                        <span className="font-bold text-[#0D7C74] text-[11px]">
                           {apt.fee.toLocaleString()} UZS
                         </span>
                       </td>
@@ -590,10 +590,10 @@ export const AppointmentsPage: React.FC = () => {
                       <td className="px-4 py-3.5">
                         <button
                           onClick={() => handleOpenReminder(apt, 'SMS')}
-                          className={`px-2 py-1 rounded text-[11px] font-medium border flex items-center gap-1 cursor-pointer ${
+                          className={`px-2 py-1 rounded-lg text-[11px] font-medium border flex items-center gap-1 cursor-pointer ${
                             apt.reminderSent
                               ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                              : 'bg-[#F5F8F7] text-[#71817D] border-[#E4EBE8] hover:bg-[#EAF6F2]'
+                              : 'bg-[#F4F7F5] text-[#5F737B] border-[#DFE8E4] hover:bg-[#E6F5F0]'
                           }`}
                         >
                           <Send size={11} />
@@ -605,7 +605,7 @@ export const AppointmentsPage: React.FC = () => {
                           {apt.status === 'kutilmoqda' && (
                             <button
                               onClick={() => handleStatusChange(apt.id, 'qabulda')}
-                              className="px-2 py-1 rounded bg-[#167D72] text-white hover:bg-[#125B54] text-[11px] font-medium transition-colors"
+                              className="px-2 py-1 rounded-lg bg-[#0D7C74] text-white hover:bg-[#085F59] text-[11px] font-medium transition-colors shadow-xs"
                             >
                               Qabulga
                             </button>
@@ -613,14 +613,14 @@ export const AppointmentsPage: React.FC = () => {
                           {apt.status === 'qabulda' && (
                             <button
                               onClick={() => handleStatusChange(apt.id, 'yakunlandi')}
-                              className="px-2 py-1 rounded bg-emerald-600 text-white hover:bg-emerald-700 text-[11px] font-medium transition-colors"
+                              className="px-2 py-1 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 text-[11px] font-medium transition-colors shadow-xs"
                             >
                               Yakunlash
                             </button>
                           )}
                           <button
                             onClick={() => setRescheduleApt(apt)}
-                            className="p-1 rounded text-[#71817D] hover:text-[#20312F] hover:bg-[#F5F8F7]"
+                            className="p-1 rounded text-[#5F737B] hover:text-[#132229] hover:bg-[#F4F7F5]"
                             title="Ko'chirish"
                           >
                             <RotateCcw size={14} />
@@ -659,24 +659,24 @@ export const AppointmentsPage: React.FC = () => {
             </div>
 
             <div>
-              <span className="text-[11px] font-semibold text-[#71817D] uppercase">
+              <span className="text-[11px] font-semibold text-[#5F737B] uppercase">
                 Qabul qiluvchi:
               </span>
-              <p className="font-bold text-[#20312F] mt-0.5">
+              <p className="font-bold text-[#132229] mt-0.5">
                 {reminderModalData.appointment.patientName} ({reminderModalData.recipient})
               </p>
             </div>
 
             <div>
-              <span className="text-[11px] font-semibold text-[#71817D] uppercase">
+              <span className="text-[11px] font-semibold text-[#5F737B] uppercase">
                 Xabar matni shabloni:
               </span>
-              <div className="p-3 mt-1 bg-[#F5F8F7] rounded-xl border border-[#E4EBE8] text-[#20312F] font-mono text-[11px] leading-relaxed">
+              <div className="p-3 mt-1 bg-[#F4F7F5] rounded-xl border border-[#DFE8E4] text-[#132229] font-mono text-[11px] leading-relaxed">
                 {reminderModalData.messageText}
               </div>
             </div>
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#E4EBE8]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-[#DFE8E4]">
               <Button
                 variant="outline"
                 size="sm"
@@ -711,7 +711,7 @@ export const AppointmentsPage: React.FC = () => {
         >
           <form onSubmit={handleRescheduleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Yangi sana <span className="text-red-500">*</span>
               </label>
               <input
@@ -719,12 +719,12 @@ export const AppointmentsPage: React.FC = () => {
                 required
                 value={newRescheduleDate}
                 onChange={(e) => setNewRescheduleDate(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Yangi boshlanish vaqti <span className="text-red-500">*</span>
               </label>
               <input
@@ -732,7 +732,7 @@ export const AppointmentsPage: React.FC = () => {
                 required
                 value={newRescheduleTime}
                 onChange={(e) => setNewRescheduleTime(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
               />
             </div>
 
@@ -742,7 +742,7 @@ export const AppointmentsPage: React.FC = () => {
               </div>
             )}
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#E4EBE8]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-[#DFE8E4]">
               <Button
                 type="button"
                 variant="outline"

@@ -106,14 +106,14 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Toggle Kirim / Chiqim */}
-        <div className="flex p-1 bg-[#F5F8F7] rounded-xl border border-[#E4EBE8]">
+        <div className="flex p-1 bg-[#F4F7F5] rounded-xl border border-[#DFE8E4]">
           <button
             type="button"
             onClick={() => setType('kirim')}
             className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
               type === 'kirim'
                 ? 'bg-white text-emerald-800 shadow-xs'
-                : 'text-[#71817D] hover:text-[#20312F]'
+                : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
             + Kirim (Tushum)
@@ -124,7 +124,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
             className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
               type === 'chiqim'
                 ? 'bg-white text-rose-800 shadow-xs'
-                : 'text-[#71817D] hover:text-[#20312F]'
+                : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
             - Chiqim (Xarajat)
@@ -133,7 +133,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
 
         {/* Amount */}
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             Summa (so'm) <span className="text-red-500">*</span>
           </label>
           <input
@@ -143,13 +143,13 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
             step={1000}
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="w-full px-3 py-2 text-sm font-semibold bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-sm font-semibold bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           />
         </div>
 
         {/* Category */}
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             {type === 'kirim' ? 'Xizmat toifasi' : 'Xarajat moddasi'}{' '}
             <span className="text-red-500">*</span>
           </label>
@@ -160,7 +160,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
                 ? setIncomeCategory(e.target.value as IncomeCategory)
                 : setExpenseCategory(e.target.value as ExpenseCategory)
             }
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           >
             {type === 'kirim'
               ? incomeCategories.map((c) => (
@@ -178,13 +178,13 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
 
         {/* Payment Method */}
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             To'lov usuli <span className="text-red-500">*</span>
           </label>
           <select
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value as PaymentMethod)}
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           >
             {paymentMethods.map((m) => (
               <option key={m} value={m}>
@@ -198,13 +198,13 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
         {type === 'kirim' && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Bemor (ixtiyoriy)
               </label>
               <select
                 value={patientId}
                 onChange={(e) => setPatientId(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
               >
                 <option value="">-- Tanlanmagan --</option>
                 {patients.map((p) => (
@@ -216,13 +216,13 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Shifokor (ixtiyoriy)
               </label>
               <select
                 value={doctorId}
                 onChange={(e) => setDoctorId(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
               >
                 <option value="">-- Tanlanmagan --</option>
                 {doctors.map((d) => (
@@ -237,7 +237,7 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
 
         {/* Description */}
         <div>
-          <label className="block text-xs font-semibold text-[#20312F] mb-1">
+          <label className="block text-xs font-semibold text-[#132229] mb-1">
             Qo'shimcha izoh / Maqsadi
           </label>
           <input
@@ -245,11 +245,11 @@ export const NewPaymentModal: React.FC<NewPaymentModalProps> = ({
             placeholder={type === 'kirim' ? 'Masalan: Umumiy tahlil to\'lovi' : 'Masalan: Dori-darmonlar xaridi'}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20 focus:border-[#167D72]"
+            className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20 focus:border-[#0D7C74]"
           />
         </div>
 
-        <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E4EBE8]">
+        <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#DFE8E4]">
           <Button type="button" variant="outline" onClick={onClose}>
             Bekor qilish
           </Button>

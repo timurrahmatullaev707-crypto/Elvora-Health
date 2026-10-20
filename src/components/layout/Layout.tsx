@@ -13,7 +13,7 @@ export const Layout: React.FC = () => {
   const [paymentModalOpen, setPaymentModalOpen] = useState(false);
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#F5F8F7] text-[#20312F]">
+    <div className="flex h-screen w-screen overflow-hidden bg-[#F4F7F5] text-[#132229]">
       {/* Sidebar */}
       <Sidebar />
 

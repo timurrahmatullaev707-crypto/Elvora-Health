@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import {
-  CircleDollarSign,
   TrendingUp,
   TrendingDown,
   Activity,
@@ -8,11 +7,7 @@ import {
   Download,
   Printer,
   Search,
-  Filter,
-  AlertCircle,
   Ban,
-  CheckCircle2,
-  FileSpreadsheet,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Card } from '../components/common/Card';
@@ -27,16 +22,10 @@ import {
   Cell,
   Tooltip,
   ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Legend,
 } from 'recharts';
 
 export const FinancePage: React.FC = () => {
-  const { transactions, patients, doctors, refreshData, showToast } = useApp();
+  const { transactions, patients, refreshData, showToast } = useApp();
 
   const [period, setPeriod] = useState<'today' | '7days' | '30days' | 'all'>('30days');
   const [activeTab, setActiveTab] = useState<'all' | 'kirim' | 'chiqim' | 'breakdown'>('all');
@@ -86,7 +75,7 @@ export const FinancePage: React.FC = () => {
     return financeService.getExpenseBreakdown(periodTxs);
   }, [periodTxs]);
 
-  const COLORS = ['#167D72', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
+  const COLORS = ['#0D7C74', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
 
   // Handle Void
   const handleVoidSubmit = (e: React.FormEvent) => {
@@ -172,10 +161,10 @@ export const FinancePage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-[#20312F] tracking-tight">
+          <h1 className="text-xl font-bold text-[#132229] tracking-tight">
             Moliya va kassa boshqaruvi
           </h1>
-          <p className="text-xs text-[#71817D] mt-0.5">
+          <p className="text-xs text-[#5F737B] mt-0.5">
             Klinikaning barcha tushumlari, xarajatlari, kvitansiyalar va operatsion natija
           </p>
         </div>
@@ -226,7 +215,7 @@ export const FinancePage: React.FC = () => {
           value={`${summary.totalIncome.toLocaleString('uz-UZ')} UZS`}
           subtitle={`${summary.incomeCount} ta muvaffaqiyatli to'lov`}
           icon={<TrendingUp size={20} />}
-          iconBgColor="bg-[#EAF6F2] text-[#167D72]"
+          iconBgColor="bg-[#E6F5F0] text-[#0D7C74]"
         />
 
         <StatCard
@@ -264,7 +253,7 @@ export const FinancePage: React.FC = () => {
       {/* Period Filter & Navigation Tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         {/* Period Selector */}
-        <div className="flex items-center bg-white p-1 rounded-xl border border-[#E4EBE8] shadow-2xs">
+        <div className="flex items-center bg-white p-1 rounded-xl border border-[#DFE8E4] shadow-2xs">
           {(
             [
               { key: 'today', label: 'Bugun' },
@@ -278,8 +267,8 @@ export const FinancePage: React.FC = () => {
               onClick={() => setPeriod(t.key)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 period === t.key
-                  ? 'bg-[#167D72] text-white shadow-xs'
-                  : 'text-[#71817D] hover:text-[#20312F]'
+                  ? 'bg-[#0D7C74] text-white shadow-xs'
+                  : 'text-[#5F737B] hover:text-[#132229]'
               }`}
             >
               {t.label}
@@ -288,13 +277,13 @@ export const FinancePage: React.FC = () => {
         </div>
 
         {/* Tab Filters */}
-        <div className="flex items-center gap-1 bg-[#F5F8F7] p-1 rounded-xl border border-[#E4EBE8]">
+        <div className="flex items-center gap-1 bg-[#F4F7F5] p-1 rounded-xl border border-[#DFE8E4]">
           <button
             onClick={() => setActiveTab('all')}
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               activeTab === 'all'
-                ? 'bg-white text-[#20312F] shadow-xs'
-                : 'text-[#71817D] hover:text-[#20312F]'
+                ? 'bg-white text-[#132229] shadow-xs'
+                : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
             Barcha amallar ({periodTxs.length})
@@ -304,7 +293,7 @@ export const FinancePage: React.FC = () => {
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               activeTab === 'kirim'
                 ? 'bg-white text-emerald-800 shadow-xs'
-                : 'text-[#71817D] hover:text-[#20312F]'
+                : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
             Faqat Kirim
@@ -314,7 +303,7 @@ export const FinancePage: React.FC = () => {
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               activeTab === 'chiqim'
                 ? 'bg-white text-rose-800 shadow-xs'
-                : 'text-[#71817D] hover:text-[#20312F]'
+                : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
             Faqat Chiqim
@@ -323,8 +312,8 @@ export const FinancePage: React.FC = () => {
             onClick={() => setActiveTab('breakdown')}
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               activeTab === 'breakdown'
-                ? 'bg-white text-[#167D72] shadow-xs'
-                : 'text-[#71817D] hover:text-[#20312F]'
+                ? 'bg-white text-[#0D7C74] shadow-xs'
+                : 'text-[#5F737B] hover:text-[#132229]'
             }`}
           >
             Toifalar tahlili
@@ -336,10 +325,10 @@ export const FinancePage: React.FC = () => {
       {activeTab === 'breakdown' ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
-            <h3 className="text-sm font-bold text-[#20312F] mb-1">
+            <h3 className="text-sm font-bold text-[#132229] mb-1">
               Xarajat moddalari taqsimoti
             </h3>
-            <p className="text-xs text-[#71817D] mb-4">
+            <p className="text-xs text-[#5F737B] mb-4">
               Tanlangan davr bo'yicha eng katta xarajat toifalari
             </p>
 
@@ -374,14 +363,14 @@ export const FinancePage: React.FC = () => {
           </Card>
 
           <Card>
-            <h3 className="text-sm font-bold text-[#20312F] mb-1">
+            <h3 className="text-sm font-bold text-[#132229] mb-1">
               Xarajat toifalari ro'yxati
             </h3>
-            <p className="text-xs text-[#71817D] mb-4">
+            <p className="text-xs text-[#5F737B] mb-4">
               Summalar va foiz nisbati
             </p>
 
-            <div className="divide-y divide-[#E4EBE8] text-xs">
+            <div className="divide-y divide-[#DFE8E4] text-xs">
               {expenseBreakdown.map((item, idx) => (
                 <div key={item.category} className="py-2.5 flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -389,13 +378,13 @@ export const FinancePage: React.FC = () => {
                       className="w-3 h-3 rounded-full shrink-0"
                       style={{ backgroundColor: COLORS[idx % COLORS.length] }}
                     />
-                    <span className="font-semibold text-[#20312F]">{item.category}</span>
+                    <span className="font-semibold text-[#132229]">{item.category}</span>
                   </div>
                   <div className="text-right">
-                    <span className="font-bold text-[#20312F]">
+                    <span className="font-bold text-[#132229]">
                       {item.amount.toLocaleString()} UZS
                     </span>
-                    <span className="text-[11px] text-[#71817D] ml-2">
+                    <span className="text-[11px] text-[#5F737B] ml-2">
                       ({item.percentage}%)
                     </span>
                   </div>
@@ -408,29 +397,29 @@ export const FinancePage: React.FC = () => {
         /* View: Transactions Table */
         <Card className="p-0 overflow-hidden">
           {/* Table Search Header */}
-          <div className="p-3.5 border-b border-[#E4EBE8] bg-[#FAFDFB] flex items-center justify-between">
+          <div className="p-3.5 border-b border-[#DFE8E4] bg-[#F8FAF9] flex items-center justify-between">
             <div className="relative w-72">
               <Search
                 size={15}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#71817D]"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#5F737B]"
               />
               <input
                 type="text"
                 placeholder="Tavsif, kvitansiya # yoki bemor..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8 pr-3 py-1.5 text-xs bg-white border border-[#E4EBE8] rounded-lg text-[#20312F]"
+                className="w-full pl-8 pr-3 py-1.5 text-xs bg-white border border-[#DFE8E4] rounded-lg text-[#132229]"
               />
             </div>
 
-            <span className="text-xs text-[#71817D]">
+            <span className="text-xs text-[#5F737B]">
               Ko'rsatilmoqda: <strong>{filteredTransactions.length}</strong> ta amal
             </span>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#FAFDFB] border-b border-[#E4EBE8] text-[#71817D] font-semibold uppercase tracking-wider text-[11px]">
+              <thead className="bg-[#F8FAF9] border-b border-[#DFE8E4] text-[#5F737B] font-semibold uppercase tracking-wider text-[11px]">
                 <tr>
                   <th className="px-5 py-3.5">Kvitansiya #</th>
                   <th className="px-4 py-3.5">Turi</th>
@@ -442,10 +431,10 @@ export const FinancePage: React.FC = () => {
                   <th className="px-5 py-3.5 text-right">Holat</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E4EBE8]/60">
+              <tbody className="divide-y divide-[#DFE8E4]/60">
                 {filteredTransactions.length === 0 ? (
                   <tr>
-                    <td colSpan={8} className="text-center py-12 text-[#71817D]">
+                    <td colSpan={8} className="text-center py-12 text-[#5F737B]">
                       Ushbu davr uchun operatsiyalar mavjud emas.
                     </td>
                   </tr>
@@ -453,11 +442,11 @@ export const FinancePage: React.FC = () => {
                   filteredTransactions.map((tx) => (
                     <tr
                       key={tx.id}
-                      className={`hover:bg-[#FAFDFB] transition-colors ${
+                      className={`hover:bg-[#F8FAF9] transition-colors ${
                         tx.isVoided ? 'opacity-50 line-through bg-gray-50' : ''
                       }`}
                     >
-                      <td className="px-5 py-3.5 font-mono text-[11px] font-semibold text-[#167D72]">
+                      <td className="px-5 py-3.5 font-mono text-[11px] font-semibold text-[#0D7C74]">
                         {tx.receiptNumber}
                       </td>
                       <td className="px-4 py-3.5">
@@ -471,18 +460,18 @@ export const FinancePage: React.FC = () => {
                           {tx.type === 'kirim' ? 'Kirim' : 'Chiqim'}
                         </span>
                       </td>
-                      <td className="px-4 py-3.5 text-[#20312F]">
+                      <td className="px-4 py-3.5 text-[#132229]">
                         <div className="font-semibold">{tx.description}</div>
-                        <span className="text-[10px] text-[#71817D]">{tx.category}</span>
+                        <span className="text-[10px] text-[#5F737B]">{tx.category}</span>
                       </td>
-                      <td className="px-4 py-3.5 text-[#506360]">
+                      <td className="px-4 py-3.5 text-[#5F737B]">
                         {tx.patientName || '—'}
                       </td>
-                      <td className="px-4 py-3.5 text-[#71817D]">
+                      <td className="px-4 py-3.5 text-[#5F737B]">
                         <div>{tx.date}</div>
                         <div className="text-[10px]">{tx.time}</div>
                       </td>
-                      <td className="px-4 py-3.5 text-[#506360]">
+                      <td className="px-4 py-3.5 text-[#5F737B]">
                         {tx.paymentMethod}
                       </td>
                       <td className="px-4 py-3.5 text-right font-bold">
@@ -507,7 +496,7 @@ export const FinancePage: React.FC = () => {
                         ) : (
                           <button
                             onClick={() => setVoidModalTx(tx)}
-                            className="p-1 rounded text-[#71817D] hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                            className="p-1 rounded text-[#5F737B] hover:text-rose-600 hover:bg-rose-50 transition-colors"
                             title="Tranzaksiyani bekor qilish (Void)"
                           >
                             <Ban size={14} />
@@ -537,12 +526,12 @@ export const FinancePage: React.FC = () => {
           maxWidth="sm"
         >
           <form onSubmit={handleVoidSubmit} className="space-y-4 text-xs">
-            <p className="text-[#506360]">
+            <p className="text-[#5F737B]">
               Auditorlik va kassa qoidalariga ko'ra, bekor qilish sababi kiritilishi majburiy.
             </p>
 
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Bekor qilish sababi <span className="text-red-500">*</span>
               </label>
               <textarea
@@ -551,7 +540,7 @@ export const FinancePage: React.FC = () => {
                 placeholder="Masalan: Bemor xizmatdan voz kechdi va to'lov qaytarildi..."
                 value={voidReason}
                 onChange={(e) => setVoidReason(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-rose-500/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-rose-500/20"
               />
             </div>
 
@@ -561,7 +550,7 @@ export const FinancePage: React.FC = () => {
               </div>
             )}
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#E4EBE8]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-[#DFE8E4]">
               <Button
                 type="button"
                 variant="outline"
@@ -589,7 +578,7 @@ export const FinancePage: React.FC = () => {
         >
           <form onSubmit={handleIncomeSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Summa (so'm) <span className="text-red-500">*</span>
               </label>
               <input
@@ -598,19 +587,19 @@ export const FinancePage: React.FC = () => {
                 step={5000}
                 value={incAmount}
                 onChange={(e) => setIncAmount(e.target.value)}
-                className="w-full px-3 py-2 text-sm font-semibold bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F]"
+                className="w-full px-3 py-2 text-sm font-semibold bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229]"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-[#20312F] mb-1">
+                <label className="block text-xs font-semibold text-[#132229] mb-1">
                   Kategoriya
                 </label>
                 <select
                   value={incCategory}
                   onChange={(e) => setIncCategory(e.target.value as IncomeCategory)}
-                  className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl"
                 >
                   <option value="Konsultatsiya">Konsultatsiya</option>
                   <option value="Diagnostika va tahlil">Diagnostika va tahlil</option>
@@ -621,13 +610,13 @@ export const FinancePage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#20312F] mb-1">
+                <label className="block text-xs font-semibold text-[#132229] mb-1">
                   To'lov usuli
                 </label>
                 <select
                   value={incMethod}
                   onChange={(e) => setIncMethod(e.target.value as PaymentMethod)}
-                  className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl"
                 >
                   <option value="Karta (Uzcard/Humo)">Karta (Uzcard/Humo)</option>
                   <option value="Naqd">Naqd</option>
@@ -638,13 +627,13 @@ export const FinancePage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Bemor (ixtiyoriy)
               </label>
               <select
                 value={incPatientId}
                 onChange={(e) => setIncPatientId(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl"
               >
                 <option value="">-- Tanlanmagan --</option>
                 {patients.map((p) => (
@@ -656,7 +645,7 @@ export const FinancePage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Tavsif
               </label>
               <input
@@ -664,11 +653,11 @@ export const FinancePage: React.FC = () => {
                 placeholder="Masalan: Birlamchi kardiolog ko'rigi uchun to'lov"
                 value={incDesc}
                 onChange={(e) => setIncDesc(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl"
               />
             </div>
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#E4EBE8]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-[#DFE8E4]">
               <Button
                 type="button"
                 variant="outline"
@@ -696,7 +685,7 @@ export const FinancePage: React.FC = () => {
         >
           <form onSubmit={handleExpenseSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Summa (so'm) <span className="text-red-500">*</span>
               </label>
               <input
@@ -705,19 +694,19 @@ export const FinancePage: React.FC = () => {
                 step={5000}
                 value={expAmount}
                 onChange={(e) => setExpAmount(e.target.value)}
-                className="w-full px-3 py-2 text-sm font-semibold bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F]"
+                className="w-full px-3 py-2 text-sm font-semibold bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229]"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-[#20312F] mb-1">
+                <label className="block text-xs font-semibold text-[#132229] mb-1">
                   Xarajat moddasi
                 </label>
                 <select
                   value={expCategory}
                   onChange={(e) => setExpCategory(e.target.value as ExpenseCategory)}
-                  className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl"
                 >
                   <option value="Ijara">Ijara</option>
                   <option value="Ish haqi">Ish haqi</option>
@@ -729,13 +718,13 @@ export const FinancePage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#20312F] mb-1">
+                <label className="block text-xs font-semibold text-[#132229] mb-1">
                   To'lov usuli
                 </label>
                 <select
                   value={expMethod}
                   onChange={(e) => setExpMethod(e.target.value as PaymentMethod)}
-                  className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl"
                 >
                   <option value="Bank o'tkazmasi">Bank o'tkazmasi</option>
                   <option value="Karta (Uzcard/Humo)">Karta (Uzcard/Humo)</option>
@@ -746,7 +735,7 @@ export const FinancePage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Tavsif
               </label>
               <input
@@ -754,11 +743,11 @@ export const FinancePage: React.FC = () => {
                 placeholder="Masalan: Shprislar va bir martalik niqoblar partiyasi"
                 value={expDesc}
                 onChange={(e) => setExpDesc(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl"
               />
             </div>
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#E4EBE8]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-[#DFE8E4]">
               <Button
                 type="button"
                 variant="outline"

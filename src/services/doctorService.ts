@@ -106,6 +106,19 @@ export const doctorService = {
       return { available: false, reason: 'Tugash vaqti boshlanish vaqtidan keyin bo\'lishi kerak' };
     }
 
+    // Check doctor's working days
+    if (date && doctor.workingDays) {
+      const d = new Date(date + 'T00:00:00');
+      const dayOfWeek = d.getDay(); // 0 is Sunday, 1 is Monday ... 6 is Saturday
+      const normalizedDay = dayOfWeek === 0 ? 7 : dayOfWeek;
+      if (!doctor.workingDays.includes(normalizedDay) && !doctor.workingDays.includes(dayOfWeek)) {
+        return {
+          available: false,
+          reason: 'Ushbu sana shifokorning dam olish kuniga to\'g\'ri keladi',
+        };
+      }
+    }
+
     const docStartMins = this.timeToMinutes(doctor.startHour);
     const docEndMins = this.timeToMinutes(doctor.endHour);
 

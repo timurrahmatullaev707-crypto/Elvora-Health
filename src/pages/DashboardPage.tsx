@@ -142,20 +142,20 @@ export const DashboardPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-[#20312F] tracking-tight">
+            <h1 className="text-xl font-bold text-[#132229] tracking-tight">
               Boshqaruv paneli
             </h1>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#EAF6F2] text-[#125B54] border border-[#BCE3D7]">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#E6F5F0] text-[#0D7C74] border border-[#B7E2D8]">
               Real vaqt
             </span>
           </div>
-          <p className="text-xs text-[#71817D] mt-0.5">
+          <p className="text-xs text-[#5F737B] mt-0.5">
             Klinikaning bugungi moliyaviy, operatsion va shifokorlar bandligi ko'rsatkichlari
           </p>
         </div>
 
         {/* Date Filter Tabs */}
-        <div className="flex items-center bg-white p-1 rounded-xl border border-[#E4EBE8] shadow-2xs">
+        <div className="flex items-center bg-white p-1 rounded-xl border border-[#DFE8E4] shadow-2xs">
           {(
             [
               { key: 'today', label: 'Bugun' },
@@ -169,8 +169,8 @@ export const DashboardPage: React.FC = () => {
               onClick={() => setDateFilter(tab.key)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 dateFilter === tab.key
-                  ? 'bg-[#167D72] text-white shadow-xs'
-                  : 'text-[#71817D] hover:text-[#20312F]'
+                  ? 'bg-[#0D7C74] text-white shadow-xs'
+                  : 'text-[#5F737B] hover:text-[#132229]'
               }`}
             >
               {tab.label}
@@ -181,7 +181,7 @@ export const DashboardPage: React.FC = () => {
 
       {/* Top Smart Insight Alert Preview */}
       {topInsight && (
-        <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#167D72] to-[#125B54] p-5 text-white shadow-md">
+        <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#0D7C74] to-[#085F59] p-5 text-white shadow-md">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="flex items-start gap-3.5">
               <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-xs text-emerald-200 shrink-0">
@@ -204,11 +204,11 @@ export const DashboardPage: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-2.5 shrink-0 pl-11 lg:pl-0">
-              <Link to="/insights">
+              <Link to="/app/insights">
                 <Button
                   size="sm"
                   variant="outline"
-                  className="bg-white text-[#125B54] hover:bg-emerald-50 border-white text-xs font-semibold"
+                  className="bg-white text-[#085F59] hover:bg-emerald-50 border-white text-xs font-semibold"
                 >
                   Tahlilni to'liq ochish
                   <ArrowRight size={14} />
@@ -226,7 +226,7 @@ export const DashboardPage: React.FC = () => {
           value={`${financeSummary.totalIncome.toLocaleString('uz-UZ')} UZS`}
           subtitle={`${financeSummary.incomeCount} ta tasdiqlangan to'lov`}
           icon={<TrendingUp size={20} />}
-          iconBgColor="bg-[#EAF6F2] text-[#167D72]"
+          iconBgColor="bg-[#E6F5F0] text-[#0D7C74]"
           trend={{ value: '12%', isPositive: true }}
         />
 
@@ -274,43 +274,43 @@ export const DashboardPage: React.FC = () => {
 
       {/* Secondary Status Row */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-3.5 bg-white rounded-xl border border-[#E4EBE8] flex items-center gap-3">
+        <div className="p-3.5 bg-white rounded-xl border border-[#DFE8E4] flex items-center gap-3">
           <div className="p-2 rounded-lg bg-amber-50 text-amber-700">
             <Clock size={16} />
           </div>
           <div>
-            <div className="text-lg font-bold text-[#20312F]">{waitingPatients.length}</div>
-            <div className="text-[11px] text-[#71817D]">Kutish zalida</div>
+            <div className="text-lg font-bold text-[#132229]">{waitingPatients.length}</div>
+            <div className="text-[11px] text-[#5F737B]">Kutish zalida</div>
           </div>
         </div>
 
-        <div className="p-3.5 bg-white rounded-xl border border-[#E4EBE8] flex items-center gap-3">
+        <div className="p-3.5 bg-white rounded-xl border border-[#DFE8E4] flex items-center gap-3">
           <div className="p-2 rounded-lg bg-blue-50 text-blue-700">
             <Activity size={16} />
           </div>
           <div>
-            <div className="text-lg font-bold text-[#20312F]">{inProgressToday.length}</div>
-            <div className="text-[11px] text-[#71817D]">Qabulda (huzurida)</div>
+            <div className="text-lg font-bold text-[#132229]">{inProgressToday.length}</div>
+            <div className="text-[11px] text-[#5F737B]">Qabulda (huzurida)</div>
           </div>
         </div>
 
-        <div className="p-3.5 bg-white rounded-xl border border-[#E4EBE8] flex items-center gap-3">
+        <div className="p-3.5 bg-white rounded-xl border border-[#DFE8E4] flex items-center gap-3">
           <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700">
             <CheckCircle2 size={16} />
           </div>
           <div>
-            <div className="text-lg font-bold text-[#20312F]">{completedToday.length}</div>
-            <div className="text-[11px] text-[#71817D]">Yakunlangan qabullar</div>
+            <div className="text-lg font-bold text-[#132229]">{completedToday.length}</div>
+            <div className="text-[11px] text-[#5F737B]">Yakunlangan qabullar</div>
           </div>
         </div>
 
-        <div className="p-3.5 bg-white rounded-xl border border-[#E4EBE8] flex items-center gap-3">
+        <div className="p-3.5 bg-white rounded-xl border border-[#DFE8E4] flex items-center gap-3">
           <div className="p-2 rounded-lg bg-rose-50 text-rose-700">
             <UserX size={16} />
           </div>
           <div>
-            <div className="text-lg font-bold text-[#20312F]">{missedToday.length}</div>
-            <div className="text-[11px] text-[#71817D]">Kelmagan (No-show)</div>
+            <div className="text-lg font-bold text-[#132229]">{missedToday.length}</div>
+            <div className="text-[11px] text-[#5F737B]">Kelmagan (No-show)</div>
           </div>
         </div>
       </div>
@@ -319,18 +319,18 @@ export const DashboardPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Financial Flow Dynamic Chart */}
         <Card className="lg:col-span-2">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E4EBE8]">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#DFE8E4]">
             <div>
-              <h2 className="text-sm font-bold text-[#20312F]">
+              <h2 className="text-sm font-bold text-[#132229]">
                 Kirim va chiqim dinamikasi
               </h2>
-              <p className="text-xs text-[#71817D]">
+              <p className="text-xs text-[#5F737B]">
                 Davr bo'yicha tushumlar va operatsion xarajatlar taqqoslanishi
               </p>
             </div>
             <div className="flex items-center gap-4 text-xs font-medium">
-              <span className="flex items-center gap-1.5 text-emerald-700">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#167D72]"></span> Kirim
+              <span className="flex items-center gap-1.5 text-[#0D7C74]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#0D7C74]"></span> Kirim
               </span>
               <span className="flex items-center gap-1.5 text-rose-600">
                 <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Chiqim
@@ -343,8 +343,8 @@ export const DashboardPage: React.FC = () => {
               <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorKirim" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#167D72" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#167D72" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#0D7C74" stopOpacity={0.25} />
+                    <stop offset="95%" stopColor="#0D7C74" stopOpacity={0.0} />
                   </linearGradient>
                   <linearGradient id="colorChiqim" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#EF4444" stopOpacity={0.2} />
@@ -352,9 +352,9 @@ export const DashboardPage: React.FC = () => {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#F0F4F2" />
-                <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#71817D' }} />
+                <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#5F737B' }} />
                 <YAxis
-                  tick={{ fontSize: 11, fill: '#71817D' }}
+                  tick={{ fontSize: 11, fill: '#5F737B' }}
                   tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
                 />
                 <Tooltip
@@ -363,7 +363,7 @@ export const DashboardPage: React.FC = () => {
                   ]}
                   contentStyle={{
                     backgroundColor: '#FFFFFF',
-                    borderColor: '#E4EBE8',
+                    borderColor: '#DFE8E4',
                     borderRadius: '12px',
                     fontSize: '12px',
                     boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
@@ -373,7 +373,7 @@ export const DashboardPage: React.FC = () => {
                   type="monotone"
                   dataKey="kirim"
                   name="Kirim"
-                  stroke="#167D72"
+                  stroke="#0D7C74"
                   strokeWidth={2.5}
                   fillOpacity={1}
                   fill="url(#colorKirim)"
@@ -394,15 +394,15 @@ export const DashboardPage: React.FC = () => {
 
         {/* Doctor Occupancy Status */}
         <Card>
-          <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#E4EBE8]">
+          <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#DFE8E4]">
             <div>
-              <h2 className="text-sm font-bold text-[#20312F]">
+              <h2 className="text-sm font-bold text-[#132229]">
                 Shifokorlar bandligi
               </h2>
-              <p className="text-xs text-[#71817D]">Bugungi qabul soatlari nisbati</p>
+              <p className="text-xs text-[#5F737B]">Bugungi qabul soatlari nisbati</p>
             </div>
-            <Link to="/doctors">
-              <span className="text-xs text-[#167D72] font-semibold hover:underline">
+            <Link to="/app/doctors">
+              <span className="text-xs text-[#0D7C74] font-semibold hover:underline">
                 Barchasi
               </span>
             </Link>
@@ -412,26 +412,26 @@ export const DashboardPage: React.FC = () => {
             {doctorOccupancies.slice(0, 5).map((docStat) => (
               <div key={docStat.doctor.id} className="space-y-1">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-[#20312F] truncate">
+                  <span className="font-semibold text-[#132229] truncate">
                     {docStat.doctor.fullName}
                   </span>
-                  <span className="text-[11px] font-bold text-[#167D72]">
+                  <span className="text-[11px] font-bold text-[#0D7C74]">
                     {docStat.occupancyPercent}%
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-[11px] text-[#71817D]">
+                <div className="flex items-center justify-between text-[11px] text-[#5F737B]">
                   <span>{docStat.doctor.specialty}</span>
                   <span>
                     {docStat.bookedSlotsCount}/{docStat.slotsCount} slot band
                   </span>
                 </div>
-                <div className="w-full bg-[#F5F8F7] h-2 rounded-full overflow-hidden border border-[#E4EBE8]">
+                <div className="w-full bg-[#F4F7F5] h-2 rounded-full overflow-hidden border border-[#DFE8E4]">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
                       docStat.occupancyPercent >= 75
                         ? 'bg-emerald-600'
                         : docStat.occupancyPercent >= 40
-                        ? 'bg-[#167D72]'
+                        ? 'bg-[#0D7C74]'
                         : 'bg-amber-500'
                     }`}
                     style={{ width: `${docStat.occupancyPercent}%` }}
@@ -447,10 +447,10 @@ export const DashboardPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Live Queue Snapshot */}
         <Card>
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E4EBE8]">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#DFE8E4]">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
-              <h2 className="text-sm font-bold text-[#20312F]">
+              <h2 className="text-sm font-bold text-[#132229]">
                 Jonli navbat (Bugungi qabullar)
               </h2>
             </div>
@@ -465,23 +465,23 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {todayAppointments.length === 0 ? (
-            <div className="text-center py-8 text-xs text-[#71817D]">
+            <div className="text-center py-8 text-xs text-[#5F737B]">
               Bugun uchun qabullar mavjud emas.
             </div>
           ) : (
-            <div className="divide-y divide-[#E4EBE8]/70">
+            <div className="divide-y divide-[#DFE8E4]/70">
               {todayAppointments.slice(0, 5).map((apt) => (
                 <div
                   key={apt.id}
                   className="py-3 flex items-center justify-between gap-3 text-xs"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-lg bg-[#EAF6F2] text-[#125B54] font-bold flex items-center justify-center shrink-0 border border-[#BCE3D7]">
+                    <span className="w-7 h-7 rounded-lg bg-[#E6F5F0] text-[#085F59] font-bold flex items-center justify-center shrink-0 border border-[#B7E2D8]">
                       #{apt.queueNumber}
                     </span>
                     <div>
-                      <p className="font-semibold text-[#20312F]">{apt.patientName}</p>
-                      <p className="text-[11px] text-[#71817D]">
+                      <p className="font-semibold text-[#132229]">{apt.patientName}</p>
+                      <p className="text-[11px] text-[#5F737B]">
                         {apt.doctorName} • {apt.startTime}
                       </p>
                     </div>
@@ -492,7 +492,7 @@ export const DashboardPage: React.FC = () => {
                     {apt.status === 'kutilmoqda' && (
                       <button
                         onClick={() => handleCallPatient(apt.id)}
-                        className="px-2 py-1 rounded bg-[#167D72] text-white hover:bg-[#125B54] text-[11px] font-medium transition-colors cursor-pointer"
+                        className="px-2.5 py-1 rounded-lg bg-[#0D7C74] text-white hover:bg-[#085F59] text-[11px] font-medium transition-colors cursor-pointer shadow-xs"
                       >
                         Chaqirish
                       </button>
@@ -503,10 +503,10 @@ export const DashboardPage: React.FC = () => {
             </div>
           )}
 
-          <div className="mt-3 pt-3 border-t border-[#E4EBE8] flex justify-end">
+          <div className="mt-3 pt-3 border-t border-[#DFE8E4] flex justify-end">
             <Link
-              to="/appointments"
-              className="text-xs text-[#167D72] font-semibold hover:underline flex items-center gap-1"
+              to="/app/appointments"
+              className="text-xs text-[#0D7C74] font-semibold hover:underline flex items-center gap-1"
             >
               To'liq qabullar va navbat jadvaliga o'tish <ArrowRight size={13} />
             </Link>
@@ -515,8 +515,8 @@ export const DashboardPage: React.FC = () => {
 
         {/* Recent Transactions Snapshot */}
         <Card>
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E4EBE8]">
-            <h2 className="text-sm font-bold text-[#20312F]">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#DFE8E4]">
+            <h2 className="text-sm font-bold text-[#132229]">
               So'nggi moliyaviy amallar
             </h2>
             <Button
@@ -529,7 +529,7 @@ export const DashboardPage: React.FC = () => {
             </Button>
           </div>
 
-          <div className="divide-y divide-[#E4EBE8]/70">
+          <div className="divide-y divide-[#DFE8E4]/70">
             {periodTxs.slice(0, 5).map((tx) => (
               <div
                 key={tx.id}
@@ -542,10 +542,10 @@ export const DashboardPage: React.FC = () => {
                     }`}
                   />
                   <div>
-                    <p className="font-semibold text-[#20312F] truncate max-w-xs">
+                    <p className="font-semibold text-[#132229] truncate max-w-xs">
                       {tx.description}
                     </p>
-                    <p className="text-[11px] text-[#71817D]">
+                    <p className="text-[11px] text-[#5F737B]">
                       {tx.category} • {tx.paymentMethod} • {tx.time}
                     </p>
                   </div>
@@ -554,22 +554,22 @@ export const DashboardPage: React.FC = () => {
                 <div className="text-right">
                   <span
                     className={`font-bold ${
-                      tx.type === 'kirim' ? 'text-emerald-700' : 'text-rose-600'
+                      tx.type === 'kirim' ? 'text-[#0D7C74]' : 'text-rose-600'
                     }`}
                   >
                     {tx.type === 'kirim' ? '+' : '-'}
                     {tx.amount.toLocaleString('uz-UZ')} UZS
                   </span>
-                  <p className="text-[10px] text-[#71817D]">{tx.receiptNumber}</p>
+                  <p className="text-[10px] text-[#5F737B]">{tx.receiptNumber}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-3 pt-3 border-t border-[#E4EBE8] flex justify-end">
+          <div className="mt-3 pt-3 border-t border-[#DFE8E4] flex justify-end">
             <Link
-              to="/finance"
-              className="text-xs text-[#167D72] font-semibold hover:underline flex items-center gap-1"
+              to="/app/finance"
+              className="text-xs text-[#0D7C74] font-semibold hover:underline flex items-center gap-1"
             >
               Moliya jurnalini to'liq ko'rish <ArrowRight size={13} />
             </Link>
@@ -578,11 +578,11 @@ export const DashboardPage: React.FC = () => {
       </div>
 
       {/* Demo disclaimer banner as required */}
-      <div className="p-3 bg-[#EAF6F2] rounded-xl border border-[#BCE3D7] flex items-center justify-between text-xs text-[#125B54]">
+      <div className="p-3 bg-[#E6F5F0] rounded-xl border border-[#B7E2D8] flex items-center justify-between text-xs text-[#085F59]">
         <span className="font-medium">
           💡 <strong>Namoyish rejimi:</strong> Barcha raqamlar, grafiklar va hisob-kitoblar O'zbekiston tibbiyot amaliyotiga moslashtirilgan real ichki ma'lumotlar bazasidan hisoblanmoqda.
         </span>
-        <span className="text-[11px] text-[#167D72] font-semibold">
+        <span className="text-[11px] text-[#0D7C74] font-semibold">
           IT Live Investor Selection 2026
         </span>
       </div>

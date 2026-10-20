@@ -8,12 +8,15 @@ import {
   UserProfile,
   UserRole,
   SubscriptionPlan,
+  AppAction,
+  AppResource,
 } from '../types';
 import { storageService } from '../services/storage';
 import { patientService } from '../services/patientService';
 import { doctorService } from '../services/doctorService';
 import { appointmentService } from '../services/appointmentService';
 import { financeService } from '../services/financeService';
+import { can, getRoleTitleUz } from '../lib/permissions';
 
 interface Toast {
   id: string;
@@ -33,6 +36,7 @@ interface AppContextType {
   dateFilter: 'today' | '7days' | '30days' | 'all';
   toasts: Toast[];
 
+  canAction: (action: AppAction, resource: AppResource) => boolean;
   setDateFilter: (filter: 'today' | '7days' | '30days' | 'all') => void;
   setCurrentRole: (role: UserRole) => void;
   setCurrentPlan: (plan: SubscriptionPlan) => void;
@@ -90,17 +94,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
+  const canAction = useCallback(
+    (action: AppAction, resource: AppResource) => {
+      return can(currentRole, action, resource);
+    },
+    [currentRole]
+  );
+
   const setCurrentRole = (role: UserRole) => {
     setCurrentRoleState(role);
     const updated = {
       ...userProfile,
       role,
-      roleTitleUz:
-        role === 'admin'
-          ? 'Klinika rahbari (Admin)'
-          : role === 'receptionist'
-          ? 'Registratura xodimi'
-          : 'Shifokor mutaxassis',
+      roleTitleUz: getRoleTitleUz(role),
     };
     setUserProfile(updated);
     storageService.setUserProfile(updated);
@@ -146,6 +152,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         currentPlan,
         dateFilter,
         toasts,
+        canAction,
         setDateFilter,
         setCurrentRole,
         setCurrentPlan,

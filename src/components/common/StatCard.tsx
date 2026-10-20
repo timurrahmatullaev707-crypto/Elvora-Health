@@ -21,16 +21,16 @@ export const StatCard: React.FC<StatCardProps> = ({
   icon,
   trend,
   badge,
-  iconBgColor = 'bg-[#EAF6F2] text-[#167D72]',
+  iconBgColor = 'bg-[#DDF5EB] text-[#0D7C74]',
 }) => {
   return (
     <Card className="flex flex-col justify-between" hoverable>
       <div className="flex items-start justify-between">
         <div>
-          <span className="text-xs font-medium text-[#71817D] tracking-wide uppercase">
+          <span className="text-[11px] font-bold text-[#687586] tracking-wide uppercase">
             {title}
           </span>
-          <div className="text-2xl font-bold text-[#20312F] mt-1 tracking-tight">
+          <div className="text-xl sm:text-2xl font-extrabold text-[#101C2C] mt-1 tracking-tight">
             {value}
           </div>
         </div>
@@ -39,8 +39,8 @@ export const StatCard: React.FC<StatCardProps> = ({
         </div>
       </div>
 
-      <div className="mt-4 pt-3 border-t border-[#E4EBE8]/60 flex items-center justify-between text-xs">
-        {subtitle && <span className="text-[#71817D]">{subtitle}</span>}
+      <div className="mt-4 pt-3 border-t border-[#E6EBEF] flex items-center justify-between text-xs">
+        {subtitle && <span className="text-[#687586]">{subtitle}</span>}
         {trend && (
           <span
             className={`font-semibold inline-flex items-center gap-0.5 ${

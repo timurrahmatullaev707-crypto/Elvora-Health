@@ -90,7 +90,7 @@ export const insightsService = {
         impactExplanation: `O'rtacha konsultatsiya narxi 130 000 UZS bo'lganda, to'ldirilmagan vaqtlar klinika uchun kuniga taxminan ~${estimatedLostRevenue.toLocaleString('uz-UZ')} UZS ga teng potentsial operatsion tushum yo'qotilishiga sabab bo'ladi (hisob-kitob o'rtacha tarifga asoslangan).`,
         suggestedAction:
           'Kutish ro\'yxatidagi bemorlarga yoki profilaktik ko\'rik muddati kelgan doimiy mijozlarga avtomatik SMS/Telegram xabarnoma yuborish orqali bo\'sh vaqtlarni to\'ldiring.',
-        actionLink: '/appointments',
+        actionLink: '/app/appointments',
         actionLabel: 'Qabullar jadvalini ko\'rish',
         isCalculatedFact: true,
       });
@@ -119,7 +119,7 @@ export const insightsService = {
         impactExplanation: `Kelmagan qabullar bo'yicha to'g'ridan-to'g'ri olinmagan xizmat haqi: ~${missedValue.toLocaleString('uz-UZ')} UZS. Bundan tashqari, boshqa muhtoj bemorlar ushbu vaqt band bo'lgani sababli qabulga yozila olmagan.`,
         suggestedAction:
           'Pro tarifidagi avtomatlashtirilgan eslatma modulini sozlang: qabuldan 24 soat va 2 soat oldin tasdiqlash tugmali SMS yuborish no-show ko\'rsatkichini 60% gacha kamaytiradi.',
-        actionLink: '/appointments',
+        actionLink: '/app/appointments',
         actionLabel: 'Navbat va eslatmalarni boshqarish',
         isCalculatedFact: true,
       });
@@ -150,7 +150,7 @@ export const insightsService = {
             'Bir xarajat moddasi 40% dan oshganda, klinika operatsion likvidligi ushbu yo\'nalishdagi narxlar o\'zgarishiga sezgir bo\'lib qoladi.',
           suggestedAction:
             'Ushbu toifadagi yetkazib beruvchilar shartnomalarini qayta ko\'rib chiqish yoki to\'lovlarni oylar kesimida taqsimlash tavsiya etiladi.',
-          actionLink: '/finance',
+          actionLink: '/app/finance',
           actionLabel: 'Moliya bo\'limiga o\'tish',
           isCalculatedFact: true,
         });
@@ -171,7 +171,7 @@ export const insightsService = {
             'Katta hajmdagi davriy xarajatlar (masalan, oylik ijara yoki uskuna yangilash) sababli vaqtinchalik sof natija salbiy. Bu to\'liq rentabellikni aks ettirmaydi, lekin likvidlikni nazorat qilishni talab qiladi.',
           suggestedAction:
             'Birlamchi va takroriy konsultatsiyalar sonini oshirish choralarini ko\'ring hamda doimiy xarajatlarni optimallashtiring.',
-          actionLink: '/finance',
+          actionLink: '/app/finance',
           actionLabel: 'Moliyaviy hisobotlarni ko\'rish',
           isCalculatedFact: true,
         });
@@ -195,7 +195,7 @@ export const insightsService = {
           'Bemorlarning 20 daqiqadan ortiq kutishi klinika qoniqish darajasiga (CSAT/NPS) salbiy ta\'sir qiladi.',
         suggestedAction:
           'Registratura xodimlariga bemorlarni navbat tartibi bo\'yicha tezkor yo\'naltirishni va shifokorlarga qabul vaqtlarini muvofiqlashtirishni tavsiya eting.',
-        actionLink: '/appointments',
+        actionLink: '/app/appointments',
         actionLabel: 'Jonli navbatni ochish',
         isCalculatedFact: true,
       });

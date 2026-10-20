@@ -1,16 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import {
-  Stethoscope,
   Plus,
-  Clock,
-  Calendar,
-  Phone,
-  Mail,
   Edit2,
-  CheckCircle2,
   Coffee,
-  Check,
-  UserCheck,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Card } from '../components/common/Card';
@@ -25,7 +17,6 @@ export const DoctorsPage: React.FC = () => {
 
   const todayStr = getTodayDateString();
   const [selectedDate, setSelectedDate] = useState(todayStr);
-  const [selectedDoctor, setSelectedDoctor] = useState<Doctor | null>(null);
 
   // Add / Edit Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -144,7 +135,7 @@ export const DoctorsPage: React.FC = () => {
         breakStart,
         breakEnd,
         appointmentDurationMinutes: Number(duration),
-        avatarColor: '#167D72',
+        avatarColor: '#0D7C74',
         isActive: true,
       });
       showToast('Yangi shifokor muvaffaqiyatli qo\'shildi', 'success');
@@ -164,10 +155,10 @@ export const DoctorsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-[#20312F] tracking-tight">
+          <h1 className="text-xl font-bold text-[#132229] tracking-tight">
             Shifokorlar va ish jadvali
           </h1>
-          <p className="text-xs text-[#71817D] mt-0.5">
+          <p className="text-xs text-[#5F737B] mt-0.5">
             Mutaxassislar shtati, qabul soatlari, tushlik tanaffuslari va bandlik tahlili
           </p>
         </div>
@@ -177,7 +168,7 @@ export const DoctorsPage: React.FC = () => {
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            className="px-3 py-1.5 text-xs bg-white border border-[#E4EBE8] rounded-xl text-[#20312F] shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+            className="px-3 py-1.5 text-xs bg-white border border-[#DFE8E4] rounded-xl text-[#132229] shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
           />
           <Button
             variant="primary"
@@ -205,7 +196,7 @@ export const DoctorsPage: React.FC = () => {
                   <div className="flex items-center gap-3">
                     <div
                       className="w-11 h-11 rounded-xl text-white font-bold flex items-center justify-center text-sm shadow-xs"
-                      style={{ backgroundColor: doctor.avatarColor || '#167D72' }}
+                      style={{ backgroundColor: doctor.avatarColor || '#0D7C74' }}
                     >
                       {doctor.fullName
                         .split(' ')
@@ -214,10 +205,10 @@ export const DoctorsPage: React.FC = () => {
                         .join('')}
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-[#20312F]">
+                      <h3 className="text-sm font-bold text-[#132229]">
                         {doctor.fullName}
                       </h3>
-                      <span className="inline-block text-[11px] font-semibold text-[#167D72] bg-[#EAF6F2] px-2 py-0.5 rounded-md mt-0.5">
+                      <span className="inline-block text-[11px] font-semibold text-[#0D7C74] bg-[#E6F5F0] px-2 py-0.5 rounded-md mt-0.5">
                         {doctor.specialty}
                       </span>
                     </div>
@@ -225,7 +216,7 @@ export const DoctorsPage: React.FC = () => {
 
                   <button
                     onClick={() => openEditModal(doctor)}
-                    className="p-1.5 rounded-lg text-[#71817D] hover:text-[#20312F] hover:bg-[#F5F8F7] transition-colors"
+                    className="p-1.5 rounded-lg text-[#5F737B] hover:text-[#132229] hover:bg-[#F4F7F5] transition-colors"
                     title="Tahrirlash"
                   >
                     <Edit2 size={15} />
@@ -233,28 +224,28 @@ export const DoctorsPage: React.FC = () => {
                 </div>
 
                 {/* Details */}
-                <div className="mt-4 space-y-2 text-xs text-[#506360] border-t border-[#E4EBE8] pt-3">
+                <div className="mt-4 space-y-2 text-xs text-[#5F737B] border-t border-[#DFE8E4] pt-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-[#71817D]">Xona:</span>
-                    <span className="font-semibold text-[#20312F]">{doctor.roomNumber}</span>
+                    <span className="text-[#5F737B]">Xona:</span>
+                    <span className="font-semibold text-[#132229]">{doctor.roomNumber}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[#71817D]">Qabul narxi:</span>
+                    <span className="text-[#5F737B]">Qabul narxi:</span>
                     <span className="font-bold text-emerald-700">
                       {doctor.consultationFee.toLocaleString()} UZS
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[#71817D]">Ish soatlari:</span>
-                    <span className="font-medium text-[#20312F]">
+                    <span className="text-[#5F737B]">Ish soatlari:</span>
+                    <span className="font-medium text-[#132229]">
                       {doctor.startHour} — {doctor.endHour}
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[#71817D] flex items-center gap-1">
+                    <span className="text-[#5F737B] flex items-center gap-1">
                       <Coffee size={12} /> Tushlik:
                     </span>
-                    <span className="text-[#71817D]">
+                    <span className="text-[#5F737B]">
                       {doctor.breakStart} — {doctor.breakEnd}
                     </span>
                   </div>
@@ -269,7 +260,7 @@ export const DoctorsPage: React.FC = () => {
                         key={d.num}
                         className={`text-[9px] font-semibold px-1.5 py-0.5 rounded ${
                           isWorking
-                            ? 'bg-[#EAF6F2] text-[#125B54] border border-[#BCE3D7]'
+                            ? 'bg-[#E6F5F0] text-[#085F59] border border-[#B7E2D8]'
                             : 'bg-gray-100 text-gray-400'
                         }`}
                       >
@@ -281,26 +272,26 @@ export const DoctorsPage: React.FC = () => {
               </div>
 
               {/* Occupancy Rate on Selected Date */}
-              <div className="mt-4 pt-3 border-t border-[#E4EBE8]">
+              <div className="mt-4 pt-3 border-t border-[#DFE8E4]">
                 <div className="flex items-center justify-between text-xs mb-1">
-                  <span className="text-[#71817D]">
+                  <span className="text-[#5F737B]">
                     {selectedDate === todayStr ? 'Bugungi bandlik' : `${selectedDate} bandligi`}:
                   </span>
-                  <span className="font-bold text-[#167D72]">
+                  <span className="font-bold text-[#0D7C74]">
                     {occ.occupancyPercent}% ({occ.bookedSlotsCount}/{occ.slotsCount} slot)
                   </span>
                 </div>
-                <div className="w-full bg-[#F5F8F7] h-2 rounded-full overflow-hidden border border-[#E4EBE8]">
+                <div className="w-full bg-[#F4F7F5] h-2 rounded-full overflow-hidden border border-[#DFE8E4]">
                   <div
-                    className="h-full bg-[#167D72] rounded-full transition-all duration-300"
+                    className="h-full bg-[#0D7C74] rounded-full transition-all duration-300"
                     style={{ width: `${occ.occupancyPercent}%` }}
                   />
                 </div>
 
                 {/* Today's appointments count */}
-                <div className="mt-2 text-[11px] text-[#71817D] flex items-center justify-between">
+                <div className="mt-2 text-[11px] text-[#5F737B] flex items-center justify-between">
                   <span>Rejalashtirilgan qabullar:</span>
-                  <span className="font-semibold text-[#20312F]">{docApts.length} nafar</span>
+                  <span className="font-semibold text-[#132229]">{docApts.length} nafar</span>
                 </div>
               </div>
             </Card>
@@ -319,7 +310,7 @@ export const DoctorsPage: React.FC = () => {
         >
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 F.I.SH. <span className="text-red-500">*</span>
               </label>
               <input
@@ -328,19 +319,19 @@ export const DoctorsPage: React.FC = () => {
                 placeholder="Dr. Alisher Usmonov"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-[#20312F] mb-1">
+                <label className="block text-xs font-semibold text-[#132229] mb-1">
                   Mutaxassislik <span className="text-red-500">*</span>
                 </label>
                 <select
                   value={specialty}
                   onChange={(e) => setSpecialty(e.target.value as DoctorSpecialty)}
-                  className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
                 >
                   {specialties.map((s) => (
                     <option key={s} value={s}>
@@ -351,7 +342,7 @@ export const DoctorsPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#20312F] mb-1">
+                <label className="block text-xs font-semibold text-[#132229] mb-1">
                   Konsultatsiya to'lovi (so'm) <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -360,40 +351,40 @@ export const DoctorsPage: React.FC = () => {
                   step={5000}
                   value={consultationFee}
                   onChange={(e) => setConsultationFee(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-[#20312F] mb-1">
+                <label className="block text-xs font-semibold text-[#132229] mb-1">
                   Telefon raqami
                 </label>
                 <input
                   type="text"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#20312F] mb-1">
+                <label className="block text-xs font-semibold text-[#132229] mb-1">
                   Xona raqami
                 </label>
                 <input
                   type="text"
                   value={roomNumber}
                   onChange={(e) => setRoomNumber(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F] focus:outline-none focus:ring-2 focus:ring-[#167D72]/20"
+                  className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229] focus:outline-none focus:ring-2 focus:ring-[#0D7C74]/20"
                 />
               </div>
             </div>
 
             {/* Working Days Selection */}
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1.5">
+              <label className="block text-xs font-semibold text-[#132229] mb-1.5">
                 Ish kunlari
               </label>
               <div className="flex flex-wrap gap-2">
@@ -406,8 +397,8 @@ export const DoctorsPage: React.FC = () => {
                       onClick={() => handleToggleDay(d.num)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                         isSelected
-                          ? 'bg-[#167D72] text-white shadow-xs'
-                          : 'bg-[#F5F8F7] text-[#71817D] border border-[#E4EBE8] hover:bg-[#EAF6F2]'
+                          ? 'bg-[#0D7C74] text-white shadow-xs'
+                          : 'bg-[#F4F7F5] text-[#5F737B] border border-[#DFE8E4] hover:bg-[#E6F5F0]'
                       }`}
                     >
                       {d.label}
@@ -420,62 +411,62 @@ export const DoctorsPage: React.FC = () => {
             {/* Hours and Breaks */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div>
-                <label className="block text-[11px] font-semibold text-[#71817D] mb-1">
+                <label className="block text-[11px] font-semibold text-[#5F737B] mb-1">
                   Ish boshlanishi
                 </label>
                 <input
                   type="time"
                   value={startHour}
                   onChange={(e) => setStartHour(e.target.value)}
-                  className="w-full px-2.5 py-1.5 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F]"
+                  className="w-full px-2.5 py-1.5 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229]"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-[#71817D] mb-1">
+                <label className="block text-[11px] font-semibold text-[#5F737B] mb-1">
                   Ish tugashi
                 </label>
                 <input
                   type="time"
                   value={endHour}
                   onChange={(e) => setEndHour(e.target.value)}
-                  className="w-full px-2.5 py-1.5 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F]"
+                  className="w-full px-2.5 py-1.5 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229]"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-[#71817D] mb-1">
+                <label className="block text-[11px] font-semibold text-[#5F737B] mb-1">
                   Tushlik boshi
                 </label>
                 <input
                   type="time"
                   value={breakStart}
                   onChange={(e) => setBreakStart(e.target.value)}
-                  className="w-full px-2.5 py-1.5 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F]"
+                  className="w-full px-2.5 py-1.5 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229]"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-[#71817D] mb-1">
+                <label className="block text-[11px] font-semibold text-[#5F737B] mb-1">
                   Tushlik oxiri
                 </label>
                 <input
                   type="time"
                   value={breakEnd}
                   onChange={(e) => setBreakEnd(e.target.value)}
-                  className="w-full px-2.5 py-1.5 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F]"
+                  className="w-full px-2.5 py-1.5 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#20312F] mb-1">
+              <label className="block text-xs font-semibold text-[#132229] mb-1">
                 Bitta qabul davomiyligi (daqiqa)
               </label>
               <select
                 value={duration}
                 onChange={(e) => setDuration(Number(e.target.value))}
-                className="w-full px-3 py-2 text-xs bg-[#F5F8F7] border border-[#E4EBE8] rounded-xl text-[#20312F]"
+                className="w-full px-3 py-2 text-xs bg-[#F4F7F5] border border-[#DFE8E4] rounded-xl text-[#132229]"
               >
                 <option value={15}>15 daqiqa</option>
                 <option value={20}>20 daqiqa</option>
@@ -485,7 +476,7 @@ export const DoctorsPage: React.FC = () => {
               </select>
             </div>
 
-            <div className="flex justify-end gap-2 pt-3 border-t border-[#E4EBE8]">
+            <div className="flex justify-end gap-2 pt-3 border-t border-[#DFE8E4]">
               <Button
                 type="button"
                 variant="outline"

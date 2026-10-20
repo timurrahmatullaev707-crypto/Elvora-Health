@@ -83,15 +83,28 @@ export const SubscriptionPage: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="text-[11px] font-bold text-[#167D72] uppercase tracking-wider bg-[#EAF6F2] px-3 py-1 rounded-full border border-[#BCE3D7]">
+        <span className="text-[11px] font-bold text-[#008BFF] uppercase tracking-wider bg-cyan-100/80 px-3 py-1 rounded-full border border-cyan-300">
           Tariflar va imkoniyatlar
         </span>
-        <h1 className="text-2xl font-bold text-[#20312F] tracking-tight">
+        <h1 className="text-2xl font-bold text-[#132229] tracking-tight">
           Klinikangiz o'sishiga mos tarif rejasini tanlang
         </h1>
-        <p className="text-xs text-[#71817D]">
+        <p className="text-xs text-[#5F737B]">
           Prezentatsiya davomida istalgan tarifni faollashtirib, uning imkoniyatlarini darhol sinab ko'rishingiz mumkin
         </p>
+      </div>
+
+      {/* Demo Notice Banner */}
+      <div className="max-w-2xl mx-auto p-4 rounded-2xl bg-amber-50 border border-amber-300 text-xs text-amber-900 flex items-start gap-3 shadow-xs">
+        <AlertCircle size={20} className="text-amber-600 shrink-0 mt-0.5" />
+        <div className="space-y-0.5">
+          <p className="font-bold">
+            Demo rejim: haqiqiy to‘lov ulanmagan.
+          </p>
+          <p className="text-amber-800 leading-relaxed text-[11px]">
+            Haqiqiy pul yechib olinmaydi. Tarifni o'zgartirish tizim imkoniyatlarini (Elvora Insights, eksportlar, ruxsatnomalar) darhol ochish yoki yopishni sinab ko'rish uchun ishlaydi. Payme va Click to‘lov shlyuzlari ishlab chiqarish serveriga ulanishi rejalashtirilgan (hozirda uzilgan holatda).
+          </p>
+        </div>
       </div>
 
       {/* Plans Grid */}
@@ -104,46 +117,46 @@ export const SubscriptionPage: React.FC = () => {
               key={plan.id}
               className={`relative flex flex-col justify-between p-6 transition-all ${
                 plan.isPopular
-                  ? 'border-2 border-[#167D72] shadow-lg ring-4 ring-[#167D72]/5'
-                  : 'border-[#E4EBE8]'
+                  ? 'border-2 border-[#0D7C74] shadow-lg ring-4 ring-[#0D7C74]/5'
+                  : 'border-[#DFE8E4]'
               }`}
             >
               {plan.isPopular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#167D72] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-xs">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0D7C74] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-xs">
                   Eng ommabop
                 </div>
               )}
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-bold text-[#20312F]">{plan.name}</h3>
+                  <h3 className="text-lg font-bold text-[#132229]">{plan.name}</h3>
                   {isCurrent && (
-                    <span className="text-[10px] font-bold bg-[#EAF6F2] text-[#125B54] px-2 py-0.5 rounded border border-[#BCE3D7]">
+                    <span className="text-[10px] font-bold bg-[#E6F5F0] text-[#085F59] px-2 py-0.5 rounded border border-[#B7E2D8]">
                       Joriy reja
                     </span>
                   )}
                 </div>
 
-                <p className="text-xs text-[#71817D] min-h-[32px]">{plan.tagline}</p>
+                <p className="text-xs text-[#5F737B] min-h-[32px]">{plan.tagline}</p>
 
                 {/* Price */}
-                <div className="mt-4 mb-6 pb-4 border-b border-[#E4EBE8]">
+                <div className="mt-4 mb-6 pb-4 border-b border-[#DFE8E4]">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-extrabold text-[#20312F]">
+                    <span className="text-2xl font-extrabold text-[#132229]">
                       {plan.price}
                     </span>
-                    <span className="text-xs text-[#71817D]">UZS / {plan.period}</span>
+                    <span className="text-xs text-[#5F737B]">UZS / {plan.period}</span>
                   </div>
                 </div>
 
                 {/* Features Included */}
                 <div className="space-y-2.5 text-xs">
-                  <span className="font-bold text-[#20312F] text-[11px] block">
+                  <span className="font-bold text-[#132229] text-[11px] block">
                     Kiritilgan imkoniyatlar:
                   </span>
                   {plan.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-[#506360]">
-                      <Check size={14} className="text-[#167D72] shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2 text-[#5F737B]">
+                      <Check size={14} className="text-[#0D7C74] shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -152,7 +165,7 @@ export const SubscriptionPage: React.FC = () => {
                   {plan.notIncluded.map((feat, idx) => (
                     <div
                       key={`not-${idx}`}
-                      className="flex items-start gap-2 text-[#71817D]/60 opacity-60"
+                      className="flex items-start gap-2 text-[#5F737B]/60 opacity-60"
                     >
                       <span className="w-3.5 h-3.5 rounded-full border border-gray-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5">
                         -
@@ -164,7 +177,7 @@ export const SubscriptionPage: React.FC = () => {
               </div>
 
               {/* Action Button */}
-              <div className="mt-8 pt-4 border-t border-[#E4EBE8]">
+              <div className="mt-8 pt-4 border-t border-[#DFE8E4]">
                 <Button
                   variant={isCurrent ? 'secondary' : plan.isPopular ? 'primary' : 'outline'}
                   className="w-full"
@@ -179,8 +192,8 @@ export const SubscriptionPage: React.FC = () => {
       </div>
 
       {/* Disclaimer */}
-      <div className="p-4 rounded-xl bg-[#FAFDFB] border border-[#E4EBE8] text-xs text-[#71817D] flex items-start gap-3">
-        <AlertCircle size={18} className="text-[#167D72] shrink-0 mt-0.5" />
+      <div className="p-4 rounded-xl bg-[#F8FAF9] border border-[#DFE8E4] text-xs text-[#5F737B] flex items-start gap-3">
+        <AlertCircle size={18} className="text-[#0D7C74] shrink-0 mt-0.5" />
         <p className="leading-relaxed">
           <strong>Investorlar uchun eslatma:</strong> Tarif rejalarini almashtirish to'liq simulyatsiya qilingan va ilovaning boshqa sahifalaridagi (Elvora Insights, Hisobotlar) imkoniyatlar bloklanishi yoki ochilishini darhol ko'rsatib beradi. To'lov tizimlari (Payme/Click) integratsiyasi shartnomalar tuzilgach faollashtiriladi.
         </p>
