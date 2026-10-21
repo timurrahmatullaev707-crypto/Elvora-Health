@@ -19,7 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#176B55]/25 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
+    'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#008BFF]/25 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
 
   const sizeStyles = {
     sm: 'text-xs px-3 py-1.5 gap-1.5',
@@ -29,17 +29,17 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantStyles = {
     primary:
-      'bg-[#176B55] hover:bg-[#0F4C3C] text-white shadow-xs active:bg-[#0D3F32]',
+      'bg-gradient-to-r from-[#008BFF] to-[#0D34B4] text-white hover:opacity-95 shadow-xs active:scale-[0.98]',
     secondary:
-      'bg-[#EBF6F0] text-[#176B55] hover:bg-[#CDEBDD] active:bg-[#BCE3D0] border border-[#CDEBDD]',
+      'bg-cyan-50 text-[#008BFF] hover:bg-cyan-100 active:bg-cyan-200 border border-cyan-200',
     mint:
-      'bg-[#CDEBDD] text-[#0F4C3C] hover:bg-[#BCE3D0] border border-[#BCE3D0]',
+      'bg-[#EBF7FC] text-[#008BFF] border border-cyan-200 hover:bg-[#E0F2FE]',
     outline:
-      'border border-[#E2E8E3] bg-white text-[#172923] hover:bg-[#F7F8F5] hover:border-[#176B55]/30',
+      'border border-slate-200 bg-white text-slate-800 hover:bg-[#F8FBFE] hover:border-cyan-300',
     danger:
       'bg-[#EF4444] text-white hover:bg-[#DC2626] shadow-xs active:bg-[#B91C1C]',
     ghost:
-      'text-[#68756F] hover:text-[#172923] hover:bg-[#EBF6F0]',
+      'text-[#5F737B] hover:text-[#101C2C] hover:bg-[#F8FBFE]',
   };
 
   return (

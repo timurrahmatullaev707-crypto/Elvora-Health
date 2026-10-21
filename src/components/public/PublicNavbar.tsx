@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
+  ArrowRight,
   Menu,
   X,
-  Calendar,
-  LayoutDashboard,
-  Phone,
   Sparkles,
-  ArrowRight,
-  ShieldCheck,
-  Stethoscope,
+  Shield,
+  Activity,
+  Layers,
+  HelpCircle,
+  LogIn,
+  Phone,
+  Calendar,
+  Globe,
+  ChevronDown,
 } from 'lucide-react';
-import { ElvoraLogo } from '../common/ElvoraLogo';
 
-interface PublicNavbarProps {
-  onOpenBooking: () => void;
-}
-
-export const PublicNavbar: React.FC<PublicNavbarProps> = ({ onOpenBooking }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export const PublicNavbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,86 +28,171 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({ onOpenBooking }) => 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Bosh sahifa', href: '#hero' },
-    { name: 'Xizmatlar', href: '#services' },
-    { name: 'Shifokorlar', href: '#doctors' },
-    { name: 'Klinikalar', href: '#clinics' },
-    { name: 'Smart Flow', href: '#smart-flow' },
-    { name: 'Biz haqimizda', href: '#about' },
-  ];
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#F7F8F5]/92 backdrop-blur-md shadow-xs border-b border-[#E2E8E3]'
-          : 'bg-[#F7F8F5]/70 backdrop-blur-xs border-b border-[#E2E8E3]/60'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Brand Logo */}
-          <ElvoraLogo size="md" />
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="px-3 py-2 text-sm font-medium text-[#172923] hover:text-[#176B55] hover:bg-[#CDEBDD]/30 rounded-lg transition-colors cursor-pointer"
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
-            {/* Direct Dashboard Access */}
-            <Link
-              to="/app/dashboard"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E2E8E3] bg-white hover:bg-[#F7F8F5] text-[#172923] text-sm font-semibold transition-all shadow-xs hover:border-[#CDEBDD] cursor-pointer"
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* Top Utility Bar (Just like DMED.uz) */}
+      <div className="bg-[#0D34B4] text-white text-[11px] py-1.5 px-4 sm:px-8 border-b border-white/10 hidden md:block">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1.5 text-emerald-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Yagona Raqamli Tibbiyot Axborot Ekotizimi
+            </span>
+            <a
+              href="#portal"
+              className="hover:text-emerald-200 transition-colors flex items-center gap-1"
             >
-              <LayoutDashboard size={16} className="text-[#176B55]" />
-              <span>Klinika tizimi</span>
-            </Link>
-
-            {/* Appointment Booking CTA */}
-            <button
-              onClick={onOpenBooking}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#176B55] hover:bg-[#0F4C3C] text-white text-sm font-semibold shadow-xs hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
-            >
-              <Calendar size={16} />
-              <span>Qabulga yozilish</span>
-            </button>
+              <Calendar size={12} />
+              <span>Shifokor ko'rigiga onlayn yozilish</span>
+            </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
-            <button
-              onClick={onOpenBooking}
-              className="sm:hidden px-3 py-1.5 rounded-lg bg-[#176B55] text-white text-xs font-semibold"
+          <div className="flex items-center gap-6">
+            <a
+              href="tel:+998712025000"
+              className="flex items-center gap-1.5 hover:text-emerald-200 transition-colors font-medium"
             >
-              Qabul
-            </button>
+              <Phone size={12} />
+              <span>Koll-markaz: +998 (71) 202-50-00</span>
+            </a>
+            <div className="flex items-center gap-1 text-emerald-200 cursor-pointer">
+              <Globe size={12} />
+              <span className="font-bold">O'zbekcha</span>
+            </div>
+            <Link
+              to="/login"
+              className="flex items-center gap-1 font-bold text-white hover:text-emerald-200 transition-colors"
+            >
+              <LogIn size={12} />
+              <span>MIS Tizimiga kirish</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Floating Glassmorphic Navbar (Signature DMED Floating Capsule) */}
+      <div className={`transition-all duration-300 px-4 sm:px-6 lg:px-8 ${scrolled ? 'pt-2' : 'pt-3'}`}>
+        <div
+          className={`max-w-7xl mx-auto rounded-2xl transition-all duration-300 ${
+            scrolled
+              ? 'bg-white/95 backdrop-blur-xl border border-[#DFE8E4] shadow-lg py-3 px-5'
+              : 'bg-white/80 backdrop-blur-md border border-[#DFE8E4]/80 shadow-md py-3.5 px-6'
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            {/* Elvora Health Logo */}
+            <Link to="/" className="flex items-center gap-3 group">
+              {/* Elvora Medical Cross Icon */}
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#008BFF] via-[#00B4D8] to-[#0D34B4] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                <svg
+                  className="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 2v20M2 12h20M7 7l10 10M17 7 7 17" />
+                </svg>
+              </div>
+
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-black text-xl tracking-tight text-[#008BFF] leading-none">
+                    ELVORA
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-wider bg-[#0D34B4] text-white px-1.5 py-0.5 rounded">
+                    HEALTH
+                  </span>
+                </div>
+                <span className="text-[10px] text-slate-500 font-semibold tracking-wide mt-0.5">
+                  Raqamli Tibbiyot Ekotizimi
+                </span>
+              </div>
+            </Link>
+
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-7 text-xs font-bold text-[#5F737B]">
+              <a
+                href="#nima-bu"
+                className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              >
+                Ekotizim Mahsulotlari
+              </a>
+              <a
+                href="#portal"
+                className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              >
+                Onlayn E-Navbat
+              </a>
+              <a
+                href="#mahsulotlar"
+                className="hover:text-[#008BFF] transition-colors flex items-center gap-1 cursor-pointer"
+              >
+                <Sparkles size={13} className="text-[#008BFF]" />
+                Elvora Pro & App
+              </a>
+              <a
+                href="#comparison"
+                className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              >
+                Klinika Afzalliklari
+              </a>
+              <a
+                href="#calculator"
+                className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              >
+                Daromad Kalkulyatori
+              </a>
+              <a
+                href="#pricing"
+                className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              >
+                Tariflar
+              </a>
+            </nav>
+
+            {/* Action Buttons */}
+            <div className="hidden sm:flex items-center gap-3">
+              <a
+                href="tel:+998712025000"
+                className="hidden xl:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-[#132229] bg-[#F4F7F5] border border-[#DFE8E4] hover:bg-white transition-colors"
+              >
+                <Phone size={13} className="text-[#008BFF]" />
+                <span>(71) 202-50-00</span>
+              </a>
+
+              <Link
+                to="/login"
+                className="px-4 py-2 rounded-xl text-xs font-bold text-[#132229] hover:text-[#008BFF] transition-colors"
+              >
+                Kirish
+              </Link>
+
+              <Link
+                to="/app/dashboard"
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#008BFF] to-[#0D34B4] text-white text-xs font-bold shadow-md hover:shadow-lg active:scale-98 transition-all cursor-pointer"
+              >
+                <span>Boshqaruv Paneli</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[#172923] hover:bg-[#CDEBDD]/30 transition-colors cursor-pointer"
-              aria-label="Toggle Menu"
+              className="p-2 rounded-xl text-[#132229] hover:bg-[#F4F7F5] transition-colors lg:hidden"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -117,39 +200,59 @@ export const PublicNavbar: React.FC<PublicNavbarProps> = ({ onOpenBooking }) => 
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-20 bg-[#FFFFFF] border-b border-[#E2E8E3] shadow-xl p-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="space-y-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="block px-4 py-3 rounded-xl text-base font-medium text-[#172923] hover:bg-[#EBF6F0] hover:text-[#176B55] transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-
-          <div className="pt-4 border-t border-[#E2E8E3] space-y-3">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenBooking();
-              }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#176B55] text-white font-semibold text-sm shadow-xs"
+        <div className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-[#DFE8E4] px-6 py-5 shadow-2xl space-y-4 animate-fade-in">
+          <nav className="flex flex-col space-y-3 text-sm font-bold text-[#132229]">
+            <a
+              href="#ecosystem"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#008BFF]"
             >
-              <Calendar size={18} />
-              <span>Qabulga yozilish</span>
-            </button>
+              Ekotizim Mahsulotlari
+            </a>
+            <a
+              href="#portal"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#008BFF]"
+            >
+              Onlayn E-Navbat
+            </a>
+            <a
+              href="#mahsulotlar"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#008BFF]"
+            >
+              Elvora Pro & App
+            </a>
+            <a
+              href="#comparison"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#008BFF]"
+            >
+              Klinika Afzalliklari
+            </a>
+            <a
+              href="#pricing"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#008BFF]"
+            >
+              Tariflar
+            </a>
+          </nav>
 
+          <div className="pt-3 border-t border-[#DFE8E4] flex flex-col gap-2">
             <Link
               to="/app/dashboard"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-[#E2E8E3] bg-[#F7F8F5] text-[#172923] font-semibold text-sm"
+              className="w-full py-3 rounded-xl bg-[#008BFF] text-white text-xs font-bold text-center shadow-md"
             >
-              <LayoutDashboard size={18} className="text-[#176B55]" />
-              <span>Klinika tizimiga kirish (Dashboard)</span>
+              Klinika Boshqaruv Paneliga Kirish →
+            </Link>
+            <Link
+              to="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-2.5 rounded-xl bg-[#F4F7F5] text-[#132229] text-xs font-bold text-center border border-[#DFE8E4]"
+            >
+              Tizimga Kirish (Login)
             </Link>
           </div>
         </div>

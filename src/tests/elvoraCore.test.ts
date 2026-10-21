@@ -23,12 +23,11 @@ describe('1. Appointment Conflict Detection & Slot Generation', () => {
   });
 
   it('detects and blocks double-booking conflict on already booked slot', () => {
-    const bookedApt = initialAppointments[0];
     const conflictCheck = doctorService.checkSlotAvailability(
       doc1,
-      bookedApt.date,
-      bookedApt.startTime,
-      bookedApt.endTime,
+      '2026-10-20',
+      '09:00',
+      '09:30',
       initialAppointments
     );
 
