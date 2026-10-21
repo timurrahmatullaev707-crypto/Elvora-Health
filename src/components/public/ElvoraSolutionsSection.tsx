@@ -21,6 +21,7 @@ import {
   Pause,
   ExternalLink,
 } from 'lucide-react';
+import { useGsapContext, gsap } from '../../lib/useGsapScroll';
 
 interface ModuleCardItem {
   id: string;
@@ -44,6 +45,46 @@ export const ElvoraSolutionsSection: React.FC = () => {
 
   // Scroll container ref
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGsapContext(
+    sectionRef,
+    () => {
+      gsap.from('.solutions-header-text', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+        },
+        x: -30,
+        opacity: 0,
+        duration: 0.75,
+        ease: 'power2.out',
+      });
+
+      gsap.from('.solutions-doctor-image', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+        },
+        x: 30,
+        opacity: 0,
+        duration: 0.75,
+        ease: 'power2.out',
+      });
+
+      gsap.from('.solutions-marquee-container', {
+        scrollTrigger: {
+          trigger: '.solutions-marquee-container',
+          start: 'top 85%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+      });
+    },
+    []
+  );
 
   // 8 Specific modules requested by user with clinic problems & Elvora solutions
   const cards: ModuleCardItem[] = [
@@ -211,6 +252,7 @@ export const ElvoraSolutionsSection: React.FC = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="masalalar"
       className="py-20 lg:py-28 bg-[#F8FBFE] border-b border-slate-200/80 relative overflow-hidden"
     >
@@ -222,7 +264,7 @@ export const ElvoraSolutionsSection: React.FC = () => {
         {/* Top Split: Text & Button on Left, Doctors Photo on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Text */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="solutions-header-text lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-xs font-bold text-[#008BFF]">
               <Sparkles size={14} className="text-[#008BFF]" />
               <span>YAGONA TIBBIY SAAS YECHIM</span>
@@ -256,7 +298,7 @@ export const ElvoraSolutionsSection: React.FC = () => {
           </div>
 
           {/* Right Doctors Team Image */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <div className="solutions-doctor-image lg:col-span-5 flex justify-center lg:justify-end">
             <div className="relative group max-w-md w-full">
               {/* Background cyan halo */}
               <div className="absolute -inset-2 bg-gradient-to-r from-cyan-300/40 via-blue-300/30 to-teal-300/30 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity" />
@@ -347,7 +389,7 @@ export const ElvoraSolutionsSection: React.FC = () => {
       {/* ============================================================== */}
       {/* INFINITE AUTO-SCROLLING CAROUSEL (Cheksiz Gorizontal Oqim)      */}
       {/* ============================================================== */}
-      <div className="relative w-full overflow-hidden py-4">
+      <div className="solutions-marquee-container relative w-full overflow-hidden py-4">
         {/* Left & Right Smooth Gradient Masks for seamless appearance */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#F8FBFE] via-[#F8FBFE]/90 to-transparent z-20" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#F8FBFE] via-[#F8FBFE]/90 to-transparent z-20" />

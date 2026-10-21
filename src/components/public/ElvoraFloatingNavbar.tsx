@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Sparkles, Menu, X, ArrowRight, Shield } from 'lucide-react';
+import { gsap } from '../../lib/useGsapScroll';
 
 export const ElvoraFloatingNavbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,9 +17,38 @@ export const ElvoraFloatingNavbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // GSAP Entrance animation
+  useEffect(() => {
+    if (!navRef.current) return;
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) return;
+
+    gsap.fromTo(
+      navRef.current,
+      { y: -30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.1 }
+    );
+  }, []);
+
+  // Mobile menu open/close animation
+  useEffect(() => {
+    if (!mobileMenuRef.current) return;
+    if (mobileMenuOpen) {
+      gsap.fromTo(
+        mobileMenuRef.current,
+        { y: -10, opacity: 0, scale: 0.98 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out' }
+      );
+    }
+  }, [mobileMenuOpen]);
+
   return (
     <header className="sticky top-3 z-50 w-full px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
-      <div className="max-w-5xl mx-auto pointer-events-auto">
+      <div ref={navRef} className="max-w-5xl mx-auto pointer-events-auto">
         <div
           className={`rounded-2xl transition-all duration-300 flex items-center justify-between ${
             scrolled
@@ -50,33 +82,38 @@ export const ElvoraFloatingNavbar: React.FC = () => {
           <nav className="hidden md:flex items-center gap-7 text-xs font-bold text-slate-700">
             <a
               href="#mahsulotlar"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
-              Mahsulotlar
+              <span>Mahsulotlar</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <a
               href="#masalalar"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
-              Yechimlar
+              <span>Yechimlar</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <a
               href="#nima-bu"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
-              Ekotizim
+              <span>Ekotizim</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <a
               href="#portal"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
-              E-Navbat
+              <span>E-Navbat</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <Link
               to="/app/dashboard"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
-              Klinika Boshqaruvi
+              <span>Klinika Boshqaruvi</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </Link>
           </nav>
 
@@ -84,7 +121,7 @@ export const ElvoraFloatingNavbar: React.FC = () => {
           <div className="flex items-center gap-2">
             <a
               href="tel:+998712025000"
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 transition-colors shadow-2xs"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 hover:border-cyan-200 transition-all shadow-2xs hover:shadow-xs active:scale-95"
             >
               <Phone size={13} className="text-[#008BFF]" />
               <span className="hidden sm:inline">Call-markaz</span>
@@ -92,7 +129,7 @@ export const ElvoraFloatingNavbar: React.FC = () => {
 
             <Link
               to="/login"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#008BFF] to-[#0D34B4] text-white text-xs font-bold hover:shadow-lg transition-all shadow-xs active:scale-95"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#008BFF] to-[#0D34B4] hover:from-[#007EE6] hover:to-[#0A2D9C] text-white text-xs font-bold hover:shadow-lg hover:shadow-blue-500/20 transition-all shadow-xs active:scale-95 cursor-pointer"
             >
               <span>MIS Kirish</span>
             </Link>
@@ -100,7 +137,7 @@ export const ElvoraFloatingNavbar: React.FC = () => {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none"
+              className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none cursor-pointer"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -110,39 +147,42 @@ export const ElvoraFloatingNavbar: React.FC = () => {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-2 p-4 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl space-y-3 animate-fade-in text-sm font-bold text-slate-800">
+          <div
+            ref={mobileMenuRef}
+            className="md:hidden mt-2 p-4 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl space-y-3 text-sm font-bold text-slate-800"
+          >
             <a
               href="#mahsulotlar"
               onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF]"
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
               Mahsulotlar
             </a>
             <a
               href="#masalalar"
               onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF]"
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
               Yechimlar (Masalalar)
             </a>
             <a
               href="#nima-bu"
               onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF]"
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
               Ekotizim
             </a>
             <a
               href="#portal"
               onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF]"
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
               E-Navbat
             </a>
             <Link
               to="/app/dashboard"
               onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF]"
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
               Klinika Boshqaruvi
             </Link>

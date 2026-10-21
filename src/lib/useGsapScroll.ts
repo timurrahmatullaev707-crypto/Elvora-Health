@@ -8,20 +8,41 @@ if (typeof window !== 'undefined') {
 
 export { gsap, ScrollTrigger };
 
-export function useGsapContext(scopeRef: React.RefObject<HTMLElement | null>, animationFn: (ctx: gsap.Context) => void, deps: any[] = []) {
+export function useGsapContext(
+  scopeRef: React.RefObject<HTMLElement | null>,
+  animationFn: (ctx: gsap.Context) => void,
+  deps: any[] = []
+) {
   useEffect(() => {
-    // Respect reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion || !scopeRef.current) {
+    if (typeof window === 'undefined' || !scopeRef.current) {
       return;
     }
 
-    const ctx = gsap.context(() => {
-      animationFn(ctx);
-    }, scopeRef);
+    // Respect reduced motion preferences
+    try {
+      const prefersReducedMotion =
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        return;
+      }
+    } catch {
+      // Fallback if matchMedia is unavailable
+    }
+
+    let ctx: gsap.Context | null = null;
+    try {
+      // Pass scopeRef.current (the actual DOM HTMLElement), NOT the RefObject
+      ctx = gsap.context(() => {
+        animationFn(ctx!);
+      }, scopeRef.current);
+    } catch (e) {
+      console.warn('GSAP animation initialization warning:', e);
+    }
 
     return () => {
-      ctx.revert();
+      if (ctx) {
+        ctx.revert();
+      }
     };
   }, deps);
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Sparkles,
   Bot,
@@ -16,6 +16,7 @@ import {
   Eye,
   Shield,
 } from 'lucide-react';
+import { useGsapContext, gsap } from '../../lib/useGsapScroll';
 
 interface NodeItem {
   id: string;
@@ -35,6 +36,46 @@ interface NodeItem {
 export const ElvoraMindMap: React.FC = () => {
   const [activeNodeId, setActiveNodeId] = useState<string>('shifoxonalar');
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGsapContext(
+    sectionRef,
+    () => {
+      gsap.from('.mindmap-header', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power2.out',
+      });
+
+      gsap.from('.mindmap-diagram', {
+        scrollTrigger: {
+          trigger: '.mindmap-diagram',
+          start: 'top 85%',
+        },
+        scale: 0.94,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+      });
+
+      gsap.from('.mindmap-drawer', {
+        scrollTrigger: {
+          trigger: '.mindmap-drawer',
+          start: 'top 92%',
+        },
+        y: 25,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+      });
+    },
+    []
+  );
 
   const nodes: NodeItem[] = [
     {
@@ -163,7 +204,7 @@ export const ElvoraMindMap: React.FC = () => {
   const activeNode = nodes.find((n) => n.id === activeNodeId) || nodes[0];
 
   return (
-    <section id="nima-bu" className="py-20 lg:py-28 bg-[#F4F9FC] border-y border-slate-200/80 relative overflow-hidden">
+    <section ref={sectionRef} id="nima-bu" className="py-20 lg:py-28 bg-[#F4F9FC] border-y border-slate-200/80 relative overflow-hidden">
       {/* Dynamic Digital Mesh Background */}
       <div className="absolute inset-0 bg-[radial-gradient(#008BFF_0.8px,transparent_0.8px)] [background-size:24px_24px] opacity-15 pointer-events-none" />
 
@@ -172,7 +213,7 @@ export const ElvoraMindMap: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header (Screenshot 2 exact structure with Elvora Health name) */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
+        <div className="mindmap-header text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-100/80 border border-cyan-300 text-xs font-black text-[#008BFF] shadow-xs">
             <Radio size={14} className="text-[#008BFF] animate-ping" />
             <span>YAGONA MILLIY EKOTIZIM ARXITEKTURASI</span>
@@ -191,7 +232,7 @@ export const ElvoraMindMap: React.FC = () => {
         <div
           onMouseEnter={() => setAutoRotate(false)}
           onMouseLeave={() => setAutoRotate(true)}
-          className="relative max-w-5xl mx-auto h-[540px] sm:h-[600px] flex items-center justify-center select-none"
+          className="mindmap-diagram relative max-w-5xl mx-auto h-[540px] sm:h-[600px] flex items-center justify-center select-none"
         >
           {/* SVG Canvas for Laser Connections and Moving Photons */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1000 580" fill="none">
@@ -420,7 +461,7 @@ export const ElvoraMindMap: React.FC = () => {
         </div>
 
         {/* Live Interactive Detail Drawer Below Diagram */}
-        <div className="max-w-2xl mx-auto mt-6 bg-white/95 backdrop-blur-xl rounded-2xl border-2 border-cyan-200/90 shadow-xl p-5 transition-all">
+        <div className="mindmap-drawer max-w-2xl mx-auto mt-6 bg-white/95 backdrop-blur-xl rounded-2xl border-2 border-cyan-200/90 shadow-xl p-5 transition-all">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-[#008BFF] shadow-xs">

@@ -18,6 +18,7 @@ import {
   Zap,
   FlaskConical,
 } from 'lucide-react';
+import { useGsapContext, gsap } from '../../lib/useGsapScroll';
 
 export const ElvoraHeroSection: React.FC = () => {
   const [showCookie, setShowCookie] = useState(true);
@@ -33,6 +34,62 @@ export const ElvoraHeroSection: React.FC = () => {
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     setMousePos({ x, y });
   };
+
+  useGsapContext(
+    heroRef,
+    () => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.from('.hero-top-badge', {
+        y: -20,
+        opacity: 0,
+        duration: 0.7,
+        delay: 0.15,
+      })
+        .from(
+          '.hero-heading-line',
+          {
+            y: 45,
+            opacity: 0,
+            duration: 0.9,
+            stagger: 0.15,
+          },
+          '-=0.4'
+        )
+        .from(
+          '.hero-paragraph',
+          {
+            y: 20,
+            opacity: 0,
+            duration: 0.7,
+          },
+          '-=0.5'
+        )
+        .from(
+          '.hero-cta-group',
+          {
+            scale: 0.92,
+            y: 15,
+            opacity: 0,
+            duration: 0.6,
+          },
+          '-=0.4'
+        )
+        .from(
+          '.hero-3d-card',
+          {
+            scale: 0.8,
+            y: 50,
+            opacity: 0,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: 'back.out(1.3)',
+          },
+          '-=0.5'
+        );
+    },
+    []
+  );
 
   return (
     <div
@@ -63,27 +120,28 @@ export const ElvoraHeroSection: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
         {/* Hero Main Titles */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-100/70 border border-cyan-300 text-xs font-black text-[#008BFF] shadow-xs animate-pulse">
-            <Sparkles size={14} className="text-[#008BFF]" />
+          <div className="hero-top-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-100/70 border border-cyan-300 text-xs font-black text-[#008BFF] shadow-xs">
+            <Sparkles size={14} className="text-[#008BFF] animate-pulse" />
             <span>O‘zbekiston Yagona Raqamli Tibbiyot Platformasi</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
-            O‘zbekistonning yagona raqamli <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008BFF] via-[#00B4D8] to-[#0D34B4]">
+            <span className="hero-heading-line block">
+              O‘zbekistonning yagona raqamli
+            </span>
+            <span className="hero-heading-line block text-transparent bg-clip-text bg-gradient-to-r from-[#008BFF] via-[#00B4D8] to-[#0D34B4]">
               sog‘liqni saqlash operatori
             </span>
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl mx-auto leading-relaxed font-normal">
+          <p className="hero-paragraph text-sm sm:text-base text-slate-600 max-w-3xl mx-auto leading-relaxed font-normal">
             415-PQ qarori asosida O‘zbekiston Sog‘liqni saqlash tizimini raqamlashtirish: poliklinikalar, xususiy shifoxonalar, elektron retseptlar, jonli E-navbat va bemorlar tibbiy kartasi — <strong>Elvora Health</strong> yagona ekotizimida.
           </p>
 
           {/* Black Pill Button */}
-          <div className="pt-2 flex items-center justify-center gap-3">
+          <div className="hero-cta-group pt-2 flex items-center justify-center gap-3">
             <a
               href="#nima-bu"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-[#1E2022] hover:bg-black text-white text-sm font-bold shadow-lg hover:shadow-2xl active:scale-95 transition-all cursor-pointer group"
@@ -94,18 +152,18 @@ export const ElvoraHeroSection: React.FC = () => {
 
             <a
               href="#portal"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white border border-slate-200 hover:bg-cyan-50 text-slate-800 text-sm font-bold shadow-sm transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white border border-slate-200 hover:bg-cyan-50 text-slate-800 text-sm font-bold shadow-sm hover:shadow-md transition-all cursor-pointer active:scale-95"
             >
               <span>⚡ E-Navbat olish</span>
             </a>
           </div>
         </div>
 
-        {/* 3D Parallax Floating Cards (Screenshot 1 Bottom Showcase with Mouse Parallax) */}
+        {/* 3D Parallax Floating Cards Showcase with Mouse Parallax */}
         <div className="mt-14 sm:mt-20 relative max-w-5xl mx-auto min-h-[380px] sm:min-h-[440px]">
-          {/* Card 1: Mobil Ilova (Smartphone preview with sweeping laser scanner beam!) */}
+          {/* Card 1: Mobil Ilova */}
           <div
-            className="absolute left-2 sm:left-12 top-6 sm:top-4 z-20 animate-float-slow transition-transform duration-300"
+            className="hero-3d-card absolute left-2 sm:left-12 top-6 sm:top-4 z-20 animate-float-slow transition-transform duration-300"
             style={{
               transform: `translate(${mousePos.x * -25}px, ${mousePos.y * -25}px) rotate(-2deg)`,
             }}
@@ -152,9 +210,9 @@ export const ElvoraHeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 2: Floating 3D Glowing Elvora Health Central Pin with Expanding Ripples */}
+          {/* Card 2: Floating 3D Glowing Central Pin with Expanding Ripples */}
           <div
-            className="absolute left-1/2 -translate-x-1/2 top-0 z-30 transition-transform duration-500"
+            className="hero-3d-card absolute left-1/2 -translate-x-1/2 top-0 z-30 transition-transform duration-500"
             style={{
               transform: `translate(-50%, 0) translate(${mousePos.x * 15}px, ${mousePos.y * 15}px)`,
             }}
@@ -165,8 +223,7 @@ export const ElvoraHeroSection: React.FC = () => {
               <div className="absolute w-28 h-28 rounded-full border-2 border-blue-400 animate-ripple-wave [animation-delay:0.8s] pointer-events-none" />
 
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-br from-[#008BFF] via-[#5FFFEC] to-[#0D34B4] p-1.5 shadow-2xl flex items-center justify-center animate-pulse-glow">
-                <div className="w-full h-full bg-white rounded-[22px] flex flex-col items-center justify-center shadow-inner group cursor-pointer">
-                  {/* Blue Starburst */}
+                <div className="w-full h-full bg-white rounded-[22px] flex flex-col items-center justify-center shadow-inner group cursor-pointer hover:scale-105 transition-transform">
                   <svg className="w-10 h-10 sm:w-12 sm:h-12 text-[#008BFF] group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                     <path d="M12 2v20M2 12h20M7 7l10 10M17 7 7 17" />
                   </svg>
@@ -176,9 +233,9 @@ export const ElvoraHeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 3: Medkarta Card (Exact from Screenshot 1 with Mouse Parallax) */}
+          {/* Card 3: Medkarta Card */}
           <div
-            className="absolute right-2 sm:right-28 top-8 sm:top-6 z-20 animate-float-delayed transition-transform duration-300"
+            className="hero-3d-card absolute right-2 sm:right-28 top-8 sm:top-6 z-20 animate-float-delayed transition-transform duration-300"
             style={{
               transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px) rotate(2deg)`,
             }}
@@ -218,9 +275,9 @@ export const ElvoraHeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 4: Retseptlar Card (Exact from Screenshot 1) */}
+          {/* Card 4: Retseptlar Card */}
           <div
-            className="absolute right-4 sm:right-6 bottom-0 z-10 animate-float-subtle transition-transform duration-300"
+            className="hero-3d-card absolute right-4 sm:right-6 bottom-0 z-10 animate-float-subtle transition-transform duration-300"
             style={{
               transform: `translate(${mousePos.x * 20}px, ${mousePos.y * 20}px)`,
             }}
@@ -245,9 +302,9 @@ export const ElvoraHeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 5: Smart Laboratoriya (LIS) - Bottom Left (fills large empty space) */}
+          {/* Card 5: Smart Laboratoriya (LIS) */}
           <div
-            className="absolute left-2 sm:left-10 bottom-0 z-10 animate-float-delayed transition-transform duration-300"
+            className="hero-3d-card absolute left-2 sm:left-10 bottom-0 z-10 animate-float-delayed transition-transform duration-300"
             style={{
               transform: `translate(${mousePos.x * -18}px, ${mousePos.y * 18}px) rotate(1.5deg)`,
             }}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -39,15 +39,76 @@ import { ElvoraSolutionsSection } from '../../components/public/ElvoraSolutionsS
 import { LiveBookingWidget } from '../../components/public/LiveBookingWidget';
 import { ElvoraAiAssistant } from '../../components/public/ElvoraAiAssistant';
 import { PublicFooter } from '../../components/public/PublicFooter';
+import { useGsapContext, gsap } from '../../lib/useGsapScroll';
 
 export const LandingPage: React.FC = () => {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [doctorCount, setDoctorCount] = useState<number>(6);
+  const pageContainerRef = useRef<HTMLDivElement>(null);
 
   // ROI calculations
   const estimatedNoShowSaved = doctorCount * 850000;
   const estimatedHoursSaved = doctorCount * 7;
+
+  useGsapContext(
+    pageContainerRef,
+    () => {
+      // Reveal section headings as they enter viewport
+      gsap.utils.toArray<HTMLElement>('.scroll-reveal-header').forEach((header) => {
+        gsap.from(header, {
+          scrollTrigger: {
+            trigger: header,
+            start: 'top 85%',
+          },
+          y: 35,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+        });
+      });
+
+      // Reveal ROI Calculator
+      gsap.from('.calculator-card-anim', {
+        scrollTrigger: {
+          trigger: '.calculator-card-anim',
+          start: 'top 85%',
+        },
+        y: 40,
+        opacity: 0,
+        scale: 0.98,
+        duration: 0.8,
+        ease: 'power2.out',
+      });
+
+      // Stagger pricing cards
+      gsap.from('.pricing-card-anim', {
+        scrollTrigger: {
+          trigger: '#pricing',
+          start: 'top 80%',
+        },
+        y: 45,
+        opacity: 0,
+        stagger: 0.14,
+        duration: 0.75,
+        ease: 'power2.out',
+      });
+
+      // Stagger FAQ items
+      gsap.from('.faq-item-anim', {
+        scrollTrigger: {
+          trigger: '#faq-section',
+          start: 'top 85%',
+        },
+        y: 30,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.6,
+        ease: 'power2.out',
+      });
+    },
+    []
+  );
 
   const pricingPlans = [
     {
@@ -125,23 +186,17 @@ export const LandingPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#132229] flex flex-col font-sans selection:bg-[#008BFF] selection:text-white relative">
-      {/* ============================================================== */}
-      {/* 0. STICKY FLOATING NAVBAR (Stays pinned when scrolled)         */}
-      {/* ============================================================== */}
+    <div ref={pageContainerRef} className="min-h-screen bg-white text-[#132229] flex flex-col font-sans selection:bg-[#008BFF] selection:text-white relative">
+      {/* 0. STICKY FLOATING NAVBAR */}
       <ElvoraFloatingNavbar />
 
-      {/* ============================================================== */}
-      {/* 1. HERO SECTION (Branded Elvora Health with 3D Parallax Tilt) */}
-      {/* ============================================================== */}
+      {/* 1. HERO SECTION */}
       <ElvoraHeroSection />
 
-      {/* ============================================================== */}
-      {/* 2. MAHSULOTLAR (3-in-1 Platform Suite: App, Tablet, TV Tablo)  */}
-      {/* ============================================================== */}
+      {/* 2. MAHSULOTLAR (3-in-1 Platform Suite: App, Tablet, TV Tablo) */}
       <section id="mahsulotlar" className="py-20 lg:py-24 bg-[#F8FBFE] border-b border-slate-200/80 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <div className="scroll-reveal-header text-center max-w-3xl mx-auto space-y-3 mb-12">
             <span className="text-xs font-black uppercase tracking-widest text-[#008BFF] bg-cyan-50 px-4 py-1.5 rounded-full border border-cyan-200">
               ELVORA HEALTH MAHSULOTLAR TO‘PLAMI
             </span>
@@ -160,27 +215,19 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============================================================== */}
-      {/* 3. "QANDAY MASALALARNI YECHAMIZ?" (Infinite Auto-Scrolling)    */}
-      {/* ============================================================== */}
+      {/* 3. "QANDAY MASALALARNI YECHAMIZ?" */}
       <ElvoraSolutionsSection />
 
-      {/* ============================================================== */}
-      {/* 4. "ELVORA HEALTH NIMA?" MIND-MAP NETWORK with Traveling Photons*/}
-      {/* ============================================================== */}
+      {/* 4. "ELVORA HEALTH NIMA?" MIND-MAP NETWORK */}
       <ElvoraMindMap />
 
-      {/* ============================================================== */}
-      {/* 5. BENTO GRID STATISTICS with Animated Count-Up Numbers         */}
-      {/* ============================================================== */}
+      {/* 5. BENTO GRID STATISTICS */}
       <ElvoraBentoStats />
 
-      {/* ============================================================== */}
-      {/* 6. INTERACTIVE LIVE E-TICKET BOOKING SIMULATOR                 */}
-      {/* ============================================================== */}
+      {/* 6. INTERACTIVE LIVE E-TICKET BOOKING SIMULATOR */}
       <section id="portal" className="py-20 bg-[#F4F9FC] border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
+          <div className="scroll-reveal-header text-center max-w-2xl mx-auto space-y-2 mb-12">
             <span className="text-xs font-black uppercase tracking-widest text-[#008BFF] bg-cyan-50 px-3.5 py-1 rounded-full border border-cyan-200">
               INTERAKTIV SINOV
             </span>
@@ -196,12 +243,10 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============================================================== */}
-      {/* 7. DONIYOR AI MEDICAL CHATBOT SIMULATOR                        */}
-      {/* ============================================================== */}
+      {/* 7. DONIYOR AI MEDICAL CHATBOT SIMULATOR */}
       <section id="doniyor-ai" className="py-20 bg-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <div className="scroll-reveal-header text-center max-w-3xl mx-auto space-y-3 mb-12">
             <span className="text-xs font-black uppercase tracking-widest text-[#008BFF] bg-cyan-50 px-4 py-1.5 rounded-full border border-cyan-200">
               SUN'IY INTELLEKT TIBBIY YORDAMCHISI
             </span>
@@ -217,12 +262,10 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============================================================== */}
-      {/* 7. ROI SAVINGS CALCULATOR FOR INVESTORS & CLINICS              */}
-      {/* ============================================================== */}
+      {/* 8. ROI SAVINGS CALCULATOR */}
       <section id="calculator" className="py-20 bg-[#F4F9FC] border-b border-slate-200/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl border-2 border-cyan-100 p-6 sm:p-10 shadow-2xl space-y-6">
+          <div className="calculator-card-anim bg-white rounded-3xl border-2 border-cyan-100 p-6 sm:p-10 shadow-2xl space-y-6">
             <div className="text-center space-y-2">
               <span className="text-xs font-black uppercase tracking-wider text-[#008BFF] bg-cyan-50 px-4 py-1 rounded-full border border-cyan-200">
                 KLINIKA DAROMADINI HISOBLANG
@@ -260,7 +303,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Results Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
-              <div className="p-4 rounded-2xl bg-cyan-50/70 border border-cyan-200 text-center">
+              <div className="p-4 rounded-2xl bg-cyan-50/70 border border-cyan-200 text-center hover:scale-[1.02] transition-transform">
                 <span className="text-xs font-semibold text-[#008BFF] block">
                   No-show kamayishi hisobiga oylik tejamkorlik:
                 </span>
@@ -272,7 +315,7 @@ export const LandingPage: React.FC = () => {
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white border border-slate-200 text-center shadow-xs">
+              <div className="p-4 rounded-2xl bg-white border border-slate-200 text-center shadow-xs hover:scale-[1.02] transition-transform">
                 <span className="text-xs font-semibold text-slate-600 block">
                   Registratura va shifokorlar tejalgan vaqti:
                 </span>
@@ -288,12 +331,10 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============================================================== */}
-      {/* 8. PRICING SECTION                                             */}
-      {/* ============================================================== */}
+      {/* 9. PRICING SECTION */}
       <section id="pricing" className="py-20 bg-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
+          <div className="scroll-reveal-header text-center max-w-2xl mx-auto space-y-3 mb-12">
             <span className="text-xs font-black uppercase tracking-widest text-[#008BFF] bg-cyan-50 px-4 py-1 rounded-full border border-cyan-200">
               SHAFFOF TARIFLAR
             </span>
@@ -332,10 +373,10 @@ export const LandingPage: React.FC = () => {
             {pricingPlans.map((plan) => (
               <div
                 key={plan.name}
-                className={`rounded-3xl p-7 flex flex-col justify-between transition-all relative ${
+                className={`pricing-card-anim rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 relative hover:-translate-y-1.5 ${
                   plan.popular
-                    ? 'bg-white border-2 border-[#008BFF] shadow-2xl ring-4 ring-[#008BFF]/5'
-                    : 'bg-slate-50/70 border border-slate-200 shadow-xs'
+                    ? 'bg-white border-2 border-[#008BFF] shadow-2xl ring-4 ring-[#008BFF]/5 hover:shadow-cyan-200/50'
+                    : 'bg-slate-50/70 border border-slate-200 shadow-xs hover:shadow-md hover:bg-white'
                 }`}
               >
                 {plan.popular && (
@@ -368,10 +409,10 @@ export const LandingPage: React.FC = () => {
                 <div className="pt-6">
                   <Link
                     to="/app/dashboard"
-                    className={`w-full py-3 rounded-2xl text-xs font-bold text-center flex items-center justify-center gap-1.5 transition-all shadow-sm ${
+                    className={`w-full py-3 rounded-2xl text-xs font-bold text-center flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95 cursor-pointer ${
                       plan.popular
-                        ? 'bg-[#008BFF] text-white hover:bg-[#0077DB]'
-                        : 'bg-white text-slate-900 border border-slate-200 hover:bg-slate-50'
+                        ? 'bg-[#008BFF] text-white hover:bg-[#0077DB] shadow-blue-500/20 hover:shadow-md'
+                        : 'bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 hover:border-cyan-200'
                     }`}
                   >
                     <span>{plan.cta}</span>
@@ -384,12 +425,10 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============================================================== */}
-      {/* 9. FAQ ACCORDION                                               */}
-      {/* ============================================================== */}
-      <section className="py-20 bg-[#F4F9FC]">
+      {/* 10. FAQ ACCORDION */}
+      <section id="faq-section" className="py-20 bg-[#F4F9FC]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
+          <div className="scroll-reveal-header text-center max-w-2xl mx-auto space-y-2 mb-12">
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
               Ko‘p Beriladigan Savollar
             </h2>
@@ -402,7 +441,7 @@ export const LandingPage: React.FC = () => {
             {faqs.map((faq, idx) => (
               <div
                 key={faq.q}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs"
+                className="faq-item-anim bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs hover:border-cyan-200 transition-colors"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
@@ -411,13 +450,13 @@ export const LandingPage: React.FC = () => {
                   <span>{faq.q}</span>
                   <ChevronDown
                     size={16}
-                    className={`text-[#008BFF] transition-transform ${
+                    className={`text-[#008BFF] transition-transform duration-200 ${
                       openFaq === idx ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                  <div className="px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3 animate-in fade-in duration-150">
                     {faq.a}
                   </div>
                 )}
@@ -427,9 +466,7 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ============================================================== */}
-      {/* 10. BIG INVESTOR CTA BANNER                                    */}
-      {/* ============================================================== */}
+      {/* 11. BIG INVESTOR CTA BANNER */}
       <section className="py-16 bg-gradient-to-r from-[#008BFF] via-[#00B4D8] to-[#0D34B4] text-white relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <span className="inline-block px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-white/20 backdrop-blur-md">
@@ -444,13 +481,13 @@ export const LandingPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
             <Link
               to="/app/dashboard"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white text-[#008BFF] text-sm font-black hover:bg-cyan-50 transition-all shadow-xl active:scale-98"
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white text-[#008BFF] text-sm font-black hover:bg-cyan-50 transition-all shadow-xl active:scale-95 hover:scale-[1.02]"
             >
               Klinika Namoyish Paneliga O‘tish →
             </Link>
             <Link
               to="/login"
-              className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white/15 text-white border border-white/30 text-sm font-bold hover:bg-white/25 transition-all"
+              className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white/15 text-white border border-white/30 text-sm font-bold hover:bg-white/25 transition-all active:scale-95"
             >
               Tizimga Kirish (Login)
             </Link>
@@ -463,3 +500,5 @@ export const LandingPage: React.FC = () => {
     </div>
   );
 };
+
+export default LandingPage;

@@ -10,6 +10,8 @@ import {
   TrendingUp,
 } from 'lucide-react';
 
+import { useGsapContext, gsap } from '../../lib/useGsapScroll';
+
 export const ElvoraBentoStats: React.FC = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [counts, setCounts] = useState({
@@ -24,6 +26,24 @@ export const ElvoraBentoStats: React.FC = () => {
   });
 
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  useGsapContext(
+    sectionRef,
+    () => {
+      gsap.from('.bento-stat-card', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+        },
+        y: 40,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.7,
+        ease: 'power2.out',
+      });
+    },
+    []
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,7 +127,7 @@ export const ElvoraBentoStats: React.FC = () => {
         {/* The 8 Bento Cards (Exact 1-to-1 structure from Screenshot 3 with extraordinary animations) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {/* Card 1: 7 mln - Laborator tekshiruvlar */}
-          <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card">
+          <div className="bento-stat-card p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card">
             <div className="flex items-start justify-between">
               {/* 3D Microscope illustration with gentle hover bounce */}
               <div className="w-16 h-16 rounded-2xl bg-cyan-50/80 border border-cyan-200/60 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xs">
@@ -128,7 +148,7 @@ export const ElvoraBentoStats: React.FC = () => {
           </div>
 
           {/* Card 2: 32 mln - Center Hero Stat (Large glowing cyan card from Screenshot 3) */}
-          <div className="p-6 rounded-3xl bg-gradient-to-br from-white via-cyan-50/80 to-blue-50/90 border-2 border-cyan-300 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between text-center relative overflow-hidden group sheen-card">
+          <div className="bento-stat-card p-6 rounded-3xl bg-gradient-to-br from-white via-cyan-50/80 to-blue-50/90 border-2 border-cyan-300 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between text-center relative overflow-hidden group sheen-card">
             {/* Pulsing ambient halo inside card */}
             <div className="absolute top-0 right-0 w-28 h-28 bg-[#008BFF]/15 rounded-full blur-2xl pointer-events-none group-hover:scale-150 transition-transform duration-700" />
 
@@ -150,7 +170,7 @@ export const ElvoraBentoStats: React.FC = () => {
           </div>
 
           {/* Card 3: 2592 - Poliklinika */}
-          <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card">
+          <div className="bento-stat-card p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card">
             <div className="flex items-start justify-between">
               {/* 3D Clinic icon */}
               <div className="w-16 h-16 rounded-2xl bg-cyan-50/80 border border-cyan-200/60 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 shadow-xs">
@@ -171,7 +191,7 @@ export const ElvoraBentoStats: React.FC = () => {
           </div>
 
           {/* Card 4: 808 - Dispanserlar, tug'ruqxonalar */}
-          <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card relative overflow-hidden">
+          <div className="bento-stat-card p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card relative overflow-hidden">
             {/* Live radar scan ripple */}
             <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full border border-cyan-300/40 animate-ping pointer-events-none" />
 
@@ -189,7 +209,7 @@ export const ElvoraBentoStats: React.FC = () => {
           </div>
 
           {/* Card 5: * 3848 - Tibbiyot muassasalarining qabul bo'limlari */}
-          <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group sheen-card">
+          <div className="bento-stat-card p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group sheen-card">
             {/* Wavy acoustic ripple lines background */}
             <div className="absolute inset-0 bg-[radial-gradient(#008BFF_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
             <div className="flex items-center gap-2">
@@ -207,7 +227,7 @@ export const ElvoraBentoStats: React.FC = () => {
           </div>
 
           {/* Card 6: 1424 - Dori vositalari va dorixonalar */}
-          <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card">
+          <div className="bento-stat-card p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card">
             <div className="flex items-start justify-between">
               <div className="text-3xl group-hover:scale-110 group-hover:rotate-12 transition-transform">
                 💊
@@ -227,7 +247,7 @@ export const ElvoraBentoStats: React.FC = () => {
           </div>
 
           {/* Card 7: 81 mln - Retseptlar va tahlillar */}
-          <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group sheen-card">
+          <div className="bento-stat-card p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group sheen-card">
             {/* Matrix grid lines */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#008BFF08_1px,transparent_1px),linear-gradient(to_bottom,#008BFF08_1px,transparent_1px)] bg-[size:14px_14px] pointer-events-none" />
             <div className="text-right">
@@ -244,7 +264,7 @@ export const ElvoraBentoStats: React.FC = () => {
           </div>
 
           {/* Card 8: 448 - Statsionar va koyka fondi */}
-          <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card">
+          <div className="bento-stat-card p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-cyan-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group sheen-card">
             <div className="flex items-start justify-between">
               {/* 3D Hospital Bed illustration */}
               <div className="w-16 h-16 rounded-2xl bg-cyan-50/80 border border-cyan-200/60 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xs">
