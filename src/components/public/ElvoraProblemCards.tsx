@@ -39,17 +39,23 @@ export const ElvoraProblemCards: React.FC = () => {
   useGsapContext(
     sectionRef,
     () => {
-      gsap.from('.problem-card-item', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-        },
-        y: 45,
-        opacity: 0,
-        stagger: 0.18,
-        duration: 0.8,
-        ease: 'power3.out',
-      });
+      gsap.fromTo(
+        '.problem-card-item',
+        { y: 30, opacity: 0.2 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.12,
+          duration: 0.6,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 95%',
+            once: true,
+          },
+        }
+      );
     },
     []
   );

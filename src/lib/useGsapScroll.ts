@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -31,10 +31,14 @@ export function useGsapContext(
 
     let ctx: gsap.Context | null = null;
     try {
-      // Pass scopeRef.current (the actual DOM HTMLElement), NOT the RefObject
       ctx = gsap.context(() => {
         animationFn(ctx!);
       }, scopeRef.current);
+
+      // Refresh ScrollTrigger after DOM has settled to ensure trigger points are exact
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
     } catch (e) {
       console.warn('GSAP animation initialization warning:', e);
     }
@@ -46,3 +50,5 @@ export function useGsapContext(
     };
   }, deps);
 }
+
+export default useGsapContext;

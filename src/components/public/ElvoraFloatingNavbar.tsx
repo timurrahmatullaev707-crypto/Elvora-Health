@@ -48,7 +48,7 @@ export const ElvoraFloatingNavbar: React.FC = () => {
 
   return (
     <header className="sticky top-3 z-50 w-full px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
-      <div ref={navRef} className="max-w-5xl mx-auto pointer-events-auto">
+      <div ref={navRef} className="max-w-6xl mx-auto pointer-events-auto">
         <div
           className={`rounded-2xl transition-all duration-300 flex items-center justify-between ${
             scrolled
@@ -79,7 +79,7 @@ export const ElvoraFloatingNavbar: React.FC = () => {
           </Link>
 
           {/* Middle Nav Links */}
-          <nav className="hidden md:flex items-center gap-6 text-xs font-bold text-slate-700">
+          <nav className="hidden lg:flex items-center gap-5 text-xs font-bold text-slate-700">
             <a
               href="#muammolar"
               className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
@@ -96,24 +96,45 @@ export const ElvoraFloatingNavbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <a
-              href="#mahsulotlar"
+              href="#kalkulyator"
               className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
-              <span>Mahsulotlar</span>
+              <span>Kalkulyator</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <a
-              href="#nima-bu"
+              href="#taqqoslash"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
+            >
+              <span>Taqqoslash</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
+            </a>
+            <a
+              href="#ekotizim"
               className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
               <span>Ekotizim</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <a
-              href="#portal"
+              href="#doniyor-ai-section"
               className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
-              <span>E-Navbat</span>
+              <span>Doniyor AI</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
+            </a>
+            <a
+              href="#investorlar"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
+            >
+              <span>Investorlar</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
+            </a>
+            <a
+              href="#tariflar"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
+            >
+              <span>Tariflar</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <Link
@@ -130,10 +151,10 @@ export const ElvoraFloatingNavbar: React.FC = () => {
           <div className="flex items-center gap-2">
             <a
               href="tel:+998712025000"
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 hover:border-cyan-200 transition-all shadow-2xs hover:shadow-xs active:scale-95"
+              className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 hover:border-cyan-200 transition-all shadow-2xs hover:shadow-xs active:scale-95"
             >
               <Phone size={13} className="text-[#008BFF]" />
-              <span className="hidden sm:inline">Call-markaz</span>
+              <span>Call-markaz</span>
             </a>
 
             <Link
@@ -145,9 +166,10 @@ export const ElvoraFloatingNavbar: React.FC = () => {
 
             {/* Mobile Hamburger Button */}
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none cursor-pointer"
-              aria-label="Toggle menu"
+              className="lg:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none cursor-pointer"
+              aria-label="Menyuni ochish"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -158,7 +180,7 @@ export const ElvoraFloatingNavbar: React.FC = () => {
         {mobileMenuOpen && (
           <div
             ref={mobileMenuRef}
-            className="md:hidden mt-2 p-4 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl space-y-3 text-sm font-bold text-slate-800"
+            className="lg:hidden mt-2 p-4 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl space-y-2 text-sm font-bold text-slate-800"
           >
             <a
               href="#muammolar"
@@ -176,25 +198,53 @@ export const ElvoraFloatingNavbar: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-pulse" />
             </a>
             <a
-              href="#mahsulotlar"
+              href="#kalkulyator"
               onClick={() => setMobileMenuOpen(false)}
               className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
-              Mahsulotlar
+              ROI Kalkulyatori
             </a>
             <a
-              href="#nima-bu"
+              href="#taqqoslash"
               onClick={() => setMobileMenuOpen(false)}
               className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
-              Ekotizim
+              Oldin va Keyin
             </a>
             <a
-              href="#portal"
+              href="#ekotizim"
               onClick={() => setMobileMenuOpen(false)}
               className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
-              E-Navbat
+              Yaxlit Ekotizim
+            </a>
+            <a
+              href="#doniyor-ai-section"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
+            >
+              Doniyor AI
+            </a>
+            <a
+              href="#investorlar"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
+            >
+              Investorlar Boʻlimi
+            </a>
+            <a
+              href="#tariflar"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
+            >
+              Shaffof Tariflar
+            </a>
+            <a
+              href="#demo-sorash"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
+            >
+              Demo Soʻrash
             </a>
             <Link
               to="/app/dashboard"
@@ -209,3 +259,5 @@ export const ElvoraFloatingNavbar: React.FC = () => {
     </header>
   );
 };
+
+export default ElvoraFloatingNavbar;
