@@ -79,19 +79,27 @@ export const ElvoraFloatingNavbar: React.FC = () => {
           </Link>
 
           {/* Middle Nav Links */}
-          <nav className="hidden md:flex items-center gap-7 text-xs font-bold text-slate-700">
+          <nav className="hidden md:flex items-center gap-6 text-xs font-bold text-slate-700">
+            <a
+              href="#muammolar"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
+            >
+              <span>Muammolar</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
+            </a>
+            <a
+              href="#live-demo"
+              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1 flex items-center gap-1.5"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#008BFF] animate-pulse" />
+              <span>Jonli Demo</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
+            </a>
             <a
               href="#mahsulotlar"
               className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
               <span>Mahsulotlar</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <a
-              href="#masalalar"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
-            >
-              <span>Yechimlar</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <a
@@ -110,9 +118,10 @@ export const ElvoraFloatingNavbar: React.FC = () => {
             </a>
             <Link
               to="/app/dashboard"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
+              className="text-[#008BFF] hover:text-[#0D34B4] transition-colors cursor-pointer relative group py-1 font-black flex items-center gap-1"
             >
-              <span>Klinika Boshqaruvi</span>
+              <span>Klinika (/app)</span>
+              <span className="text-[10px]">→</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </Link>
           </nav>
@@ -152,18 +161,26 @@ export const ElvoraFloatingNavbar: React.FC = () => {
             className="md:hidden mt-2 p-4 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl space-y-3 text-sm font-bold text-slate-800"
           >
             <a
+              href="#muammolar"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
+            >
+              Muammolar
+            </a>
+            <a
+              href="#live-demo"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors flex items-center justify-between"
+            >
+              <span>Jonli Demo</span>
+              <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-pulse" />
+            </a>
+            <a
               href="#mahsulotlar"
               onClick={() => setMobileMenuOpen(false)}
               className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
               Mahsulotlar
-            </a>
-            <a
-              href="#masalalar"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
-            >
-              Yechimlar (Masalalar)
             </a>
             <a
               href="#nima-bu"
@@ -182,9 +199,9 @@ export const ElvoraFloatingNavbar: React.FC = () => {
             <Link
               to="/app/dashboard"
               onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
+              className="block p-2 rounded-xl bg-cyan-50 text-[#008BFF] font-black hover:bg-cyan-100 transition-colors"
             >
-              Klinika Boshqaruvi
+              Klinika Boshqaruvi (/app) →
             </Link>
           </div>
         )}

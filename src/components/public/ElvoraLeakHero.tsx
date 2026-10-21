@@ -17,7 +17,7 @@ import {
   DollarSign,
   ChevronDown
 } from 'lucide-react';
-import { useGsapContext, gsap } from '../../lib/useGsapScroll';
+import { useGsapContext, gsap, ScrollTrigger } from '../../lib/useGsapScroll';
 
 export const ElvoraLeakHero: React.FC = () => {
   const [isSealed, setIsSealed] = useState(false);
@@ -227,6 +227,15 @@ export const ElvoraLeakHero: React.FC = () => {
           },
           '-=0.3'
         );
+
+      // Scroll-driven signature moment: Scrolling down automatically seals the leak
+      ScrollTrigger.create({
+        trigger: '.hero-interactive-stage',
+        start: 'center center',
+        onEnter: () => {
+          setIsSealed(true);
+        },
+      });
     },
     []
   );

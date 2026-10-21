@@ -31,11 +31,12 @@ import {
   Building,
 } from 'lucide-react';
 import { ElvoraFloatingNavbar } from '../../components/public/ElvoraFloatingNavbar';
-import { ElvoraHeroSection } from '../../components/public/ElvoraHeroSection';
+import { ElvoraLeakHero } from '../../components/public/ElvoraLeakHero';
+import { ElvoraProblemCards } from '../../components/public/ElvoraProblemCards';
+import { ElvoraLiveDemoSection } from '../../components/public/ElvoraLiveDemoSection';
 import { HeroProductPreview } from '../../components/public/HeroProductPreview';
 import { ElvoraMindMap } from '../../components/public/ElvoraMindMap';
 import { ElvoraBentoStats } from '../../components/public/ElvoraBentoStats';
-import { ElvoraSolutionsSection } from '../../components/public/ElvoraSolutionsSection';
 import { LiveBookingWidget } from '../../components/public/LiveBookingWidget';
 import { ElvoraAiAssistant } from '../../components/public/ElvoraAiAssistant';
 import { PublicFooter } from '../../components/public/PublicFooter';
@@ -190,10 +191,16 @@ export const LandingPage: React.FC = () => {
       {/* 0. STICKY FLOATING NAVBAR */}
       <ElvoraFloatingNavbar />
 
-      {/* 1. HERO SECTION */}
-      <ElvoraHeroSection />
+      {/* 1. HERO – "Pul oqib ketmoqda" moment (LEAK & SEAL SIGNATURE WOW MOMENT) */}
+      <ElvoraLeakHero />
 
-      {/* 2. MAHSULOTLAR (3-in-1 Platform Suite: App, Tablet, TV Tablo) */}
+      {/* 2. THE PROBLEM IN 3 CARDS (No-show, Bo'sh slotlar, Ko'rinmas hisob-kitob) */}
+      <ElvoraProblemCards />
+
+      {/* 3. LIVE INTERACTIVE DEMO (The "I Need This" Section) */}
+      <ElvoraLiveDemoSection />
+
+      {/* 4. MAHSULOTLAR (3-in-1 Platform Suite: App, Tablet, TV Tablo) */}
       <section id="mahsulotlar" className="py-20 lg:py-24 bg-[#F8FBFE] border-b border-slate-200/80 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="scroll-reveal-header text-center max-w-3xl mx-auto space-y-3 mb-12">
@@ -215,13 +222,10 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. "QANDAY MASALALARNI YECHAMIZ?" */}
-      <ElvoraSolutionsSection />
-
-      {/* 4. "ELVORA HEALTH NIMA?" MIND-MAP NETWORK */}
+      {/* 5. "ELVORA HEALTH NIMA?" MIND-MAP NETWORK */}
       <ElvoraMindMap />
 
-      {/* 5. BENTO GRID STATISTICS */}
+      {/* 6. BENTO GRID STATISTICS */}
       <ElvoraBentoStats />
 
       {/* 6. INTERACTIVE LIVE E-TICKET BOOKING SIMULATOR */}
