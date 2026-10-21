@@ -32,19 +32,19 @@ export const PublicFooter: React.FC = () => {
             </div>
 
             <p className="text-sm text-[#94A3B8] max-w-sm leading-relaxed">
-              O'zbekistondagi xususiy va davlat klinikalari uchun mo'ljallangan yagona aqlli boshqaruv SaaS platformasi. Bemorlar, shifokorlar jadvali, kassa va tahliliy xulosalar bir ekotizimda.
+              Oʻzbekistondagi xususiy klinikalar va tibbiy markazlar uchun moʻljallangan yagona aqlli boshqaruv SaaS platformasi. Bemorlar, shifokorlar jadvali, kassa va tahliliy xulosalar bir ekotizimda.
             </p>
 
             <div className="pt-2 text-xs text-[#94A3B8] flex items-center gap-2">
               <ShieldCheck size={16} className="text-[#008BFF]" />
-              <span>Mahalliy qonunchilik va tibbiy maxfiylik talablariga to'liq mos</span>
+              <span>Mahalliy qonunchilik va tibbiy maxfiylik talablariga toʻliq mos</span>
             </div>
           </div>
 
           {/* Column 1: Mahsulot */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Mahsulotlar
+              Boshqaruv Tizimi
             </h4>
             <ul className="space-y-2 text-sm text-[#94A3B8]">
               <li>
@@ -75,36 +75,47 @@ export const PublicFooter: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 2: Imzo imkoniyatlar */}
+          {/* Column 2: Innovatsiyalar */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Innovatsiyalar
+              Lending Boʻlimlari
             </h4>
             <ul className="space-y-2 text-sm text-[#94A3B8]">
               <li>
-                <Link to="/app/insights" className="hover:text-white transition-colors flex items-center gap-1">
-                  <Sparkles size={13} className="text-[#008BFF]" /> Elvora Insights™
+                <a href="#muammolar" className="hover:text-white transition-colors">
+                  Muammolar tahlili
+                </a>
+              </li>
+              <li>
+                <a href="#live-demo" className="hover:text-white transition-colors">
+                  Jonli interaktiv demo
+                </a>
+              </li>
+              <li>
+                <a href="#kalkulyator" className="hover:text-white transition-colors">
+                  ROI Kalkulyatori
+                </a>
+              </li>
+              <li>
+                <a href="#tariflar" className="hover:text-white transition-colors">
+                  Shaffof tariflar
+                </a>
+              </li>
+              <li>
+                <a href="#demo-sorash" className="hover:text-white transition-colors">
+                  Bepul demo soʻrash
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/pitch"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-cyan-300 font-bold"
+                >
+                  <span>Investor Pitch Deck</span>
+                  <span className="text-[10px] bg-cyan-500/20 text-cyan-200 px-1.5 py-0.2 rounded border border-cyan-400/40">
+                    3:00
+                  </span>
                 </Link>
-              </li>
-              <li>
-                <a href="#doniyor-ai" className="hover:text-white transition-colors">
-                  Doniyor AI Yordamchisi
-                </a>
-              </li>
-              <li>
-                <a href="#portal" className="hover:text-white transition-colors">
-                  Jonli kutish navbati tablosi
-                </a>
-              </li>
-              <li>
-                <a href="#masalalar" className="hover:text-white transition-colors">
-                  Klinika modullari
-                </a>
-              </li>
-              <li>
-                <a href="#pricing" className="hover:text-white transition-colors">
-                  Tariflar va rejalar
-                </a>
               </li>
             </ul>
           </div>
@@ -116,21 +127,25 @@ export const PublicFooter: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-sm text-[#94A3B8]">
               <li>
-                <span className="block text-white font-medium">Toshkent, O'zbekiston</span>
+                <span className="block text-white font-medium">Toshkent, Oʻzbekiston</span>
               </li>
               <li>
-                <span className="block text-xs">+998 (71) 202-50-00</span>
+                <a href="tel:+998712025000" className="block text-xs hover:text-white transition-colors">
+                  +998 (71) 202-50-00
+                </a>
               </li>
               <li>
-                <span className="block text-xs">info@elvorahealth.uz</span>
+                <a href="mailto:info@elvorahealth.uz" className="block text-xs hover:text-white transition-colors">
+                  info@elvorahealth.uz
+                </a>
               </li>
               <li className="pt-2">
-                <Link
-                  to="/app/dashboard"
+                <a
+                  href="#demo-sorash"
                   className="inline-flex items-center gap-1.5 text-xs text-[#008BFF] hover:underline font-semibold"
                 >
-                  Demoni ishga tushirish <ArrowRight size={13} />
-                </Link>
+                  Demoni soʻrash <ArrowRight size={13} />
+                </a>
               </li>
             </ul>
           </div>
@@ -147,3 +162,5 @@ export const PublicFooter: React.FC = () => {
     </footer>
   );
 };
+
+export default PublicFooter;

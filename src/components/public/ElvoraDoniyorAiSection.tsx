@@ -205,10 +205,11 @@ export const ElvoraDoniyorAiSection: React.FC = () => {
 
   return (
     <section
-      id="doniyor-ai-section"
+      id="doniyor-ai"
       ref={sectionRef}
       className="py-20 lg:py-28 bg-[#F8FBFE] border-b border-slate-200/80 relative overflow-hidden"
     >
+      <span id="doniyor-ai-section" className="absolute -top-20" />
       {/* Ambient background light */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[750px] h-[400px] bg-gradient-to-r from-cyan-100/40 via-blue-100/30 to-transparent blur-3xl pointer-events-none rounded-full" />
 

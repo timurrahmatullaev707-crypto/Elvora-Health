@@ -79,7 +79,7 @@ export const ElvoraFloatingNavbar: React.FC = () => {
           </Link>
 
           {/* Middle Nav Links */}
-          <nav className="hidden lg:flex items-center gap-5 text-xs font-bold text-slate-700">
+          <nav className="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-700">
             <a
               href="#muammolar"
               className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
@@ -103,47 +103,25 @@ export const ElvoraFloatingNavbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
             <a
-              href="#taqqoslash"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
-            >
-              <span>Taqqoslash</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <a
-              href="#ekotizim"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
-            >
-              <span>Ekotizim</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <a
-              href="#doniyor-ai-section"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
-            >
-              <span>Doniyor AI</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <a
-              href="#investorlar"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
-            >
-              <span>Investorlar</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <a
               href="#tariflar"
               className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
             >
               <span>Tariflar</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </a>
+            <a
+              href="#demo-sorash"
+              className="text-[#008BFF] hover:text-[#0D34B4] transition-colors cursor-pointer relative group py-1 flex items-center gap-1 font-extrabold"
+            >
+              <span>Demo Soʻrash</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
+            </a>
             <Link
               to="/app/dashboard"
-              className="text-[#008BFF] hover:text-[#0D34B4] transition-colors cursor-pointer relative group py-1 font-black flex items-center gap-1"
+              className="text-slate-800 hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1 font-bold flex items-center gap-1 bg-slate-100 hover:bg-cyan-50 px-3 py-1 rounded-lg border border-slate-200"
             >
               <span>Klinika (/app)</span>
               <span className="text-[10px]">→</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
             </Link>
           </nav>
 
@@ -203,34 +181,6 @@ export const ElvoraFloatingNavbar: React.FC = () => {
               className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
             >
               ROI Kalkulyatori
-            </a>
-            <a
-              href="#taqqoslash"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
-            >
-              Oldin va Keyin
-            </a>
-            <a
-              href="#ekotizim"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
-            >
-              Yaxlit Ekotizim
-            </a>
-            <a
-              href="#doniyor-ai-section"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
-            >
-              Doniyor AI
-            </a>
-            <a
-              href="#investorlar"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
-            >
-              Investorlar Boʻlimi
             </a>
             <a
               href="#tariflar"

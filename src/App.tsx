@@ -4,6 +4,7 @@ import { AppProvider } from './context/AppContext';
 import { Layout } from './components/layout/Layout';
 import { LandingPage } from './pages/public/LandingPage';
 import { LoginPage } from './pages/public/LoginPage';
+import { PitchDeckPage } from './pages/public/PitchDeckPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { PatientsPage } from './pages/PatientsPage';
 import { AppointmentsPage } from './pages/AppointmentsPage';
@@ -22,6 +23,9 @@ export function App() {
         <Routes>
           {/* Public Landing Page */}
           <Route path="/" element={<LandingPage />} />
+
+          {/* Investor Pitch Deck (3-Minute Presentation) */}
+          <Route path="/pitch" element={<PitchDeckPage />} />
 
           {/* Authentication Page */}
           <Route path="/login" element={<LoginPage />} />

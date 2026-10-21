@@ -209,7 +209,19 @@ export const ElvoraEcosystemHub: React.FC = () => {
     []
   );
 
-  const radius = 175; // orbit radius in px
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(typeof window !== 'undefined' && window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const radius = isMobile ? 108 : 175; // responsive orbit radius in px
+  const coreRadius = isMobile ? 42 : 65;
 
   return (
     <section
@@ -264,17 +276,17 @@ export const ElvoraEcosystemHub: React.FC = () => {
         <div className="ecosystem-diagram-box grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left: Interactive Circular Orbit (7 cols) */}
-          <div className="lg:col-span-7 relative flex items-center justify-center min-h-[440px] sm:min-h-[500px]">
+          <div className="lg:col-span-7 relative flex items-center justify-center min-h-[350px] sm:min-h-[500px] overflow-hidden sm:overflow-visible">
             
             {/* Outer Orbit Ring */}
-            <div className="absolute w-[350px] h-[350px] sm:w-[440px] sm:h-[440px] rounded-full border border-cyan-500/20 animate-pulse pointer-events-none" />
+            <div className="absolute w-[230px] h-[230px] sm:w-[440px] sm:h-[440px] rounded-full border border-cyan-500/20 animate-pulse pointer-events-none" />
             
             {/* Inner Secondary Ring */}
-            <div className="absolute w-[240px] h-[240px] sm:w-[310px] sm:h-[310px] rounded-full border border-blue-400/20 border-dashed animate-spin [animation-duration:60s] pointer-events-none" />
+            <div className="absolute w-[160px] h-[160px] sm:w-[310px] sm:h-[310px] rounded-full border border-blue-400/20 border-dashed animate-spin [animation-duration:60s] pointer-events-none" />
 
             {/* SVG Data Flow Lines connecting each node to core */}
             <svg
-              viewBox="-240 -240 480 480"
+              viewBox={isMobile ? "-170 -170 340 340" : "-240 -240 480 480"}
               className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
             >
               <defs>
@@ -294,8 +306,8 @@ export const ElvoraEcosystemHub: React.FC = () => {
                 const rad = (node.angle * Math.PI) / 180;
                 const x = Math.cos(rad) * radius;
                 const y = Math.sin(rad) * radius;
-                const coreX = Math.cos(rad) * 65;
-                const coreY = Math.sin(rad) * 65;
+                const coreX = Math.cos(rad) * coreRadius;
+                const coreY = Math.sin(rad) * coreRadius;
 
                 return (
                   <g key={`line-${node.id}`}>
@@ -314,7 +326,7 @@ export const ElvoraEcosystemHub: React.FC = () => {
                     {/* Animated Data Packets (flowing particles) on active node */}
                     {isSelected && (
                       <>
-                        <circle r="4.5" fill="#00D4FF" filter="url(#cyanGlow)">
+                        <circle r={isMobile ? 3.5 : 4.5} fill="#00D4FF" filter="url(#cyanGlow)">
                           <animate
                             attributeName="cx"
                             from={coreX}
@@ -330,7 +342,7 @@ export const ElvoraEcosystemHub: React.FC = () => {
                             repeatCount="indefinite"
                           />
                         </circle>
-                        <circle r="3" fill="#FFFFFF" opacity="0.9">
+                        <circle r={isMobile ? 2.5 : 3} fill="#FFFFFF" opacity="0.9">
                           <animate
                             attributeName="cx"
                             from={x}
@@ -354,17 +366,17 @@ export const ElvoraEcosystemHub: React.FC = () => {
             </svg>
 
             {/* Central Core: Elvora Health Central MIS */}
-            <div className="relative z-20 w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-[#008BFF] via-[#0D34B4] to-[#071328] border-3 border-cyan-400 shadow-2xl shadow-cyan-500/40 flex flex-col items-center justify-center text-center p-3 group transition-transform duration-300 hover:scale-105">
-              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-1 text-cyan-200">
-                <Database size={20} className="animate-pulse" />
+            <div className="relative z-20 w-24 h-24 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-[#008BFF] via-[#0D34B4] to-[#071328] border-2 sm:border-3 border-cyan-400 shadow-2xl shadow-cyan-500/40 flex flex-col items-center justify-center text-center p-2 sm:p-3 group transition-transform duration-300 hover:scale-105">
+              <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-0.5 sm:mb-1 text-cyan-200">
+                <Database className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
               </div>
-              <span className="text-[11px] font-black uppercase tracking-wider text-cyan-300 leading-tight">
+              <span className="text-[9px] sm:text-[11px] font-black uppercase tracking-wider text-cyan-300 leading-tight">
                 ELVORA CORE
               </span>
-              <span className="text-[9px] text-white/80 font-bold mt-0.5">
+              <span className="text-[8px] sm:text-[9px] text-white/80 font-bold mt-0.5">
                 Markaziy Yadro
               </span>
-              <span className="text-[8px] text-emerald-300 font-semibold mt-1 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-400/30">
+              <span className="text-[7px] sm:text-[8px] text-emerald-300 font-semibold mt-0.5 sm:mt-1 bg-emerald-500/20 px-1.5 sm:px-2 py-0.5 rounded-full border border-emerald-400/30">
                 ● Jonli Sinxron
               </span>
             </div>
@@ -394,35 +406,37 @@ export const ElvoraEcosystemHub: React.FC = () => {
                       setActiveNodeId(node.id);
                     }}
                     className={`group relative flex flex-col items-center justify-center cursor-pointer transition-all duration-300 ${
-                      isSelected ? 'scale-125 z-30' : 'hover:scale-110 opacity-80 hover:opacity-100'
+                      isSelected ? 'scale-115 sm:scale-125 z-30' : 'hover:scale-110 opacity-85 hover:opacity-100'
                     }`}
                   >
                     {/* Node circle */}
                     <div
-                      className={`w-13 h-13 sm:w-15 sm:h-15 rounded-2xl bg-gradient-to-br ${node.color} flex items-center justify-center shadow-xl transition-all duration-300 ${
+                      className={`w-10 h-10 sm:w-15 sm:h-15 rounded-xl sm:rounded-2xl bg-gradient-to-br ${node.color} flex items-center justify-center shadow-xl transition-all duration-300 ${
                         isSelected
-                          ? 'ring-4 ring-cyan-300 shadow-cyan-400/60 scale-110'
+                          ? 'ring-3 sm:ring-4 ring-cyan-300 shadow-cyan-400/60 scale-110'
                           : 'border border-white/30'
                       }`}
                     >
-                      {node.icon}
+                      <div className="scale-75 sm:scale-100">
+                        {node.icon}
+                      </div>
                     </div>
 
                     {/* Node Text Label */}
                     <span
-                      className={`text-[10px] sm:text-xs font-black mt-1.5 whitespace-nowrap px-2 py-0.5 rounded-md transition-colors ${
+                      className={`text-[8px] sm:text-xs font-black mt-1 whitespace-nowrap px-1.5 sm:px-2 py-0.5 rounded-md transition-colors max-w-[75px] sm:max-w-none truncate ${
                         isSelected
                           ? 'bg-cyan-400 text-slate-900 shadow-md font-extrabold'
                           : 'bg-black/60 text-slate-300 group-hover:text-white'
                       }`}
                     >
-                      {node.name}
+                      {node.shortTag}
                     </span>
                   </button>
 
                   {/* Pulsing indicator if active */}
                   {isSelected && (
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full border-2 border-cyan-400 animate-ping pointer-events-none" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-20 sm:h-20 rounded-full border-2 border-cyan-400 animate-ping pointer-events-none" />
                   )}
                 </div>
               );
@@ -430,7 +444,7 @@ export const ElvoraEcosystemHub: React.FC = () => {
           </div>
 
           {/* Right: Active Node Detail Showcase Card (5 cols) */}
-          <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/15 shadow-2xl space-y-6 relative overflow-hidden">
+          <div className="lg:col-span-5 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/5 backdrop-blur-xl border border-white/15 shadow-2xl space-y-6 relative overflow-hidden">
             {/* Top ambient glow */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#008BFF]/30 to-transparent rounded-full blur-2xl pointer-events-none" />
 

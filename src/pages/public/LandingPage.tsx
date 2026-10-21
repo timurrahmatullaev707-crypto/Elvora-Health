@@ -4,10 +4,6 @@ import { ElvoraLeakHero } from '../../components/public/ElvoraLeakHero';
 import { ElvoraProblemCards } from '../../components/public/ElvoraProblemCards';
 import { ElvoraLiveDemoSection } from '../../components/public/ElvoraLiveDemoSection';
 import { ElvoraRoiCalculator } from '../../components/public/ElvoraRoiCalculator';
-import { ElvoraBeforeAfter } from '../../components/public/ElvoraBeforeAfter';
-import { ElvoraEcosystemHub } from '../../components/public/ElvoraEcosystemHub';
-import { ElvoraDoniyorAiSection } from '../../components/public/ElvoraDoniyorAiSection';
-import { ElvoraInvestorSection } from '../../components/public/ElvoraInvestorSection';
 import { ElvoraPricingFaqSection } from '../../components/public/ElvoraPricingFaqSection';
 import { PublicFooter } from '../../components/public/PublicFooter';
 import { ElvoraCookieBanner } from '../../components/public/ElvoraCookieBanner';
@@ -59,22 +55,10 @@ export const LandingPage: React.FC = () => {
       {/* 3. LIVE INTERACTIVE DEMO (The "I Need This" Section) */}
       <ElvoraLiveDemoSection />
 
-      {/* 4. ROI CALCULATOR (Upgrade: 4 sliders, animated count-up, self-drawing SVG curve chart, collapsible formula) */}
+      {/* 4. ROI CALCULATOR (4 sliders, animated count-up, self-drawing SVG curve chart) */}
       <ElvoraRoiCalculator />
 
-      {/* 5. BEFORE / AFTER SPLIT-SCREEN (Draggable divider: paper/Excel chaos vs Elvora live clean) */}
-      <ElvoraBeforeAfter />
-
-      {/* 6. ECOSYSTEM HUB (Interactive orbit with animated SVG data-flow lines & one-line benefit) */}
-      <ElvoraEcosystemHub />
-
-      {/* 7. DONIYOR AI (Medical triage chatbot simulator with typing animation & prominent disclaimer) */}
-      <ElvoraDoniyorAiSection />
-
-      {/* 8. INVESTOR SECTION (Muammo -> Yechim -> Bozor -> Biznes model -> Yo'l xaritasi -> Jamoa -> CTA) */}
-      <ElvoraInvestorSection />
-
-      {/* 9. PRICING + WORKING DEMO REQUEST FORM + FAQ + FINAL CTA */}
+      {/* 5. PRICING + WORKING DEMO REQUEST FORM + FAQ + FINAL CTA */}
       <ElvoraPricingFaqSection />
 
       {/* PUBLIC FOOTER */}
