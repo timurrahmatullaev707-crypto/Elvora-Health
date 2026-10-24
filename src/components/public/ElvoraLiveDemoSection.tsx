@@ -1,25 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Activity,
   Send,
   CheckCircle2,
-  AlertTriangle,
   RotateCcw,
   Sparkles,
   ArrowRight,
-  TrendingUp,
-  UserCheck,
-  Calendar,
-  Clock,
-  DollarSign,
-  Zap,
   ShieldCheck,
   Bot,
-  MessageSquare,
   Check
 } from 'lucide-react';
-import { useGsapContext, gsap } from '../../lib/useGsapScroll';
 
 interface SlotData {
   id: string;
@@ -50,7 +40,9 @@ export const ElvoraLiveDemoSection: React.FC = () => {
   // Typewriter effect
   useEffect(() => {
     let index = 0;
-    setTypedText('');
+    const initialTimeout = setTimeout(() => {
+      setTypedText('');
+    }, 0);
     const timer = setInterval(() => {
       if (index < fullInsightText.length) {
         setTypedText(fullInsightText.slice(0, index + 1));
@@ -59,7 +51,10 @@ export const ElvoraLiveDemoSection: React.FC = () => {
         clearInterval(timer);
       }
     }, 20);
-    return () => clearInterval(timer);
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(timer);
+    };
   }, [hasSent]);
 
   // Slots initial data

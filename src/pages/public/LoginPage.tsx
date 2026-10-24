@@ -4,10 +4,8 @@ import {
   Eye,
   EyeOff,
   ArrowRight,
-  ShieldCheck,
   Lock,
   Mail,
-  UserCheck,
   Sparkles,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';

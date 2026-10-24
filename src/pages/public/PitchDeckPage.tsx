@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   ChevronRight,
   ChevronLeft,
   Play,
   Pause,
-  Clock,
   Maximize,
   Minimize,
   FileText,
@@ -15,21 +14,16 @@ import {
   Target,
   DollarSign,
   Users,
-  QrCode,
   Building,
   ShieldCheck,
-  Layers,
-  ArrowRight,
   RefreshCw,
   Phone,
   Mail,
   Info,
   Sparkles,
   ExternalLink,
-  PieChart,
   Bot,
   Activity,
-  Award,
   Zap,
 } from 'lucide-react';
 
@@ -170,6 +164,16 @@ export const PitchDeckPage: React.FC = () => {
     }
   };
 
+  const toggleFullscreen = useCallback(() => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen().catch(() => {});
+      setIsFullscreen(false);
+    }
+  }, []);
+
   // Keyboard controls
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -207,7 +211,7 @@ export const PitchDeckPage: React.FC = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide, totalSlides]);
+  }, [nextSlide, prevSlide, totalSlides, toggleFullscreen]);
 
   // Touch Swipe for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -268,16 +272,6 @@ export const PitchDeckPage: React.FC = () => {
     }, 450);
     return () => clearInterval(interval);
   }, [currentSlide]);
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
-      setIsFullscreen(true);
-    } else {
-      document.exitFullscreen().catch(() => {});
-      setIsFullscreen(false);
-    }
-  };
 
   const resetTimer = () => {
     setTimerSeconds(180);

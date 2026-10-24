@@ -15,11 +15,15 @@ import { ReportsPage } from './pages/ReportsPage';
 import { StaffPage } from './pages/StaffPage';
 import { SubscriptionPage } from './pages/SubscriptionPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { ElvoraAiAssistant } from './components/ai/ElvoraAiAssistant';
 
 export function App() {
   return (
     <AppProvider>
       <BrowserRouter>
+        {/* Global Elvora AI Smart Medical Assistant */}
+        <ElvoraAiAssistant />
+
         <Routes>
           {/* Public Landing Page */}
           <Route path="/" element={<LandingPage />} />
