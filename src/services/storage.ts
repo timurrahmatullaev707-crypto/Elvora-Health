@@ -46,7 +46,8 @@ class StorageService {
     if (!localStorage.getItem(STORAGE_KEYS.PATIENTS)) {
       this.setPatients(initialPatients);
     }
-    if (!localStorage.getItem(STORAGE_KEYS.DOCTORS)) {
+    const existingDocs = this.getDoctors();
+    if (!localStorage.getItem(STORAGE_KEYS.DOCTORS) || existingDocs.length < initialDoctors.length) {
       this.setDoctors(initialDoctors);
     }
     if (!localStorage.getItem(STORAGE_KEYS.APPOINTMENTS)) {

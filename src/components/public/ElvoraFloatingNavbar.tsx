@@ -1,208 +1,211 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Sparkles, Menu, X, ArrowRight, Shield } from 'lucide-react';
+import {
+  Sparkles,
+  Menu,
+  X,
+  ArrowRight,
+  ShieldCheck,
+  Bot,
+  Activity,
+  Layers,
+  Calendar,
+  Presentation,
+} from 'lucide-react';
 import { gsap } from '../../lib/useGsapScroll';
 
 export const ElvoraFloatingNavbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 25);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // GSAP Entrance animation
   useEffect(() => {
     if (!navRef.current) return;
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (prefersReducedMotion) return;
-
     gsap.fromTo(
       navRef.current,
       { y: -30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.1 }
+      { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }
     );
   }, []);
 
-  // Mobile menu open/close animation
-  useEffect(() => {
-    if (!mobileMenuRef.current) return;
-    if (mobileMenuOpen) {
-      gsap.fromTo(
-        mobileMenuRef.current,
-        { y: -10, opacity: 0, scale: 0.98 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out' }
-      );
-    }
-  }, [mobileMenuOpen]);
-
   return (
-    <header className="sticky top-3 z-50 w-full px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
-      <div ref={navRef} className="max-w-6xl mx-auto pointer-events-auto">
+    <header className="fixed top-4 inset-x-0 z-50 px-4 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300">
+      <div ref={navRef} className="max-w-7xl mx-auto pointer-events-auto">
         <div
-          className={`rounded-2xl transition-all duration-300 flex items-center justify-between ${
+          className={`rounded-2xl transition-all duration-300 flex items-center justify-between border ${
             scrolled
-              ? 'bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl py-2.5 px-5'
-              : 'bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-md py-3 px-6'
+              ? 'bg-white/95 backdrop-blur-xl border-[#E2E8F0] shadow-xl py-2.5 px-5'
+              : 'bg-white/85 backdrop-blur-md border-[#E2E8F0]/80 shadow-md py-3 px-6'
           }`}
         >
-          {/* ELVORA HEALTH Logo */}
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#008BFF] via-[#00B4D8] to-[#0D34B4] flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0284C7] via-[#0D9488] to-[#0F172A] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8">
                 <path d="M12 2v20M2 12h20M7 7l10 10M17 7 7 17" />
               </svg>
             </div>
             <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl font-black tracking-tight text-[#008BFF] leading-none">
+              <div className="flex items-center gap-1.5 leading-none">
+                <span className="text-lg font-black tracking-tight text-[#0F172A]">
                   ELVORA
                 </span>
-                <span className="text-xs font-black uppercase tracking-wider text-slate-800">
+                <span className="text-xs font-black uppercase tracking-wider text-[#0284C7]">
                   HEALTH
                 </span>
               </div>
-              <span className="text-[9px] text-slate-400 font-bold tracking-wider uppercase mt-0.5">
-                Digital Healthcare Platform
+              <span className="text-[9px] text-[#64748B] font-semibold tracking-wider uppercase mt-1">
+                Intelligent Medical OS
               </span>
             </div>
           </Link>
 
-          {/* Middle Nav Links */}
-          <nav className="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-700">
-            <a
-              href="#muammolar"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
-            >
-              <span>Muammolar</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold text-[#475569]">
+            <a href="#texnologiya" className="hover:text-[#0284C7] transition-colors">
+              Texnologiya
             </a>
-            <a
-              href="#live-demo"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1 flex items-center gap-1.5"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#008BFF] animate-pulse" />
-              <span>Jonli Demo</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <a
-              href="#kalkulyator"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
-            >
-              <span>Kalkulyator</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <a
-              href="#tariflar"
-              className="hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1"
-            >
-              <span>Tariflar</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <a
-              href="#demo-sorash"
-              className="text-[#008BFF] hover:text-[#0D34B4] transition-colors cursor-pointer relative group py-1 flex items-center gap-1 font-extrabold"
-            >
-              <span>Demo Soʻrash</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#008BFF] transition-all duration-200 group-hover:w-full rounded-full" />
-            </a>
-            <Link
-              to="/app/dashboard"
-              className="text-slate-800 hover:text-[#008BFF] transition-colors cursor-pointer relative group py-1 font-bold flex items-center gap-1 bg-slate-100 hover:bg-cyan-50 px-3 py-1 rounded-lg border border-slate-200"
-            >
-              <span>Klinika (/app)</span>
-              <span className="text-[10px]">→</span>
-            </Link>
-          </nav>
-
-          {/* Right Call Center & MIS Kirish Buttons */}
-          <div className="flex items-center gap-2">
-            <a
-              href="tel:+998712025000"
-              className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 hover:border-cyan-200 transition-all shadow-2xs hover:shadow-xs active:scale-95"
-            >
-              <Phone size={13} className="text-[#008BFF]" />
-              <span>Call-markaz</span>
-            </a>
-
-            <Link
-              to="/login"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#008BFF] to-[#0D34B4] hover:from-[#007EE6] hover:to-[#0A2D9C] text-white text-xs font-bold hover:shadow-lg hover:shadow-blue-500/20 transition-all shadow-xs active:scale-95 cursor-pointer"
-            >
-              <span>MIS Kirish</span>
-            </Link>
-
-            {/* Mobile Hamburger Button */}
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none cursor-pointer"
-              aria-label="Menyuni ochish"
+              onClick={() => window.dispatchEvent(new CustomEvent('open-elvora-ai'))}
+              className="hover:text-[#0284C7] transition-colors flex items-center gap-1 cursor-pointer"
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              <Sparkles size={13} className="text-[#0284C7]" />
+              <span>Elvora AI™ Maslahat</span>
             </button>
-          </div>
-        </div>
+            <a href="#analitika" className="hover:text-[#0284C7] transition-colors">
+              Analitika
+            </a>
+            <a href="#onlayn-yozilish" className="hover:text-[#0284C7] transition-colors">
+              Jonli Qabul
+            </a>
+            <a href="#roi-kalkulyator" className="hover:text-[#0284C7] transition-colors">
+              ROI Hisobi
+            </a>
+            <a href="#tariflar" className="hover:text-[#0284C7] transition-colors">
+              Tariflar
+            </a>
+          </nav>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div
-            ref={mobileMenuRef}
-            className="lg:hidden mt-2 p-4 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl space-y-2 text-sm font-bold text-slate-800"
-          >
-            <a
-              href="#muammolar"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
+          {/* Desktop Actions */}
+          <div className="hidden sm:flex items-center gap-3">
+            {/* Pitch Deck presentation button styled with modern Elvora aesthetic */}
+            <Link
+              to="/pitch"
+              className="group relative inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-200/90 bg-gradient-to-r from-sky-50/80 via-white to-blue-50/60 hover:from-sky-100 hover:to-blue-100 hover:border-sky-400 text-slate-800 text-xs font-bold shadow-xs hover:shadow-md hover:shadow-sky-500/10 transition-all duration-200"
+              title="Investorlar uchun 3 daqiqali interaktiv taqdimot"
             >
-              Muammolar
-            </a>
-            <a
-              href="#live-demo"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors flex items-center justify-between"
-            >
-              <span>Jonli Demo</span>
-              <span className="w-2 h-2 rounded-full bg-[#008BFF] animate-pulse" />
-            </a>
-            <a
-              href="#kalkulyator"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
-            >
-              ROI Kalkulyatori
-            </a>
-            <a
-              href="#tariflar"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
-            >
-              Shaffof Tariflar
-            </a>
-            <a
-              href="#demo-sorash"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl hover:bg-cyan-50 hover:text-[#008BFF] transition-colors"
-            >
-              Demo Soʻrash
-            </a>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+              </span>
+              <Presentation size={13} className="text-[#0284C7] group-hover:scale-110 transition-transform" />
+              <span className="text-slate-800 group-hover:text-[#0284C7] transition-colors">Pitch Deck</span>
+              <span className="text-[10px] bg-sky-100 text-[#0284C7] px-1.5 py-0.5 rounded-md font-extrabold border border-sky-200/80">
+                3 daqiqa
+              </span>
+            </Link>
+
             <Link
               to="/app/dashboard"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block p-2 rounded-xl bg-cyan-50 text-[#008BFF] font-black hover:bg-cyan-100 transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-semibold shadow-sm hover:shadow transition-all"
             >
-              Klinika Boshqaruvi (/app) →
+              <span>Klinika Boshqaruvi</span>
+              <ArrowRight size={13} className="text-teal-300" />
             </Link>
+          </div>
+
+          {/* Mobile menu toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+
+        {/* Mobile Dropdown */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden mt-2 p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
+            <nav className="flex flex-col gap-3 text-sm font-semibold text-[#475569]">
+              <a
+                href="#texnologiya"
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-[#0284C7] py-1"
+              >
+                Texnologiya
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  window.dispatchEvent(new CustomEvent('open-elvora-ai'));
+                }}
+                className="hover:text-[#0284C7] py-1 flex items-center gap-1.5 text-left cursor-pointer"
+              >
+                <Sparkles size={14} className="text-[#0284C7]" />
+                <span>Elvora AI™ Maslahatchi</span>
+              </button>
+              <a
+                href="#analitika"
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-[#0284C7] py-1"
+              >
+                Analitika
+              </a>
+              <a
+                href="#onlayn-yozilish"
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-[#0284C7] py-1"
+              >
+                Jonli Qabulga Yozilish
+              </a>
+              <a
+                href="#roi-kalkulyator"
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-[#0284C7] py-1"
+              >
+                ROI Hisobi
+              </a>
+              <a
+                href="#tariflar"
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-[#0284C7] py-1"
+              >
+                Tariflar
+              </a>
+              <Link
+                to="/pitch"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-2.5 rounded-xl bg-sky-50/80 border border-sky-200/70 text-sky-900 font-bold text-xs hover:bg-sky-100 transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <Presentation size={15} className="text-[#0284C7]" />
+                  <span>Investor Pitch Deck</span>
+                </div>
+                <span className="text-[10px] bg-white text-[#0284C7] px-2 py-0.5 rounded-full font-extrabold border border-sky-200 shadow-xs">
+                  3 daqiqa
+                </span>
+              </Link>
+            </nav>
+
+            <div className="pt-3 border-t border-slate-100">
+              <Link
+                to="/app/dashboard"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-2.5 rounded-xl bg-[#0F172A] text-white text-xs font-bold text-center block shadow-sm"
+              >
+                Klinika Boshqaruv Paneliga Kirish
+              </Link>
+            </div>
           </div>
         )}
       </div>

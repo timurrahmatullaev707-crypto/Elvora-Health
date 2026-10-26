@@ -107,8 +107,8 @@ export const StaffPage: React.FC = () => {
               onClick={() => setCurrentRole(r.role)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
                 currentRole === r.role
-                  ? 'bg-gradient-to-r from-[#008BFF] to-[#0D34B4] text-white shadow-xs'
-                  : 'text-[#5F737B] hover:text-[#132229] hover:bg-slate-50'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
               {r.label.split(' ')[0]}
@@ -118,8 +118,8 @@ export const StaffPage: React.FC = () => {
       </div>
 
       {/* Security Note Banner */}
-      <div className="p-4 rounded-2xl bg-cyan-50/70 border border-cyan-200/80 text-xs text-slate-700 flex items-start gap-3">
-        <ShieldCheck size={20} className="text-[#008BFF] shrink-0 mt-0.5" />
+      <div className="p-4 rounded-2xl bg-sky-50/70 border border-sky-200/80 text-xs text-slate-700 flex items-start gap-3">
+        <ShieldCheck size={20} className="text-sky-600 shrink-0 mt-0.5" />
         <div className="space-y-1">
           <p className="font-bold text-slate-900">
             Xavfsizlik va ruxsatnomalar arxitekturasi:
@@ -262,13 +262,13 @@ export const StaffPage: React.FC = () => {
                   </td>
                   <td className="px-4 py-3 text-[#5F737B]">
                     <div className="font-medium text-[#132229]">{staff.roleTitle}</div>
-                    <span className="text-[10px] text-[#008BFF] uppercase font-bold">
+                    <span className="text-[10px] text-sky-600 uppercase font-bold">
                       {staff.role}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-[#5F737B] font-mono text-[11px]">
+                  <td className="px-4 py-3 text-slate-500 font-mono text-[11px]">
                     <div>{staff.phone}</div>
-                    <div className="text-[10px] text-[#5F737B]">{staff.email}</div>
+                    <div className="text-[10px] text-slate-500">{staff.email}</div>
                   </td>
                   <td className="px-4 py-3">
                     <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold">
@@ -280,8 +280,8 @@ export const StaffPage: React.FC = () => {
                       onClick={() => setCurrentRole(staff.role)}
                       className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                         currentRole === staff.role
-                          ? 'bg-gradient-to-r from-[#008BFF] to-[#0D34B4] text-white shadow-2xs'
-                          : 'bg-white text-[#5F737B] border border-[#DFE8E4] hover:bg-slate-50'
+                          ? 'bg-slate-900 text-white shadow-2xs'
+                          : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
                       }`}
                     >
                       {currentRole === staff.role ? 'Hozirgi profil ✓' : 'Tanlash'}

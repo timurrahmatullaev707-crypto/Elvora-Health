@@ -2,18 +2,33 @@
 
 @layer base {
   :root {
-    --medical-teal: #008BFF;
-    --medical-teal-dark: #0D34B4;
-    --medical-mint: #EBF7FC;
-    --medical-mint-hover: #E0F2FE;
-    --medical-bg: #F8FBFE;
+    --elvora-navy: #0F172A;
+    --elvora-navy-dark: #020617;
+    --elvora-sky: #0284C7;
+    --elvora-sky-light: #E0F2FE;
+    --elvora-teal: #0D9488;
+    --elvora-teal-light: #CCFBF1;
+    --elvora-bg: #F8FAFC;
+    --elvora-surface: #FFFFFF;
+    --elvora-border: #E2E8F0;
+    --elvora-border-hover: #CBD5E1;
+    --elvora-text-primary: #0F172A;
+    --elvora-text-body: #475569;
+    --elvora-text-muted: #64748B;
+
+    /* Legacy mapping for backward compatibility */
+    --medical-teal: #0284C7;
+    --medical-teal-dark: #0F172A;
+    --medical-mint: #F0FDFA;
+    --medical-mint-hover: #CCFBF1;
+    --medical-bg: #F8FAFC;
     --medical-surface: #FFFFFF;
-    --medical-navy: #101C2C;
-    --medical-slate: #5F737B;
+    --medical-navy: #0F172A;
+    --medical-slate: #64748B;
     --medical-border: #E2E8F0;
-    --medical-blue: #008BFF;
-    --medical-blue-subtle: #EBF7FC;
-    --medical-purple-subtle: #EFF1FD;
+    --medical-blue: #0284C7;
+    --medical-blue-subtle: #F0F9FF;
+    --medical-purple-subtle: #F1F5F9;
   }
 
   html {
@@ -24,8 +39,8 @@
   }
 
   body {
-    background-color: #F4F7F5;
-    color: #132229;
+    background-color: #F8FAFC;
+    color: #0F172A;
     font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -41,20 +56,23 @@
   }
 }
 
-/* DMED-style Card shadows and subtle borders */
+/* Elvora-style Card shadows and subtle borders */
+.elvora-card,
 .dmed-card {
   background-color: #FFFFFF;
-  border: 1px solid #DFE8E4;
-  box-shadow: 0 1px 3px rgba(13, 124, 116, 0.03), 0 4px 12px rgba(19, 34, 41, 0.02);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.02);
   border-radius: 1rem;
 }
 
+.elvora-card-hover,
 .dmed-card-hover {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.elvora-card-hover:hover,
 .dmed-card-hover:hover {
   border-color: #BAE6FD;
-  box-shadow: 0 4px 20px rgba(13, 124, 116, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 /* Glass effect for public navbar and hero widgets */

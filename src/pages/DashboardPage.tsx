@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
 import {
   TrendingUp,
@@ -55,6 +55,7 @@ export const DashboardPage: React.FC = () => {
   }>();
 
   const todayStr = getTodayDateString();
+  const [dashboardQueueTab, setDashboardQueueTab] = useState<'all' | 'today'>('all');
 
   // Dynamic Financial Summary based on dateFilter
   const { summary: financeSummary, transactions: periodTxs } = useMemo(() => {
@@ -74,6 +75,14 @@ export const DashboardPage: React.FC = () => {
   const todayAppointments = useMemo(() => {
     return appointments.filter((a) => a.date === todayStr);
   }, [appointments, todayStr]);
+
+  // Displayed appointments in the dashboard queue card
+  const displayedAppointments = useMemo(() => {
+    if (dashboardQueueTab === 'today') {
+      return todayAppointments;
+    }
+    return [...appointments].sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+  }, [dashboardQueueTab, todayAppointments, appointments]);
 
   const waitingPatients = todayAppointments.filter((a) => a.status === 'kutilmoqda');
   const completedToday = todayAppointments.filter((a) => a.status === 'yakunlandi');
@@ -142,20 +151,20 @@ export const DashboardPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-[#132229] tracking-tight">
+            <h1 className="text-xl font-bold text-[#0F172A] tracking-tight">
               Boshqaruv paneli
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#EBF7FC] text-[#008BFF] border border-[#BAE6FD]">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sky-50 text-[#0284C7] border border-sky-200">
               Real vaqt
             </span>
           </div>
-          <p className="text-xs text-[#5F737B] mt-0.5">
+          <p className="text-xs text-[#64748B] mt-0.5">
             Klinikaning bugungi moliyaviy, operatsion va shifokorlar bandligi ko'rsatkichlari
           </p>
         </div>
 
         {/* Date Filter Tabs */}
-        <div className="flex items-center bg-white p-1 rounded-xl border border-[#DFE8E4] shadow-2xs">
+        <div className="flex items-center bg-white p-1 rounded-xl border border-[#E2E8F0] shadow-2xs">
           {(
             [
               { key: 'today', label: 'Bugun' },
@@ -169,8 +178,8 @@ export const DashboardPage: React.FC = () => {
               onClick={() => setDateFilter(tab.key)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 dateFilter === tab.key
-                  ? 'bg-[#008BFF] text-white shadow-xs'
-                  : 'text-[#5F737B] hover:text-[#132229]'
+                  ? 'bg-[#0F172A] text-white shadow-xs'
+                  : 'text-[#64748B] hover:text-[#0F172A]'
               }`}
             >
               {tab.label}
@@ -181,10 +190,10 @@ export const DashboardPage: React.FC = () => {
 
       {/* Top Smart Insight Alert Preview */}
       {topInsight && (
-        <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#008BFF] to-[#0D34B4] p-5 text-white shadow-md">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0F172A] via-[#1E293B] to-[#0284C7] p-5 text-white shadow-md">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="flex items-start gap-3.5">
-              <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-xs text-emerald-200 shrink-0">
+              <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-xs text-teal-300 shrink-0">
                 <Sparkles size={22} className="animate-pulse" />
               </div>
               <div>
@@ -192,12 +201,12 @@ export const DashboardPage: React.FC = () => {
                   <span className="text-[10px] uppercase font-bold tracking-wider bg-white/20 px-2 py-0.5 rounded">
                     Elvora Insights — Aqlli tahlil
                   </span>
-                  <span className="text-xs text-emerald-100">{topInsight.dateRange}</span>
+                  <span className="text-xs text-teal-100">{topInsight.dateRange}</span>
                 </div>
                 <h3 className="text-base font-semibold text-white mt-1">
                   {topInsight.title}
                 </h3>
-                <p className="text-xs text-emerald-50/90 mt-1 max-w-2xl leading-relaxed">
+                <p className="text-xs text-slate-200 mt-1 max-w-2xl leading-relaxed">
                   {topInsight.description}
                 </p>
               </div>
@@ -208,7 +217,7 @@ export const DashboardPage: React.FC = () => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="bg-white text-[#0D34B4] hover:bg-emerald-50 border-white text-xs font-semibold"
+                  className="bg-white text-[#0F172A] hover:bg-slate-100 border-white text-xs font-semibold"
                 >
                   Tahlilni to'liq ochish
                   <ArrowRight size={14} />
@@ -226,7 +235,7 @@ export const DashboardPage: React.FC = () => {
           value={`${financeSummary.totalIncome.toLocaleString('uz-UZ')} UZS`}
           subtitle={`${financeSummary.incomeCount} ta tasdiqlangan to'lov`}
           icon={<TrendingUp size={20} />}
-          iconBgColor="bg-[#EBF7FC] text-[#008BFF]"
+          iconBgColor="bg-sky-50 text-[#0284C7] border border-sky-200"
           trend={{ value: '12%', isPositive: true }}
         />
 
@@ -235,7 +244,7 @@ export const DashboardPage: React.FC = () => {
           value={`${financeSummary.totalExpenses.toLocaleString('uz-UZ')} UZS`}
           subtitle={`${financeSummary.expenseCount} ta qayd etilgan xarajat`}
           icon={<TrendingDown size={20} />}
-          iconBgColor="bg-rose-50 text-rose-600"
+          iconBgColor="bg-rose-50 text-rose-600 border border-rose-200"
           trend={{ value: '5%', isPositive: false }}
         />
 
@@ -319,18 +328,18 @@ export const DashboardPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Financial Flow Dynamic Chart */}
         <Card className="lg:col-span-2">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#DFE8E4]">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E2E8F0]">
             <div>
-              <h2 className="text-sm font-bold text-[#132229]">
+              <h2 className="text-sm font-bold text-[#0F172A]">
                 Kirim va chiqim dinamikasi
               </h2>
-              <p className="text-xs text-[#5F737B]">
+              <p className="text-xs text-[#64748B]">
                 Davr bo'yicha tushumlar va operatsion xarajatlar taqqoslanishi
               </p>
             </div>
             <div className="flex items-center gap-4 text-xs font-medium">
-              <span className="flex items-center gap-1.5 text-[#008BFF]">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#008BFF]"></span> Kirim
+              <span className="flex items-center gap-1.5 text-[#0284C7]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#0284C7]"></span> Kirim
               </span>
               <span className="flex items-center gap-1.5 text-rose-600">
                 <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Chiqim
@@ -343,18 +352,18 @@ export const DashboardPage: React.FC = () => {
               <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorKirim" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#008BFF" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#008BFF" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#0284C7" stopOpacity={0.25} />
+                    <stop offset="95%" stopColor="#0284C7" stopOpacity={0.0} />
                   </linearGradient>
                   <linearGradient id="colorChiqim" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#EF4444" stopOpacity={0.2} />
-                    <stop offset="95%" stopColor="#EF4444" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#E11D48" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="#E11D48" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#F0F4F2" />
-                <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#5F737B' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
+                <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#64748B' }} />
                 <YAxis
-                  tick={{ fontSize: 11, fill: '#5F737B' }}
+                  tick={{ fontSize: 11, fill: '#64748B' }}
                   tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
                 />
                 <Tooltip
@@ -363,17 +372,17 @@ export const DashboardPage: React.FC = () => {
                   ]}
                   contentStyle={{
                     backgroundColor: '#FFFFFF',
-                    borderColor: '#DFE8E4',
+                    borderColor: '#E2E8F0',
                     borderRadius: '12px',
                     fontSize: '12px',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                    boxShadow: '0 4px 12px rgba(15,23,42,0.06)',
                   }}
                 />
                 <Area
                   type="monotone"
                   dataKey="kirim"
                   name="Kirim"
-                  stroke="#008BFF"
+                  stroke="#0284C7"
                   strokeWidth={2.5}
                   fillOpacity={1}
                   fill="url(#colorKirim)"
@@ -382,7 +391,7 @@ export const DashboardPage: React.FC = () => {
                   type="monotone"
                   dataKey="chiqim"
                   name="Chiqim"
-                  stroke="#EF4444"
+                  stroke="#E11D48"
                   strokeWidth={2}
                   fillOpacity={1}
                   fill="url(#colorChiqim)"
@@ -394,15 +403,15 @@ export const DashboardPage: React.FC = () => {
 
         {/* Doctor Occupancy Status */}
         <Card>
-          <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#DFE8E4]">
+          <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#E2E8F0]">
             <div>
-              <h2 className="text-sm font-bold text-[#132229]">
+              <h2 className="text-sm font-bold text-[#0F172A]">
                 Shifokorlar bandligi
               </h2>
-              <p className="text-xs text-[#5F737B]">Bugungi qabul soatlari nisbati</p>
+              <p className="text-xs text-[#64748B]">Bugungi qabul soatlari nisbati</p>
             </div>
             <Link to="/app/doctors">
-              <span className="text-xs text-[#008BFF] font-semibold hover:underline">
+              <span className="text-xs text-[#0284C7] font-semibold hover:underline">
                 Barchasi
               </span>
             </Link>
@@ -429,9 +438,9 @@ export const DashboardPage: React.FC = () => {
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
                       docStat.occupancyPercent >= 75
-                        ? 'bg-emerald-600'
+                        ? 'bg-teal-600'
                         : docStat.occupancyPercent >= 40
-                        ? 'bg-[#008BFF]'
+                        ? 'bg-[#0284C7]'
                         : 'bg-amber-500'
                     }`}
                     style={{ width: `${docStat.occupancyPercent}%` }}
@@ -445,49 +454,91 @@ export const DashboardPage: React.FC = () => {
 
       {/* Live Waiting Queue & Recent Transactions Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Live Queue Snapshot */}
+        {/* Live Queue & New Online Bookings Snapshot */}
         <Card>
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#DFE8E4]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#E2E8F0]">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
-              <h2 className="text-sm font-bold text-[#132229]">
-                Jonli navbat (Bugungi qabullar)
+              <span className="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse"></span>
+              <h2 className="text-sm font-bold text-[#0F172A]">
+                Qabullar va Jonli Navbat
               </h2>
             </div>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={outletContext.openNewAppointment}
-              icon={<Plus size={14} />}
-            >
-              Qabul qo'shish
-            </Button>
+
+            <div className="flex items-center gap-2">
+              <div className="flex items-center bg-[#F8FAFC] p-0.5 rounded-lg border border-[#E2E8F0] text-xs">
+                <button
+                  type="button"
+                  onClick={() => setDashboardQueueTab('all')}
+                  className={`px-2.5 py-1 rounded-md font-semibold transition-all cursor-pointer ${
+                    dashboardQueueTab === 'all'
+                      ? 'bg-white text-[#0284C7] shadow-xs'
+                      : 'text-[#64748B] hover:text-[#0F172A]'
+                  }`}
+                >
+                  Barcha qabullar ({appointments.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDashboardQueueTab('today')}
+                  className={`px-2.5 py-1 rounded-md font-semibold transition-all cursor-pointer ${
+                    dashboardQueueTab === 'today'
+                      ? 'bg-white text-[#0284C7] shadow-xs'
+                      : 'text-[#64748B] hover:text-[#0F172A]'
+                  }`}
+                >
+                  Bugun ({todayAppointments.length})
+                </button>
+              </div>
+
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={outletContext.openNewAppointment}
+                icon={<Plus size={14} />}
+              >
+                Qo'shish
+              </Button>
+            </div>
           </div>
 
-          {todayAppointments.length === 0 ? (
-            <div className="text-center py-8 text-xs text-[#5F737B]">
-              Bugun uchun qabullar mavjud emas.
+          {displayedAppointments.length === 0 ? (
+            <div className="text-center py-8 text-xs text-[#64748B]">
+              Hozircha qabullar mavjud emas.
             </div>
           ) : (
-            <div className="divide-y divide-[#DFE8E4]/70">
-              {todayAppointments.slice(0, 5).map((apt) => (
+            <div className="divide-y divide-[#E2E8F0]">
+              {displayedAppointments.slice(0, 6).map((apt) => (
                 <div
                   key={apt.id}
                   className="py-3 flex items-center justify-between gap-3 text-xs"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-lg bg-[#EBF7FC] text-[#0D34B4] font-bold flex items-center justify-center shrink-0 border border-[#BAE6FD]">
+                    <span className="w-7 h-7 rounded-lg bg-sky-50 text-[#0284C7] font-bold flex items-center justify-center shrink-0 border border-sky-200">
                       #{apt.queueNumber}
                     </span>
                     <div>
-                      <p className="font-semibold text-[#132229]">{apt.patientName}</p>
-                      <p className="text-[11px] text-[#5F737B]">
-                        {apt.doctorName} • {apt.startTime}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <p className="font-semibold text-[#0F172A]">{apt.patientName}</p>
+                        {apt.patientPhone && (
+                          <span className="text-[10px] text-[#64748B] font-mono">{apt.patientPhone}</span>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2 text-[11px] text-[#64748B] mt-0.5">
+                        <span>{apt.doctorName} ({apt.doctorSpecialty})</span>
+                        <span>•</span>
+                        <span className="font-medium text-[#0F172A]">
+                          {apt.date === todayStr ? 'Bugun' : apt.date}, {apt.startTime}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2 shrink-0">
+                    {apt.telegramSent && (
+                      <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-semibold text-[#0284C7] bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200">
+                        <span>Telegram: Yuborildi</span>
+                      </span>
+                    )}
                     <AppointmentStatusBadge status={apt.status} />
                     {apt.status === 'kutilmoqda' && (
                       <button

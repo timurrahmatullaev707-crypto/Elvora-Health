@@ -83,13 +83,13 @@ export const SubscriptionPage: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="text-[11px] font-bold text-[#008BFF] uppercase tracking-wider bg-cyan-100/80 px-3 py-1 rounded-full border border-cyan-300">
+        <span className="text-[11px] font-bold text-sky-700 uppercase tracking-wider bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
           Tariflar va imkoniyatlar
         </span>
-        <h1 className="text-2xl font-bold text-[#132229] tracking-tight">
+        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
           Klinikangiz o'sishiga mos tarif rejasini tanlang
         </h1>
-        <p className="text-xs text-[#5F737B]">
+        <p className="text-xs text-slate-500">
           Prezentatsiya davomida istalgan tarifni faollashtirib, uning imkoniyatlarini darhol sinab ko'rishingiz mumkin
         </p>
       </div>
@@ -117,27 +117,27 @@ export const SubscriptionPage: React.FC = () => {
               key={plan.id}
               className={`relative flex flex-col justify-between p-6 transition-all ${
                 plan.isPopular
-                  ? 'border-2 border-[#008BFF] shadow-lg ring-4 ring-[#008BFF]/5'
-                  : 'border-[#DFE8E4]'
+                  ? 'border-2 border-sky-500 shadow-lg ring-4 ring-sky-500/10'
+                  : 'border-slate-200'
               }`}
             >
               {plan.isPopular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#008BFF] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-xs">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-xs">
                   Eng ommabop
                 </div>
               )}
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-bold text-[#132229]">{plan.name}</h3>
+                  <h3 className="text-lg font-bold text-slate-900">{plan.name}</h3>
                   {isCurrent && (
-                    <span className="text-[10px] font-bold bg-[#EBF7FC] text-[#0D34B4] px-2 py-0.5 rounded border border-[#BAE6FD]">
+                    <span className="text-[10px] font-bold bg-teal-50 text-teal-800 px-2 py-0.5 rounded border border-teal-200">
                       Joriy reja
                     </span>
                   )}
                 </div>
 
-                <p className="text-xs text-[#5F737B] min-h-[32px]">{plan.tagline}</p>
+                <p className="text-xs text-slate-500 min-h-[32px]">{plan.tagline}</p>
 
                 {/* Price */}
                 <div className="mt-4 mb-6 pb-4 border-b border-[#DFE8E4]">
@@ -155,8 +155,8 @@ export const SubscriptionPage: React.FC = () => {
                     Kiritilgan imkoniyatlar:
                   </span>
                   {plan.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-[#5F737B]">
-                      <Check size={14} className="text-[#008BFF] shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2 text-slate-600">
+                      <Check size={14} className="text-sky-600 shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -165,7 +165,7 @@ export const SubscriptionPage: React.FC = () => {
                   {plan.notIncluded.map((feat, idx) => (
                     <div
                       key={`not-${idx}`}
-                      className="flex items-start gap-2 text-[#5F737B]/60 opacity-60"
+                      className="flex items-start gap-2 text-slate-400 opacity-60"
                     >
                       <span className="w-3.5 h-3.5 rounded-full border border-gray-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5">
                         -
@@ -177,7 +177,7 @@ export const SubscriptionPage: React.FC = () => {
               </div>
 
               {/* Action Button */}
-              <div className="mt-8 pt-4 border-t border-[#DFE8E4]">
+              <div className="mt-8 pt-4 border-t border-slate-200">
                 <Button
                   variant={isCurrent ? 'secondary' : plan.isPopular ? 'primary' : 'outline'}
                   className="w-full"
@@ -192,8 +192,8 @@ export const SubscriptionPage: React.FC = () => {
       </div>
 
       {/* Disclaimer */}
-      <div className="p-4 rounded-xl bg-[#F8FAF9] border border-[#DFE8E4] text-xs text-[#5F737B] flex items-start gap-3">
-        <AlertCircle size={18} className="text-[#008BFF] shrink-0 mt-0.5" />
+      <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-3">
+        <AlertCircle size={18} className="text-sky-600 shrink-0 mt-0.5" />
         <p className="leading-relaxed">
           <strong>Investorlar uchun eslatma:</strong> Tarif rejalarini almashtirish to'liq simulyatsiya qilingan va ilovaning boshqa sahifalaridagi (Elvora Insights, Hisobotlar) imkoniyatlar bloklanishi yoki ochilishini darhol ko'rsatib beradi. To'lov tizimlari (Payme/Click) integratsiyasi shartnomalar tuzilgach faollashtiriladi.
         </p>

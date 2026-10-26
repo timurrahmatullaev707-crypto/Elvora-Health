@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { detectEmergency, sanitizeTextForAi, aiService } from '../services/aiService';
 import { labExplainerService } from '../services/labExplainerService';
 import { reminderService } from '../services/reminderService';
+import { telegramService } from '../services/telegramService';
 import { Appointment } from '../types';
 
 describe('Elvora AI™ Clinical Module Tests', () => {
@@ -46,6 +47,95 @@ describe('Elvora AI™ Clinical Module Tests', () => {
       const rec = aiService.findMatchingSpecialty('Tish og\'rig\'i va milk qonashi bor');
       expect(rec).not.toBeNull();
       expect(rec?.specialty).toBe('Stomatolog');
+    });
+
+    it('should recommend Terapevt and provide immediate advice for grip and fever', () => {
+      const rec = aiService.findMatchingSpecialty('meni istmam chiqib grip bolib qolganman qanday tavsiya berasan');
+      expect(rec).not.toBeNull();
+      expect(rec?.specialty).toBe('Terapevt');
+
+      const response = aiService.generateAutonomousClinicalResponse('meni istmam chiqib grip bolib qolganman qanday tavsiya berasan');
+      expect(response.content).toContain('Terapevt');
+      expect(response.content).toContain('Darhol nima qilish kerak');
+      expect(response.content).toContain('suyuqlik');
+    });
+
+    it('should recommend Pediatr for child fever', () => {
+      const rec = aiService.findMatchingSpecialty('bolamning isitmasi tushmayapti pediatr kerak');
+      expect(rec).not.toBeNull();
+      expect(rec?.specialty).toBe('Pediatr');
+    });
+
+    it('should recommend LOR for earache and sinusitis', () => {
+      const rec = aiService.findMatchingSpecialty('qulog\'im sanchib burnim bitib qolgan gaymorit');
+      expect(rec).not.toBeNull();
+      expect(rec?.specialty).toBe('LOR');
+    });
+
+    it('should recommend Ginekolog for pregnancy issues', () => {
+      const rec = aiService.findMatchingSpecialty('homiladorman qorin pastida og\'riq bor');
+      expect(rec).not.toBeNull();
+      expect(rec?.specialty).toBe('Ginekolog');
+    });
+
+    it('should provide clear, safe advice when user asks about medication', () => {
+      const response = aiService.generateAutonomousClinicalResponse('qanday dori ichsam bo\'ladi');
+      expect(response.content).toContain('xavfsiz birinchi yordam vositalari');
+      expect(response.content).toContain('antibiotiklar');
+    });
+
+    it('should universally recognize joint/knee trauma and recommend Jarroh', () => {
+      const rec = aiService.findMatchingSpecialty('tizzam shishib ketdi bukilmayapti zinadan tusholmayapman');
+      expect(rec).not.toBeNull();
+      expect(rec?.specialty).toBe('Jarroh');
+    });
+
+    it('should universally recognize high sugar/diabetes and recommend Endokrinolog', () => {
+      const rec = aiService.findMatchingSpecialty('qandim 14 ga chiqib ketdi doim chanqayapman og\'zim quriyapti');
+      expect(rec).not.toBeNull();
+      expect(rec?.specialty).toBe('Endokrinolog');
+    });
+
+    it('should universally recognize kidney/urinary symptoms and recommend Urolog', () => {
+      const rec = aiService.findMatchingSpecialty('buyragim sanchib siyganda qattiq achishyapti');
+      expect(rec).not.toBeNull();
+      expect(rec?.specialty).toBe('Urolog');
+    });
+
+    it('should universally recognize skin rashes/allergies and recommend Dermatolog', () => {
+      const rec = aiService.findMatchingSpecialty('terimga qizil toshmalar toshib qattiq qichishyapti');
+      expect(rec).not.toBeNull();
+      expect(rec?.specialty).toBe('Dermatolog');
+    });
+  });
+
+  describe('Telegram Confirmation Service', () => {
+    it('should format clean, informative Telegram message for the patient', () => {
+      const testApt: Appointment = {
+        id: 'apt-test-tg',
+        patientId: 'pat-1',
+        patientName: 'Jasur Bekmurodov',
+        patientPhone: '+998 90 123 45 67',
+        doctorId: 'doc-1',
+        doctorName: 'Dr. Alisher Usmonov',
+        doctorSpecialty: 'Kardiolog',
+        date: '2026-10-26',
+        startTime: '10:00',
+        endTime: '10:30',
+        serviceName: 'Kardiolog birlamchi ko\'rigi',
+        fee: 150000,
+        status: 'kutilmoqda',
+        queueNumber: 1,
+        reminderSent: true,
+        createdAt: '2026-10-25 22:30',
+      };
+
+      const msg = telegramService.formatConfirmationMessage(testApt, '102-xona');
+      expect(msg).toContain('ELVORA HEALTH KLINIKASI');
+      expect(msg).toContain('Jasur Bekmurodov');
+      expect(msg).toContain('Dr. Alisher Usmonov');
+      expect(msg).toContain('2026-10-26');
+      expect(msg).toContain('10:00');
     });
   });
 

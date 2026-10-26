@@ -31,12 +31,12 @@ const DEFAULT_WELCOME_MESSAGE: AiMessage = {
   timestamp: new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }),
   type: 'text',
   isDemo: true,
-  content: `Assalomu alaykum! Men **Elvora AI™** — klinikamizning aqlli tibbiy yordamchisiman.\n\nSizga qanday yordam bera olaman?\n• Alomatlaringiz bo'yicha **mos mutaxassisni topish**\n• Shifokor qabuliga **onlayn yozilish**\n• Laboratoriya tahlillarini **oddiy tilda tushunish**\n• Klinika xizmatlari va narxlarini **bilib olish**`,
+  content: `Assalomu alaykum! Men **Elvora AI™** — klinikamizning aqlli tibbiy yordamchisiman.\n\nSizni qanday alomatlar yoki kasallik xavotirga solyapti? Aytsangiz, darhol:\n1. Holatingizga **dastlabki klinik baho** beraman;\n2. Uy sharoitida **darhol nima qilish kerakligini** ko'rsataman;\n3. Qaysi **shifokorimizga uchrashish zarurligini** aytib, 1-bosishda qabulga yozib qo'yaman.`,
   suggestedFollowUps: [
-    'Bosh og\'rig\'i bo\'yicha qaysi shifokorga boray?',
+    'Meni istmam chiqib grip bo\'lib qoldim, nima qilay?',
+    'Boshim og\'rib qon bosimim oshdi',
+    'Qanday dorilarni ichsam bo\'ladi?',
     'Kardiolog qabuliga yozilish',
-    'Laboratoriya tahlillarini tushunish',
-    'Klinika ish vaqti va xizmat narxlari',
   ],
 };
 
@@ -82,6 +82,18 @@ export const ElvoraAiAssistant: React.FC = () => {
       // Storage unavailable
     }
   }, [messages]);
+
+  // Global listener to open Elvora AI from anywhere in the application
+  useEffect(() => {
+    const handleOpenAi = (e: any) => {
+      setIsOpen(true);
+      if (e?.detail?.prompt) {
+        handleSendMessage(e.detail.prompt);
+      }
+    };
+    window.addEventListener('open-elvora-ai', handleOpenAi);
+    return () => window.removeEventListener('open-elvora-ai', handleOpenAi);
+  }, [messages, consented, isTyping]);
 
   const handleToggleConsent = (val: boolean) => {
     setConsented(val);
@@ -157,8 +169,8 @@ export const ElvoraAiAssistant: React.FC = () => {
       {!isOpen && (
         <div className="fixed bottom-6 right-6 z-40 flex items-center gap-3">
           {/* Welcome hint bubble */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white shadow-xl border border-[#DFE8E4] text-xs font-semibold text-[#132229] animate-pulse">
-            <span className="w-2 h-2 rounded-full bg-[#00D2B4]" />
+          <div className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white shadow-xl border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] animate-pulse">
+            <span className="w-2 h-2 rounded-full bg-[#0D9488]" />
             <span>Elvora AI™ yordamchisi</span>
           </div>
 
@@ -166,13 +178,13 @@ export const ElvoraAiAssistant: React.FC = () => {
             type="button"
             onClick={() => setIsOpen(true)}
             aria-label="Elvora AI Assistantni ochish"
-            className="group relative flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#06142B] via-[#0A2540] to-[#0D34B4] text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-[#00D2B4]/40 cursor-pointer"
+            className="group relative flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0F172A] text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-teal-500/40 cursor-pointer"
           >
-            <div className="absolute inset-0 rounded-2xl bg-[#00D2B4]/20 animate-ping opacity-30" />
-            <Sparkles className="text-[#00D2B4] group-hover:rotate-12 transition-transform duration-300" size={26} />
+            <div className="absolute inset-0 rounded-2xl bg-teal-500/20 animate-ping opacity-30" />
+            <Sparkles className="text-teal-400 group-hover:rotate-12 transition-transform duration-300" size={26} />
             <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D2B4] opacity-75" />
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#00D2B4]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-teal-400" />
             </span>
           </button>
         </div>
@@ -180,22 +192,22 @@ export const ElvoraAiAssistant: React.FC = () => {
 
       {/* Main AI Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[440px] h-[640px] max-h-[92vh] bg-white rounded-3xl shadow-2xl border border-[#DFE8E4] flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[440px] h-[640px] max-h-[92vh] bg-white rounded-3xl shadow-2xl border border-[#E2E8F0] flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#06142B] via-[#0A2540] to-[#0E3258] p-4 text-white flex items-center justify-between shrink-0 shadow-sm">
+          <div className="bg-[#0F172A] p-4 text-white flex items-center justify-between shrink-0 shadow-sm border-b border-slate-800">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-[#00D2B4]/30 to-[#008BFF]/20 border border-[#00D2B4]/40 flex items-center justify-center text-[#00D2B4]">
+              <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-[#0284C7] to-[#0D9488] flex items-center justify-center text-white shadow-sm">
                 <Bot size={22} />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#00D2B4] border-2 border-[#06142B]" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-teal-400 border-2 border-[#0F172A]" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-bold text-sm text-white">Elvora AI™</h3>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#00D2B4]/20 text-[#00D2B4] border border-[#00D2B4]/30">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">
                     24/7 Tibbiy AI
                   </span>
                 </div>
-                <p className="text-[11px] text-white/70">Klinika qabuli va simptomlar tahlili</p>
+                <p className="text-[11px] text-slate-300">Klinika qabuli va alomatlar tahlili</p>
               </div>
             </div>
 
@@ -295,27 +307,44 @@ export const ElvoraAiAssistant: React.FC = () => {
 
                       {/* Doctor recommendation visual card */}
                       {msg.recommendation && (
-                        <div className="mt-3 p-3 rounded-xl bg-[#EBF7FC] border border-[#BAE6FD] text-[#0A2540] space-y-2">
+                        <div className="mt-3 p-3.5 rounded-2xl bg-gradient-to-br from-[#F0F9FF] to-[#E0F2FE] border border-[#BAE6FD] text-[#0A2540] space-y-2.5 shadow-xs">
                           <div className="flex items-center justify-between">
-                            <span className="font-bold text-xs text-[#0D34B4]">
+                            <span className="font-bold text-xs text-[#0284C7] flex items-center gap-1.5">
+                              <Sparkles size={14} className="text-[#0284C7]" />
                               Tavsiya: {msg.recommendation.specialty}
                             </span>
-                            <span className="text-[10px] bg-white text-[#0D34B4] font-semibold px-2 py-0.5 rounded border border-[#BAE6FD]">
-                              Birlamchi ko'rik
+                            <span className="text-[10px] bg-white text-[#0284C7] font-bold px-2 py-0.5 rounded-full border border-[#BAE6FD]">
+                              Klinik Triage
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#3A5B75] leading-relaxed">
-                            {msg.recommendation.reasoningUz}
-                          </p>
+
+                          {msg.recommendation.recommendedDoctors?.[0] && (
+                            <div className="p-2.5 rounded-xl bg-white/95 border border-[#BAE6FD] flex items-center justify-between text-[11px] shadow-xs">
+                              <div>
+                                <p className="font-bold text-[#0F172A]">{msg.recommendation.recommendedDoctors[0].fullName}</p>
+                                <p className="text-[10px] text-[#64748B]">
+                                  {msg.recommendation.recommendedDoctors[0].roomNumber} • {msg.recommendation.recommendedDoctors[0].consultationFee.toLocaleString('uz-UZ')} UZS
+                                </p>
+                              </div>
+                              <span className="text-[10px] font-semibold text-[#0D9488] bg-[#F0FDF4] px-2 py-0.5 rounded-md border border-[#BBF7D0]">
+                                Bugun bo'sh
+                              </span>
+                            </div>
+                          )}
+
                           <button
                             type="button"
                             onClick={() => {
                               setActiveBookingSpecialty(msg.recommendation!.specialty);
                             }}
-                            className="w-full py-1.5 px-2.5 rounded-lg bg-[#008BFF] text-white font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-[#0070CC] transition-colors cursor-pointer"
+                            className="w-full py-2 px-3 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
                           >
-                            <Calendar size={13} />
-                            <span>{msg.recommendation.specialty} qabuliga yozilish</span>
+                            <Calendar size={14} />
+                            <span>
+                              {msg.recommendation.recommendedDoctors?.[0]?.fullName
+                                ? `${msg.recommendation.recommendedDoctors[0].fullName} qabuliga yozilish`
+                                : `${msg.recommendation.specialty} qabuliga yozilish`}
+                            </span>
                           </button>
                         </div>
                       )}
@@ -391,8 +420,8 @@ export const ElvoraAiAssistant: React.FC = () => {
                         role: 'assistant',
                         timestamp: new Date().toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' }),
                         type: 'text',
-                        content: `✅ Hurmatli bemor, **${apt.patientName}**! Siz ${apt.date} kuni soat ${apt.startTime} da **${apt.doctorName}** (${apt.doctorSpecialty}) qabuliga muvaffaqiyatli yozildingiz. Eslatma xabari raqamingizga yuborildi.`,
-                        suggestedFollowUps: ['Klinika manzilini ko\'rsatish', 'Boshqa qabulga yozilish'],
+                        content: `🎉 **Qabul muvaffaqiyatli tasdiqlandi!**\n\n• **Shifokor:** ${apt.doctorName} (${apt.doctorSpecialty})\n• **Sana va vaqt:** ${apt.date}, soat ${apt.startTime}\n• **Bemor:** ${apt.patientName}\n• **Klinika:** Elvora Health (Bunyodkor shox ko'chasi, 42-uy)\n\n✈️ Rasmiy tasdiqnoma va eslatmalar (24 soat va 2 soat oldin) Telegram orqali avtomatik yetkaziladi.`,
+                        suggestedFollowUps: ['Klinika manzili va lokatsiya', 'Qabulga qanday tayyorlanish kerak?', 'Boshqa savol'],
                       },
                     ]);
                   }}

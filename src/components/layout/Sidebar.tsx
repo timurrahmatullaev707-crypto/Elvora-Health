@@ -89,15 +89,15 @@ export const Sidebar: React.FC = () => {
 
   return (
     <aside
-      className={`relative flex flex-col bg-white border-r border-[#E6EBEF] transition-all duration-300 ease-in-out shrink-0 select-none z-20 ${
+      className={`relative flex flex-col bg-white border-r border-[#E2E8F0] transition-all duration-300 ease-in-out shrink-0 select-none z-20 ${
         collapsed ? 'w-18' : 'w-64'
       }`}
     >
       {/* Brand Header */}
       <div className="flex items-center justify-between h-17 px-4 border-b border-[#E2E8F0]">
         <Link to="/" className="flex items-center gap-3 overflow-hidden group">
-          {/* Logo Mark */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#008BFF] via-[#00B4D8] to-[#0D34B4] flex items-center justify-center shrink-0 shadow-md text-white relative group-hover:scale-105 transition-transform">
+          {/* Logo Mark matching landing page */}
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0284C7] via-[#0D9488] to-[#0F172A] flex items-center justify-center shrink-0 shadow-md text-white relative group-hover:scale-105 transition-transform">
             <svg
               className="w-5 h-5"
               viewBox="0 0 24 24"
@@ -109,15 +109,15 @@ export const Sidebar: React.FC = () => {
             >
               <path d="M12 2v20M2 12h20M7 7l10 10M17 7 7 17" />
             </svg>
-            <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-cyan-400 rounded-full border-2 border-white animate-pulse" />
+            <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-teal-400 rounded-full border-2 border-white animate-pulse" />
           </div>
 
           {!collapsed && (
             <div className="flex flex-col min-w-0">
-              <span className="font-extrabold text-base tracking-tight text-[#101C2C] leading-none">
-                ELVORA <span className="text-[#008BFF]">HEALTH</span>
+              <span className="font-extrabold text-base tracking-tight text-[#0F172A] leading-none">
+                ELVORA <span className="bg-gradient-to-r from-[#0284C7] to-[#0D9488] bg-clip-text text-transparent">HEALTH</span>
               </span>
-              <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1 truncate">
+              <span className="text-[10px] text-[#64748B] font-bold uppercase tracking-wider mt-1 truncate">
                 Tibbiyot MIS
               </span>
             </div>
@@ -127,7 +127,7 @@ export const Sidebar: React.FC = () => {
         {/* Collapse toggle */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-colors shrink-0 cursor-pointer"
+          className="p-1.5 rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-slate-100 transition-colors shrink-0 cursor-pointer"
           title={collapsed ? 'Kengaytirish' : 'Yig\'ish'}
         >
           {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
@@ -135,21 +135,21 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Clinic Selector / Current Clinic Info */}
-      <div className="px-3.5 py-3 border-b border-[#E2E8F0] bg-[#F8FBFE]">
+      <div className="px-3.5 py-3 border-b border-[#E2E8F0] bg-[#F8FAFC]">
         <div
-          className={`flex items-center gap-2.5 px-2.5 py-2 rounded-xl bg-white border border-slate-200/80 shadow-2xs ${
+          className={`flex items-center gap-2.5 px-2.5 py-2 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs ${
             collapsed ? 'justify-center' : ''
           }`}
         >
-          <Building2 size={16} className="text-[#008BFF] shrink-0" />
+          <Building2 size={16} className="text-[#0284C7] shrink-0" />
           {!collapsed && (
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-bold text-slate-900 truncate">
+              <p className="text-xs font-bold text-[#0F172A] truncate">
                 {settings.clinicName}
               </p>
               <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#008BFF] animate-pulse"></span>
-                <span className="text-[10px] text-slate-500 font-medium">Bosh filial</span>
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#0D9488] animate-pulse"></span>
+                <span className="text-[10px] text-[#64748B] font-medium">Bosh filial</span>
               </div>
             </div>
           )}
@@ -165,8 +165,8 @@ export const Sidebar: React.FC = () => {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
                 isActive
-                  ? 'bg-cyan-50/90 text-[#008BFF] border-r-2 border-[#008BFF] shadow-2xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  ? 'bg-sky-50 text-[#0284C7] border-r-2 border-[#0284C7] shadow-2xs'
+                  : 'text-[#475569] hover:text-[#0F172A] hover:bg-slate-50'
               } ${item.highlight ? 'relative overflow-hidden' : ''}`
             }
             title={collapsed ? item.label : undefined}
@@ -175,7 +175,7 @@ export const Sidebar: React.FC = () => {
               <>
                 <span
                   className={`shrink-0 transition-colors ${
-                    isActive ? 'text-[#008BFF]' : 'text-slate-500 group-hover:text-slate-900'
+                    isActive ? 'text-[#0284C7]' : 'text-[#64748B] group-hover:text-[#0F172A]'
                   }`}
                 >
                   {item.icon}
@@ -189,12 +189,12 @@ export const Sidebar: React.FC = () => {
                   <span
                     className={`text-[10px] px-2 py-0.5 rounded-md font-bold shrink-0 ${
                       item.badge === 'Aqlli'
-                        ? 'bg-[#008BFF] text-white'
+                        ? 'bg-[#0F172A] text-white'
                         : item.badge === 'Jonli'
-                        ? 'bg-amber-100 text-amber-800'
+                        ? 'bg-amber-50 text-amber-800 border border-amber-200'
                         : item.badge === 'Pro'
-                        ? 'bg-blue-100 text-[#0D34B4]'
-                        : 'bg-cyan-100 text-[#008BFF]'
+                        ? 'bg-teal-50 text-[#0D9488] border border-teal-200'
+                        : 'bg-sky-50 text-[#0284C7] border border-sky-200'
                     }`}
                   >
                     {item.badge}
@@ -210,7 +210,7 @@ export const Sidebar: React.FC = () => {
       <div className="px-3 py-2 border-t border-[#E2E8F0]">
         <Link
           to="/"
-          className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-[#008BFF] hover:bg-cyan-50 transition-colors ${
+          className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#475569] hover:text-[#0284C7] hover:bg-sky-50 transition-colors ${
             collapsed ? 'justify-center' : ''
           }`}
           title="Bosh sahifaga qaytish"
@@ -222,16 +222,16 @@ export const Sidebar: React.FC = () => {
 
       {/* Footer Info: Plan & Uzbek Tagline */}
       {!collapsed && (
-        <div className="p-3.5 m-3 rounded-2xl bg-gradient-to-br from-[#EBF7FC] via-[#F0F8FD] to-white border border-cyan-200/80 shadow-2xs">
+        <div className="p-3.5 m-3 rounded-2xl bg-gradient-to-br from-sky-50 via-teal-50/40 to-white border border-sky-200/80 shadow-2xs">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[11px] font-bold text-[#0D34B4] uppercase tracking-wider flex items-center gap-1">
-              <Sparkle size={12} className="text-[#008BFF]" /> Tarif: {currentPlan.toUpperCase()}
+            <span className="text-[11px] font-bold text-[#0F172A] uppercase tracking-wider flex items-center gap-1">
+              <Sparkle size={12} className="text-[#0D9488]" /> Tarif: {currentPlan.toUpperCase()}
             </span>
-            <span className="text-[10px] bg-white text-[#008BFF] px-2 py-0.5 rounded-md font-bold border border-cyan-200">
+            <span className="text-[10px] bg-white text-[#0284C7] px-2 py-0.5 rounded-md font-bold border border-sky-200 shadow-2xs">
               Demo
             </span>
           </div>
-          <p className="text-[11px] text-slate-600 italic leading-tight">
+          <p className="text-[11px] text-[#475569] italic leading-tight">
             "Your clinic. One intelligent system."
           </p>
         </div>

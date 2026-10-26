@@ -23,13 +23,21 @@ describe('1. Appointment Conflict Detection & Slot Generation', () => {
   });
 
   it('detects and blocks double-booking conflict on already booked slot', () => {
-    const bookedApt = initialAppointments[0];
+    const testDate = '2026-10-20'; // Seshanba - shifokor ish kuni
+    const bookedApt = {
+      ...initialAppointments[0],
+      date: testDate,
+      doctorId: doc1.id,
+      startTime: '09:00',
+      endTime: '09:30',
+      status: 'kutilmoqda' as const,
+    };
     const conflictCheck = doctorService.checkSlotAvailability(
       doc1,
-      bookedApt.date,
-      bookedApt.startTime,
-      bookedApt.endTime,
-      initialAppointments
+      testDate,
+      '09:00',
+      '09:30',
+      [bookedApt]
     );
 
     expect(conflictCheck.available).toBe(false);

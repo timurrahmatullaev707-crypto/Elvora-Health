@@ -80,7 +80,7 @@ export const ReportsPage: React.FC = () => {
     return financeService.getExpenseBreakdown(periodTxs);
   }, [periodTxs]);
 
-  const COLORS = ['#008BFF', '#2563EB', '#F59E0B', '#EF4444', '#8B5CF6', '#10B981'];
+  const COLORS = ['#0284C7', '#0D9488', '#38BDF8', '#F59E0B', '#EF4444', '#8B5CF6'];
 
   // Export CSV
   const handleExportCsv = () => {
@@ -101,10 +101,10 @@ export const ReportsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-[#132229] tracking-tight">
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight">
             Hisobotlar va operatsion tahlil
           </h1>
-          <p className="text-xs text-[#5F737B] mt-0.5">
+          <p className="text-xs text-slate-500 mt-0.5">
             Klinikaning asosiy moliyaviy va klinik samaradorlik ko'rsatkichlari yig'indisi
           </p>
         </div>
@@ -131,7 +131,7 @@ export const ReportsPage: React.FC = () => {
       </div>
 
       {/* Period Filter */}
-      <div className="flex items-center bg-white p-1 rounded-xl border border-[#DFE8E4] shadow-2xs w-fit">
+      <div className="flex items-center bg-white p-1 rounded-xl border border-slate-200 shadow-2xs w-fit">
         {(
           [
             { key: '7days', label: 'Oxirgi 7 kun' },
@@ -144,8 +144,8 @@ export const ReportsPage: React.FC = () => {
             onClick={() => setReportPeriod(t.key)}
             className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               reportPeriod === t.key
-                ? 'bg-[#008BFF] text-white shadow-xs'
-                : 'text-[#5F737B] hover:text-[#132229]'
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'text-slate-500 hover:text-slate-900'
             }`}
           >
             {t.label}
@@ -245,7 +245,7 @@ export const ReportsPage: React.FC = () => {
                     'Tushum',
                   ]}
                 />
-                <Bar dataKey="totalGenerated" fill="#008BFF" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="totalGenerated" fill="#0284C7" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -253,11 +253,11 @@ export const ReportsPage: React.FC = () => {
 
         {/* Expense Category Share */}
         <Card>
-          <div className="mb-4 pb-3 border-b border-[#DFE8E4]">
-            <h3 className="text-sm font-bold text-[#132229]">
+          <div className="mb-4 pb-3 border-b border-slate-200">
+            <h3 className="text-sm font-bold text-slate-900">
               Xarajat toifalari taqsimoti
             </h3>
-            <p className="text-xs text-[#5F737B]">
+            <p className="text-xs text-slate-500">
               Operatsion xarajatlar tarkibi
             </p>
           </div>
@@ -296,15 +296,15 @@ export const ReportsPage: React.FC = () => {
 
       {/* Doctor Productivity Table */}
       <Card className="p-0 overflow-hidden">
-        <div className="p-3.5 border-b border-[#DFE8E4] bg-[#F8FAF9]">
-          <h3 className="text-xs font-bold text-[#132229] uppercase tracking-wider">
+        <div className="p-3.5 border-b border-slate-200 bg-slate-50">
+          <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
             Shifokorlar samaradorligi tafsilotlari
           </h3>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#F8FAF9] border-b border-[#DFE8E4] text-[#5F737B] font-semibold uppercase text-[10px]">
+            <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase text-[10px]">
               <tr>
                 <th className="px-5 py-3">Shifokor</th>
                 <th className="px-4 py-3">Mutaxassislik</th>
@@ -313,22 +313,22 @@ export const ReportsPage: React.FC = () => {
                 <th className="px-5 py-3 text-right">Klinikaga keltirilgan tushum</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#DFE8E4]/60">
+            <tbody className="divide-y divide-slate-200/60">
               {doctorStats.map((item) => (
-                <tr key={item.doctor.id} className="hover:bg-[#F8FAF9]">
-                  <td className="px-5 py-3 font-semibold text-[#132229]">
+                <tr key={item.doctor.id} className="hover:bg-slate-50">
+                  <td className="px-5 py-3 font-semibold text-slate-900">
                     {item.doctor.fullName}
                   </td>
-                  <td className="px-4 py-3 text-[#5F737B]">
+                  <td className="px-4 py-3 text-slate-500">
                     {item.doctor.specialty}
                   </td>
-                  <td className="px-4 py-3 font-mono text-[#5F737B]">
+                  <td className="px-4 py-3 font-mono text-slate-500">
                     {item.doctor.consultationFee.toLocaleString()} UZS
                   </td>
-                  <td className="px-4 py-3 text-center font-bold text-[#008BFF]">
+                  <td className="px-4 py-3 text-center font-bold text-sky-600">
                     {item.completedCount} ta
                   </td>
-                  <td className="px-5 py-3 text-right font-bold text-emerald-700">
+                  <td className="px-5 py-3 text-right font-bold text-teal-700">
                     {item.totalGenerated.toLocaleString()} UZS
                   </td>
                 </tr>

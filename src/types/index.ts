@@ -23,7 +23,11 @@ export type DoctorSpecialty =
   | 'Ginekolog'
   | 'Jarroh'
   | 'Oftalmolog'
-  | 'LOR';
+  | 'LOR'
+  | 'Urolog'
+  | 'Dermatolog'
+  | 'Endokrinolog'
+  | 'Gastroenterolog';
 
 export interface Doctor {
   id: string;
@@ -33,7 +37,7 @@ export interface Doctor {
   email?: string;
   roomNumber: string;
   consultationFee: number; // in UZS
-  workingDays: number[]; // 1: Mon, 2: Tue, ..., 6: Sat
+  workingDays: number[]; // 0: Sun, 1: Mon, 2: Tue, ..., 6: Sat
   startHour: string; // e.g. "08:30"
   endHour: string;   // e.g. "17:30"
   breakStart: string;// e.g. "13:00"
@@ -68,6 +72,8 @@ export interface Appointment {
   estimatedWaitMinutes?: number;
   notes?: string;
   reminderSent: boolean;
+  telegramSent?: boolean;
+  telegramSentAt?: string;
   createdAt: string;
 }
 

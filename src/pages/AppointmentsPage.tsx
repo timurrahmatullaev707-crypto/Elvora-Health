@@ -23,6 +23,7 @@ import { Modal } from '../components/common/Modal';
 import { AppointmentStatusBadge } from '../components/common/Badge';
 import { appointmentService } from '../services/appointmentService';
 import { doctorService } from '../services/doctorService';
+import { telegramService } from '../services/telegramService';
 import { getTodayDateString } from '../services/seedData';
 import { Appointment, AppointmentStatus } from '../types';
 
@@ -97,24 +98,45 @@ export const AppointmentsPage: React.FC = () => {
   };
 
   // Trigger Simulated Reminder
+  const [isSendingReminder, setIsSendingReminder] = useState(false);
+
   const handleOpenReminder = (apt: Appointment, channel: 'SMS' | 'Telegram') => {
-    const res = appointmentService.simulateReminder(apt.id, channel);
+    const formatted = channel === 'Telegram'
+      ? telegramService.formatConfirmationMessage(apt)
+      : appointmentService.simulateReminder(apt.id, channel).messageText;
+
     setReminderModalData({
       appointment: apt,
       channel,
-      messageText: res.messageText,
-      recipient: res.recipient,
-      isSimulated: res.isSimulated,
+      messageText: formatted,
+      recipient: apt.patientPhone,
+      isSimulated: channel === 'SMS',
     });
   };
 
-  const confirmSendSimulatedReminder = () => {
+  const confirmSendSimulatedReminder = async () => {
     if (!reminderModalData) return;
-    showToast(
-      `${reminderModalData.channel} eslatmasi yuborildi: ${reminderModalData.recipient} (Simulyatsiya)`,
-      'success'
-    );
+    setIsSendingReminder(true);
+
+    if (reminderModalData.channel === 'Telegram') {
+      const res = await telegramService.sendAppointmentConfirmation(reminderModalData.appointment);
+      if (res.delivered) {
+        showToast(`Telegram orqali xabar muvaffaqiyatli yetkazildi! (ID: #${res.messageId || 'OK'})`, 'success');
+      } else {
+        showToast('Telegram xabari tayyorlandi. Veb orqali ochish oynasi yaratildi.', 'info');
+        if (res.telegramDeepLink) {
+          window.open(res.telegramDeepLink, '_blank');
+        }
+      }
+    } else {
+      showToast(
+        `SMS eslatmasi yuborildi: ${reminderModalData.recipient} (Simulyatsiya)`,
+        'success'
+      );
+    }
+
     refreshData();
+    setIsSendingReminder(false);
     setReminderModalData(null);
   };
 
@@ -141,7 +163,7 @@ export const AppointmentsPage: React.FC = () => {
       return;
     }
 
-    showToast(`Qabul muvaffaqiyatli ${newRescheduleDate} soat ${newRescheduleTime} ga ko'chirildi`, 'success');
+    showToast(`Qabul muvaffaqiyatli ${newRescheduleDate} soat ${newRescheduleTime} ga ko'chirildi va bemorga Telegram eslatmasi yuborildi`, 'success');
     refreshData();
     setRescheduleApt(null);
     setRescheduleError(null);
@@ -153,27 +175,27 @@ export const AppointmentsPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-[#132229] tracking-tight">
+            <h1 className="text-xl font-bold text-[#0F172A] tracking-tight">
               Qabullar va jonli navbat
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#EBF7FC] text-[#008BFF] border border-[#BAE6FD]">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sky-50 text-[#0284C7] border border-sky-200">
               Jonli boshqaruv
             </span>
           </div>
-          <p className="text-xs text-[#5F737B] mt-0.5">
+          <p className="text-xs text-[#64748B] mt-0.5">
             Bemorlarni shifokorlar qabuliga yozish, kutish navbati va eslatmalar monitoringi
           </p>
         </div>
 
         <div className="flex items-center gap-2.5">
           {/* View Switcher */}
-          <div className="flex bg-white p-1 rounded-xl border border-[#DFE8E4] shadow-2xs">
+          <div className="flex bg-white p-1 rounded-xl border border-[#E2E8F0] shadow-2xs">
             <button
               onClick={() => setActiveTab('queue')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 activeTab === 'queue'
-                  ? 'bg-[#008BFF] text-white shadow-xs'
-                  : 'text-[#5F737B] hover:text-[#132229]'
+                  ? 'bg-[#0F172A] text-white shadow-xs'
+                  : 'text-[#64748B] hover:text-[#0F172A]'
               }`}
             >
               Jonli doska (Queue)
@@ -182,8 +204,8 @@ export const AppointmentsPage: React.FC = () => {
               onClick={() => setActiveTab('calendar')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 activeTab === 'calendar'
-                  ? 'bg-[#008BFF] text-white shadow-xs'
-                  : 'text-[#5F737B] hover:text-[#132229]'
+                  ? 'bg-[#0F172A] text-white shadow-xs'
+                  : 'text-[#64748B] hover:text-[#0F172A]'
               }`}
             >
               Jadval ko'rinishi
@@ -205,9 +227,18 @@ export const AppointmentsPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
           {/* Date Picker */}
           <div>
-            <label className="block text-[11px] font-semibold text-[#5F737B] uppercase mb-1">
-              Sana
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-[11px] font-semibold text-[#5F737B] uppercase">
+                Sana {selectedDate ? `(${selectedDate})` : '(Barcha sanalar)'}
+              </label>
+              <button
+                type="button"
+                onClick={() => setSelectedDate(selectedDate ? '' : todayStr)}
+                className="text-[10px] font-bold text-[#008BFF] hover:underline cursor-pointer"
+              >
+                {selectedDate ? 'Barcha sanalarni ko\'rish' : 'Bugunga qaytish'}
+              </button>
+            </div>
             <input
               type="date"
               value={selectedDate}
@@ -653,30 +684,36 @@ export const AppointmentsPage: React.FC = () => {
           maxWidth="md"
         >
           <div className="space-y-4 text-xs">
-            {/* Warning banner: clearly simulated */}
-            <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 leading-relaxed">
-              ⚠️ <strong>Simulyatsiya xabarnomasi:</strong> SMS shlyuzi (Eskiz/PlayMobile) hozirda test rejimida. Real xabar yuborilmaydi, tizimda yetkazilgan deb qayd etiladi.
-            </div>
+            {/* Banner */}
+            {reminderModalData.channel === 'Telegram' ? (
+              <div className="p-3 bg-sky-50 rounded-xl border border-sky-200 text-[#0284C7] leading-relaxed">
+                ✈️ <strong>Rasmiy Telegram Bot integratsiyasi:</strong> Xabar server orqali Telegram Bot API bilan yuboriladi va yetkazilish natijasi qayd etiladi.
+              </div>
+            ) : (
+              <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 leading-relaxed">
+                ⚠️ <strong>Simulyatsiya xabarnomasi:</strong> SMS shlyuzi (Eskiz/PlayMobile) hozirda test rejimida. Real xabar yuborilmaydi, tizimda yetkazilgan deb qayd etiladi.
+              </div>
+            )}
 
             <div>
-              <span className="text-[11px] font-semibold text-[#5F737B] uppercase">
+              <span className="text-[11px] font-semibold text-[#64748B] uppercase">
                 Qabul qiluvchi:
               </span>
-              <p className="font-bold text-[#132229] mt-0.5">
+              <p className="font-bold text-[#0F172A] mt-0.5">
                 {reminderModalData.appointment.patientName} ({reminderModalData.recipient})
               </p>
             </div>
 
             <div>
-              <span className="text-[11px] font-semibold text-[#5F737B] uppercase">
-                Xabar matni shabloni:
+              <span className="text-[11px] font-semibold text-[#64748B] uppercase">
+                Xabar matni:
               </span>
-              <div className="p-3 mt-1 bg-[#F4F7F5] rounded-xl border border-[#DFE8E4] text-[#132229] font-mono text-[11px] leading-relaxed">
+              <div className="p-3 mt-1 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] text-[#0F172A] font-mono text-[11px] leading-relaxed whitespace-pre-line">
                 {reminderModalData.messageText}
               </div>
             </div>
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#DFE8E4]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0]">
               <Button
                 variant="outline"
                 size="sm"
@@ -688,9 +725,10 @@ export const AppointmentsPage: React.FC = () => {
                 variant="primary"
                 size="sm"
                 icon={<Send size={13} />}
+                disabled={isSendingReminder}
                 onClick={confirmSendSimulatedReminder}
               >
-                Eslatmani sinov tariqasida yuborish
+                {isSendingReminder ? 'Yuborilmoqda...' : reminderModalData.channel === 'Telegram' ? 'Telegram orqali yuborish' : 'Eslatmani yuborish'}
               </Button>
             </div>
           </div>

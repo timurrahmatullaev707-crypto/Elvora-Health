@@ -3,6 +3,8 @@ import { storageService } from './storage';
 import { doctorService } from './doctorService';
 import { patientService } from './patientService';
 import { getTodayDateString } from './seedData';
+import { telegramService } from './telegramService';
+import { reminderService } from './reminderService';
 
 export const appointmentService = {
   getAll(): Appointment[] {
@@ -44,17 +46,37 @@ export const appointmentService = {
       return { success: false, error: check.reason || 'Shifokor ushbu vaqtda band' };
     }
 
-    // Calculate queue number for the specific date
+    // Ensure patient exists in the patients registry
+    const existingPatient = patientService.getById(data.patientId);
+    if (!existingPatient) {
+      patientService.create({
+        fullName: data.patientName,
+        phone: data.patientPhone,
+        birthDate: '1995-01-01',
+        gender: 'erkak',
+        notes: `Onlayn/AI orqali qabulga yozildi (${data.serviceName})`,
+      });
+    }
+
     const sameDayAppointments = list.filter((a) => a.date === data.date);
     const queueNumber = sameDayAppointments.length + 1;
 
+    const timeNow = new Date().toTimeString().slice(0, 5);
     const newAppointment: Appointment = {
       ...data,
       id: `apt-${Date.now()}`,
       queueNumber,
-      reminderSent: false,
-      createdAt: `${getTodayDateString()} ${new Date().toTimeString().slice(0, 5)}`,
+      reminderSent: true,
+      telegramSent: true,
+      telegramSentAt: timeNow,
+      createdAt: `${getTodayDateString()} ${timeNow}`,
     };
+
+    // Dispatch Telegram confirmation
+    telegramService.sendAppointmentConfirmation(newAppointment, doctor.roomNumber);
+
+    // Schedule automated multi-stage reminders (24h, 2h before)
+    reminderService.scheduleReminderForAppointment(newAppointment, 'telegram');
 
     list.unshift(newAppointment);
     storageService.setAppointments(list);
@@ -74,6 +96,12 @@ export const appointmentService = {
     // If marked completed, update patient visit count
     if (status === 'yakunlandi') {
       patientService.recordVisit(current.patientId);
+    }
+
+    // If canceled, dispatch notification and update reminder status
+    if (status === 'bekor_qilindi') {
+      const doctor = doctorService.getById(current.doctorId);
+      reminderService.notifyCancellation(current, doctor?.roomNumber);
     }
 
     return list[index];
@@ -119,6 +147,10 @@ export const appointmentService = {
     };
 
     storageService.setAppointments(list);
+
+    // Dispatch reschedule notification and recalculate reminders
+    reminderService.notifyReschedule(list[index], doctor.roomNumber);
+
     return { success: true, appointment: list[index] };
   },
 
